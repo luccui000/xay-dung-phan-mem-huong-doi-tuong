@@ -10,3 +10,7 @@ Xác định chức năng
 -	Xem báo cáo
 -	Xác nhận đơn hàng
 -	Quản lý sản phẩm, danh mục, hình ảnh, hãng sản xuất, khách hàng, giao dịch
+
+## Use Case
+![Use case](./usecase.png)
+
