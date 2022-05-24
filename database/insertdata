@@ -1,0 +1,41 @@
+
+insert into danhmuc(ten_danh_muc, hinhanh, thu_tu, noi_bat, ngay_tao)
+values 
+('Máy tính và Laptop', 'public/uploads/system/danhmuc/1.png', 1, 1, CURDATE()),
+('Ảnh kỹ thuật số', 'public/uploads/system/danhmuc/1.png', 1, 1, CURDATE()),
+('Điện thoại di động', 'public/uploads/system/danhmuc/1.png', 1, 1, CURDATE()),
+('TV', 'public/uploads/system/danhmuc/1.png', 1, 1, CURDATE()),
+('Âm thanh', 'public/uploads/system/danhmuc/1.png', 1, 1, CURDATE()),
+('Đòng hồ thông minh', 'public/uploads/system/danhmuc/1.png', 1, 1, CURDATE())
+
+--- Nha Cung Cap
+
+INSERT INTO `php_thuong_mai_dien_tu`.`nhacungcap` (`id`,`ten_nha_cung_cap`,`ten_lien_he`,`so_dien_thoai`,`dia_chi`,`email`,`website`,`ngay_tao`) VALUES ('1','Apple','Apple','03999xxxx','Apple Inc','supports@apple.com','https://support.apple.com/',NULL);
+INSERT INTO `php_thuong_mai_dien_tu`.`nhacungcap` (`id`,`ten_nha_cung_cap`,`ten_lien_he`,`so_dien_thoai`,`dia_chi`,`email`,`website`,`ngay_tao`) VALUES ('2','Samsung','Samsung','03888xxxx','Samsung','supports@samsung.com','https://samsung.com',NULL);
+INSERT INTO `php_thuong_mai_dien_tu`.`nhacungcap` (`id`,`ten_nha_cung_cap`,`ten_lien_he`,`so_dien_thoai`,`dia_chi`,`email`,`website`,`ngay_tao`) VALUES ('3','Oppo','Oppo','03777xxxx','Oppo','supports@oppo.com','oppo.com','2022-05-23 00:00:00');
+
+
+--- San Pham
+INSERT INTO `php_thuong_mai_dien_tu`.`sanpham` (`id`,`ma_san_pham`,`danhmuc_id`,`nhacungcap_id`,`ten_san_pham`,`gia_truoc_khuyen_mai`,`gia_sau_khuyen_mai`,`mo_ta_ngan`,`mo_ta_chi_tiet`,`san_pham_noi_bat`,`san_pham_giam_gia`,`so_luong_nhap`,`ngay_tao`,`nguoi_tao`,`trang_thai`) VALUES ('3','S22U220522','10','2','Điện thoại Samsung Galaxy S22 Ultra 5G 128GB ','31999000','30999000','Galaxy S22 Ultra 5G chiếc smartphone cao cấp nhất trong bộ 3 Galaxy S22 series mà Samsung đã cho ra mắt. Tích hợp bút S Pen hoàn hảo trong thân máy, trang bị vi xử lý mạnh mẽ cho các tác vụ sử dụng vô cùng mượt mà và nổi bật hơn với cụm camera không viền độc đáo mang đậm dấu ấn riêng.','Sở hữu một diện mạo đầy nổi bật
+Galaxy S22 Ultra 5G được kế thừa form thiết kế từ những dòng Note trước đây của hãng đem đến cho bạn có cảm giác vừa mới lạ vừa hoài niệm. Trọng lượng của máy khoảng 228 g cho cảm giác cầm nắm đầm tay, khi cầm máy trần thì hơi có cảm giác dễ trượt.Phần mặt lưng được làm nhám nên hạn chế tốt việc bám dấu vân tay, có thiết kế cũng khá đơn giản nhưng vẫn toát lên vẻ sang trọng và cao cấp của chiếc máy. Cụm camera sau trên Galaxy S22 Ultra 5G được thiết kế trần tạo cảm giác gọn gàng và cũng tạo nên một điểm nhấn độc đáo cho chiếc máy.','1','1','10','2022-05-22 00:00:00','1','1');
+INSERT INTO `php_thuong_mai_dien_tu`.`sanpham` (`id`,`ma_san_pham`,`danhmuc_id`,`nhacungcap_id`,`ten_san_pham`,`gia_truoc_khuyen_mai`,`gia_sau_khuyen_mai`,`mo_ta_ngan`,`mo_ta_chi_tiet`,`san_pham_noi_bat`,`san_pham_giam_gia`,`so_luong_nhap`,`ngay_tao`,`nguoi_tao`,`trang_thai`) VALUES ('4','IP11220522','10','1','Điện thoại iPhone 11 64GB','15999000','14999000','Apple đã chính thức trình làng bộ 3 siêu phẩm iPhone 11, trong đó phiên bản iPhone 11 64GB có mức giá rẻ nhất nhưng vẫn được nâng cấp mạnh mẽ như iPhone Xr ra mắt trước đó.',NULL,'1','1','20','2022-05-22 00:00:00','1','1');
+INSERT INTO `php_thuong_mai_dien_tu`.`sanpham` (`id`,`ma_san_pham`,`danhmuc_id`,`nhacungcap_id`,`ten_san_pham`,`gia_truoc_khuyen_mai`,`gia_sau_khuyen_mai`,`mo_ta_ngan`,`mo_ta_chi_tiet`,`san_pham_noi_bat`,`san_pham_giam_gia`,`so_luong_nhap`,`ngay_tao`,`nguoi_tao`,`trang_thai`) VALUES ('5','OPR7220522','10','3','Điện thoại OPPO Reno7 Z 5G','10999000','10599000','OPPO đã trình làng mẫu Reno7 Z 5G với thiết kế OPPO Glow độc quyền, camera mang hiệu ứng như máy DSLR chuyên nghiệp cùng viền sáng kép, máy có một cấu hình mạnh mẽ và đạt chứng nhận xếp hạng A về độ mượt.
+','OPPO đã trình làng mẫu Reno7 Z 5G với thiết kế OPPO Glow độc quyền, camera mang hiệu ứng như máy DSLR chuyên nghiệp cùng viền sáng kép, máy có một cấu hình mạnh mẽ và đạt chứng nhận xếp hạng A về độ mượt.
+','1','1','12','2022-05-22 00:00:00','1','1');
+INSERT INTO `php_thuong_mai_dien_tu`.`sanpham` (`id`,`ma_san_pham`,`danhmuc_id`,`nhacungcap_id`,`ten_san_pham`,`gia_truoc_khuyen_mai`,`gia_sau_khuyen_mai`,`mo_ta_ngan`,`mo_ta_chi_tiet`,`san_pham_noi_bat`,`san_pham_giam_gia`,`so_luong_nhap`,`ngay_tao`,`nguoi_tao`,`trang_thai`) VALUES ('6','RC35220522','10','3','Điện thoại Realme C35 64GB ','4500000','4290000','Realme C35 thuộc phân khúc giá rẻ được nhà Realme cho ra mắt với thiết kế trẻ trung, dung lượng pin lớn cùng camera hỗ trợ nhiều tính năng. Đây sẽ là thiết bị liên lạc, giải trí và làm việc ổn định,… cho các nhu cầu sử dụng của bạn.
+','Realme C35 sở hữu 2 màu sắc trẻ trung: Đen tuyền và xanh huyền ảo với một thiết kế vô cùng độc đáo, khung bezel bo góc làm bằng vật liệu 2D phát sáng linh động, mang đến hiệu ứng màu ấn tượng khi thay đổi góc nhìn.
+
+','1','1','11','2022-05-22 00:00:00','1','1');
+INSERT INTO `php_thuong_mai_dien_tu`.`sanpham` (`id`,`ma_san_pham`,`danhmuc_id`,`nhacungcap_id`,`ten_san_pham`,`gia_truoc_khuyen_mai`,`gia_sau_khuyen_mai`,`mo_ta_ngan`,`mo_ta_chi_tiet`,`san_pham_noi_bat`,`san_pham_giam_gia`,`so_luong_nhap`,`ngay_tao`,`nguoi_tao`,`trang_thai`) VALUES ('7','TN0012220522','11','3','Tai nghe Bluetooth True Wireless Realme Buds Q RMA215 Đen','1250000','1190000','Chất liệu polymer tổng hợp, trọng lượng 3.6 g/tai nghe.
+Driver bass lớn 10 mm, âm thanh sống động với Dynamic Bass Boost.
+Kết nối nhanh chóng qua Bluetooth 5.0 được hỗ trợ từ chip R1Q.
+Độ trễ siêu thấp 119 ms đem lại sự đồng bộ giữa âm thanh và hình ảnh ','Màu đen đơn giản, thiết kế tinh xảo, lấy cảm hứng từ viên đá cuội
+Tai nghe Bluetooth True Wireless Realme Buds Q RMA215 đen sở hữu đường cong G3 hoàn thiện, bề mặt được làm nhám từ công nghệ tia lửa 9 µm cho cảm giác cầm tay nghe như đang cầm 1 viên đá cuội nhỏ xinh thực sự, cực thoải mái và thích thú.
+
+Trọng lượng 3.6 g/tai nghe nhẹ hơn cả trang giấy A4 (4.3 g), chất liệu polymer tổng hợp PC - ABS bền nhẹ, kết cấu coracoid, đeo vào tai gọn gàng, không cảm giác vướng víu. Hộp sạc thiết kế bo tròn, gọn đẹp, đóng mở thuận tiện.','0','1','34','2022-05-22 00:00:00','1','1');
+INSERT INTO `php_thuong_mai_dien_tu`.`sanpham` (`id`,`ma_san_pham`,`danhmuc_id`,`nhacungcap_id`,`ten_san_pham`,`gia_truoc_khuyen_mai`,`gia_sau_khuyen_mai`,`mo_ta_ngan`,`mo_ta_chi_tiet`,`san_pham_noi_bat`,`san_pham_giam_gia`,`so_luong_nhap`,`ngay_tao`,`nguoi_tao`,`trang_thai`) VALUES ('8','PK0013220522','11','3','Tai nghe Bluetooth True Wireless Realme Buds Q RMA215 Đen','15999000','1299000','Chất liệu polymer tổng hợp, trọng lượng 3.6 g/tai nghe.
+Driver bass lớn 10 mm, âm thanh sống động với Dynamic Bass Boost.
+Kết nối nhanh chóng qua Bluetooth 5.0 được hỗ trợ từ chip R1Q.','Màu đen đơn giản, thiết kế tinh xảo, lấy cảm hứng từ viên đá cuội
+Tai nghe Bluetooth True Wireless Realme Buds Q RMA215 đen sở hữu đường cong G3 hoàn thiện, bề mặt được làm nhám từ công nghệ tia lửa 9 µm cho cảm giác cầm tay nghe như đang cầm 1 viên đá cuội nhỏ xinh thực sự, cực thoải mái và thích thú.
+
+Trọng lượng 3.6 g/tai nghe nhẹ hơn cả trang giấy A4 (4.3 g), chất liệu polymer tổng hợp PC - ABS bền nhẹ, kết cấu coracoid, đeo vào tai gọn gàng, không cảm giác vướng víu. Hộp sạc thiết kế bo tròn, gọn đẹp, đóng mở thuận tiện.','0','1','20','2022-05-22 00:00:00','1','1');
