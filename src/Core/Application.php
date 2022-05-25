@@ -24,6 +24,7 @@ class Application
         $this->register();
         $this->boot();
         $this->config = new Config($_ENV);
+        new Database($this->config->db);
     }
 
     public function boot()

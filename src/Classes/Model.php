@@ -3,7 +3,6 @@
 namespace Luccui\Classes;
 
 use Luccui\Helpers\Config;
-use PDO;
 
 class Model
 {

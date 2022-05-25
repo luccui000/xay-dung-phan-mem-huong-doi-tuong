@@ -5,11 +5,11 @@
                 <a href="#" class="cat-block">
                     <figure>
                         <span>
-                            <img src="<?php echo $danhmuc['hinh_anh']; ?>" alt="Category image">
+                            <img src="<?php echo $danhmuc->hinh_anh; ?>" alt="Category image">
                         </span>
                     </figure>
 
-                    <h3 class="cat-block-title"><?php echo $danhmuc['ten_danh_muc']; ?></h3>
+                    <h3 class="cat-block-title"><?php echo $danhmuc->ten_danh_muc; ?></h3>
                 </a>
             </div>
         <?php } ?>

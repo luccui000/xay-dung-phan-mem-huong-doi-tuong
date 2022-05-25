@@ -3,6 +3,7 @@
 namespace Luccui\Http\Controllers;
 
 
+use Illuminate\Database\Capsule\Manager as Capsule;
 use Luccui\Core\Request;
 use Luccui\Models\DanhMuc;
 use Luccui\Models\SanPham;
@@ -11,7 +12,9 @@ class HomeController
 {
     public function index()
     {
-        $danhmucs = DanhMuc::all();
+        $danhmucs = Capsule::table('danhmuc')
+                        ->take(6)
+                        ->get();
         $sanphams = SanPham::all();
 
         return view("client/index.php", [
