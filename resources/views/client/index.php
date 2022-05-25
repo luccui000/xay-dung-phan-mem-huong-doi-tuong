@@ -87,11 +87,9 @@
                     </div>
                     <?php partial('sanpham/partials/arrival-product.php', 'client'); ?>
                 </div>
-
                 <div class="mb-6"></div>
-
                 <div class="container">
-                    <div class="cta cta-border mb-5" style="background-image: url(public/client/images/bg-1.jpg);">
+                    <div class="cta cta-border mb-5" style="background-image: url('public/client/images/bg-1.jpg');">
                         <img src="public/client/images/camera.png" alt="camera" class="cta-img">
                         <div class="row justify-content-center">
                             <div class="col-md-12">

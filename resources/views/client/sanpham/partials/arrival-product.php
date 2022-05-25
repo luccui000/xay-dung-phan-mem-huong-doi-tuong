@@ -2,28 +2,28 @@
     <div class="tab-pane p-0 fade show active" id="new-all-tab" role="tabpanel" aria-labelledby="new-all-link">
         <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl"
              data-owl-options='{
-                                "nav": true,
-                                "dots": true,
-                                "margin": 20,
-                                "loop": false,
-                                "responsive": {
-                                    "0": {
-                                        "items":2
-                                    },
-                                    "480": {
-                                        "items":2
-                                    },
-                                    "768": {
-                                        "items":3
-                                    },
-                                    "992": {
-                                        "items":4
-                                    },
-                                    "1200": {
-                                        "items":5
-                                    }
-                                }
-                            }'>
+                    "nav": true,
+                    "dots": true,
+                    "margin": 20,
+                    "loop": false,
+                    "responsive": {
+                        "0": {
+                            "items":2
+                        },
+                        "480": {
+                            "items":2
+                        },
+                        "768": {
+                            "items":3
+                        },
+                        "992": {
+                            "items":4
+                        },
+                        "1200": {
+                            "items":5
+                        }
+                    }
+                }'>
             <div class="product product-2">
                 <figure class="product-media">
                     <span class="product-label label-circle label-top">Top</span>

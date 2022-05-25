@@ -15,7 +15,8 @@ class HomeController
         $danhmucs = Capsule::table('danhmuc')
                         ->take(6)
                         ->get();
-        $sanphams = SanPham::all();
+        $sanphams = Capsule::table('sanpham')
+                        ->get();
 
         return view("client/index.php", [
             'danhmucs' => $danhmucs,
