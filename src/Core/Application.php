@@ -17,19 +17,18 @@ class Application
     public Config $config;
 
     public function __construct(
-        public Router $router,
         public string $requestUri,
         public string $requestMethod
     ) {
         $this->register();
         $this->boot();
         $this->config = new Config($_ENV);
-        new Database($this->config->db);
     }
 
     public function boot()
     {
-        static::$container->set('DB', fn() => DB::getInstance($this->config->db));
+        static::$container->set('config', fn() => new Config($_ENV));
+        static::$container->set('DB', fn() => new Database(app('config')->db));
     }
     public function register()
     {
@@ -46,7 +45,7 @@ class Application
     public function run()
     {
         try {
-            echo $this->router->resolve(
+            echo Router::resolve(
                 $this->requestUri,
                 $this->requestMethod
             );

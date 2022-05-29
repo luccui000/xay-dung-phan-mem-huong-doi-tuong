@@ -2,11 +2,12 @@
 
 namespace Luccui\Classes;
 
-use Luccui\Helpers\Config;
+use Illuminate\Support\Collection;
+use Luccui\Core\Database;
+use Illuminate\Database\Capsule\Manager as Capsule;
 
-class Model
+class Model extends Capsule
 {
-    protected DB $db;
     protected $table = null;
     protected $primaryKey = 'id';
     protected $createdAt = false;
@@ -15,272 +16,143 @@ class Model
     protected array $jsonFields = [];
     protected bool $autoIncremnent = true;
     protected $originalKeyVal = null;
+    protected Database $db;
+    protected array $withs = [];
 
     public function __construct()
     {
-        $config = new Config($_ENV);
-        $this->db = DB::getInstance($config->db);
-        $this->table = !is_null($this->table) ? $this->table : $this->setDefaultTableName();
+        parent::__construct();
+        $this->db = new Database(app('config')->db);
+        $modelNamespace = explode("\\", get_class($this));
+        $this->table = !is_null($this->table) ? $this->table : strtolower(end($modelNamespace));
     }
-    public static function first($id)
+    public static function all(): Collection
     {
-        return static::find($id);
+        return static::getModel()->get();
     }
-    public static function find($id)
+    public static function insert(array $values)
     {
-        $model = new static();
-        return $model->getModelItem($id);
+        return static::getModel()->insert($values);
     }
-    public static function create($data = [])
+    public static function insertGetId(array $values, $sequence = null)
     {
-        $data = static::prepareData($data);
-        $cls = new static();
-        $cls->db->insert(
-            static::getTableStatic(),
-            $data,
-            true
-        );
+        return static::getModel()->insertGetId($values, $sequence);
     }
-
-    public static function update($parameter, $clause, $clauseData)
+    public static function where($column, $operator = null, $value = null, $boolean = 'and')
     {
-        $cls = new static();
-        return $cls->db->update(
-            static::getTableStatic(),
-            $parameter,
-            $clause,
-            $clauseData
-        );
+        return static::getModel()->where($column, $operator, $value, $boolean);
     }
-    public static function all($clauses = [], $clauseData = []) {
-        $model = new static();
+    public static function with($withModel)
+    {
         $table = static::getTableStatic();
-        return $model->decodeObject($model->db->all($table, $clauses, $clauseData));
-    }
-    public static function count()
-    {
-        $model = new static();
-        $table = static::getTableStatic();
-        $clauses = [];
-        return $model->db->count($table, $clauses, []);
-    }
-    public function getModelItem($id)
-    {
-        $this->data = null;
-        $primaryKey = $this->primaryKey;
-        $result = $this->select(
-            [
-                'where' => "{$this->table}.{$primaryKey} = :pk",
-                'limit' => 1
-            ],
-            [
-                'pk' => $id
-            ], []
-        );
-        if(isset($result[0]))
-            return $result[0];
+        if(is_string($withModel)) {
+            if(in_array($withModel . "_id", static::getFillableStatic())) {
+                return static::getModel()->join($withModel, function($join) use ($table, $withModel) {
+                    return $join->on($table . "." . $withModel . "_id", "=", $withModel . ".id");
+                });
+            }
+        }
+        if(is_array($withModel)) {
+            $staticModel = static::getModel();
+            foreach($withModel as $model) {
+                if(in_array($model . "_id", static::getFillableStatic())) {
+                    $staticModel->join($model, function($join) use ($table, $model) {
+                        return $join->on($table . "." . $model . "_id", "=", $model . ".id");
+                    });
+                }
+            }
+            return $staticModel;
+        }
         return null;
     }
-    public function setDefaultTableName()
+    public static function getModel($model = null)
     {
-        $namespace = strtolower(get_class($this));
-        $splitedNamespace = explode("\\", $namespace);
-        return $splitedNamespace[count($splitedNamespace) - 1];
+        return static::table($model ?? static::getTableStatic());
     }
-
-    public static function setDefaultClauses($clauses, string $table, string $primaryKey)
-    {
-        if(empty($clauses['orderBy'])) {
-            $clauses['orderBy'] = "{$table}.{$primaryKey} DESC";
-        }
-        return $clauses;
-    }
-    public function save($data = null)
-    {
-        if(!is_null($this->data) && !is_null($data) && is_array($data)) {
-            foreach ($this->data as $key => $value) {
-                if(array_key_exists($key, $data)) {
-                    $this->data->$key = $data[$key];
-                }
-            }
-        }
-        $this->saveModel();
-    }
-    public function saveModel()
-    {
-        if(!$this->data)
-            return false;
-        $parameters = $this->getData(true);
-        $parameters = static::encodeJsonFields($parameters);
-        $clauseData['orginal_id'] = $this->getKeyVal();
-        return $this->db->update(
-            $this->table,
-            $parameters,
-            [
-                'where' => "{$this->table}.{$this->primaryKey} =:orginal_id"
-            ],
-            $clauseData
-        );
-    }
-    public function select($clauses, $clauseData, $settings)
-    {
-        $settings = static::getDefaultSettings($settings);
-        $table = static::getTableStatic();
-        $primaryKey = static::getPrimaryKeyStatic();
-        $clauses = static::setDefaultClauses($clauses, $table, $primaryKey);
-        $cls = new static();
-        $result = $cls->db->select($table, $clauses, $clauseData);
-        if($settings['loadModel'])
-            return static::loadModelData($result);
-        return $result;
-    }
-    public static function loadModelData($result = []): array
-    {
-        $collections = [];
-        foreach ($result as $value) {
-            $collections[] = static::loadModelWithData($value);
-        }
-        return $collections;
-    }
-    public static function loadModelWithData($data) : static
-    {
-        $model = new static();
-        $model->fillModeData($data);
-        return $model;
-    }
-    public function fillModeData($data) {
-        $this->data = $data;
-        $this->setOriginaKeyValFromData();
-        $this->decodeJsonFields();
-    }
-    public function decodeJsonFields()
-    {
-        if(is_array($this->jsonFields) && count($this->jsonFields)) {
-            foreach ($this->jsonFields as $key) {
-                if(isset($this->data->$key) && $this->data->$key) {
-                    $this->data->$key = json_decode($this->data->$key, true);
-                }
-            }
-        }
-    }
-    public function decodeObject($objStdClass)
-    {
-        return  json_decode(json_encode($objStdClass), true);
-    }
-    public static function getDefaultSettings(&$settings)
-    {
-        if(!array_key_exists('loadModel', $settings))
-            $settings['loadModel'] = true;
-        if(!array_key_exists('getQueryStr', $settings))
-            $settings['getQueryStr'] = false;
-        return $settings;
-    }
-    public static function prepareData($data = [])
-    {
-        $data = static::checkFillableData($data);
-        $data = static::encodeJsonFields($data);
-        return $data;
-    }
-    public static function checkFillableData(mixed $data)
-    {
-        $fillable = static::getFillabelStatic();
-        if(count($fillable)) {
-            foreach ($fillable as $key) {
-                if(!array_key_exists($key, $data)) {
-                    $data[$key] = null;
-                }
-            }
-            foreach ($data as $key => $value) {
-                if(!in_array($key, $fillable))
-                    unset($data[$key]);
-            }
-            if(static::getIsAutoIncrementStatic()) {
-                if(array_key_exists('id', $data)) {
-                    unset($data['id']);
-                }
-            }
-        }
-        return $data;
-    }
-
-    protected static function encodeJsonFields(mixed $data)
-    {
-        $jsonFields = static::getJsonFieldsStatic();
-        foreach ($jsonFields as $key) {
-            if(array_key_exists($key, $data))
-                $data[$key] = json_encode($data[$key]);
-        }
-        return $data;
-    }
-    public function getTable(): ?string
+    public function getTable()
     {
         return $this->table;
     }
-    public static function getTableStatic(): string
+    public function getPrimaryKey(): string
     {
-        $cls = new static();
-        return $cls->getTable();
+        return $this->primaryKey;
+    }
+
+    public function isCreatedAt(): bool
+    {
+        return $this->createdAt;
+    }
+
+    public function getData()
+    {
+        return $this->data;
     }
     public function getFillable(): array
     {
         return $this->fillable;
     }
-    public static function getFillabelStatic()
-    {
-        $cls = new static;
-        return $cls->getFillable();
-    }
 
-    public function getPrimaryKey(): string
-    {
-        return $this->primaryKey;
-    }
-    public static function getPrimaryKeyStatic()
-    {
-        $cls = new static();
-        return $cls->getPrimaryKey();
-    }
-
-    public function getData($returnArray = false)
-    {
-        if($this->data && $returnArray)
-            return json_decode(json_encode($this->data), true);
-        return $this->data;
-    }
-    public static function getDataStatic()
-    {
-        $cls = new static();
-        return $cls->getData();
-    }
     public function getJsonFields(): array
     {
         return $this->jsonFields;
-    }
-    public static function getJsonFieldsStatic()
-    {
-        $cls = new static();
-        return $cls->getJsonFields();
     }
 
     public function isAutoIncremnent(): bool
     {
         return $this->autoIncremnent;
     }
-    public static function getIsAutoIncrementStatic()
-    {
-        $cls = new static();
-        return $cls->isAutoIncremnent();
-    }
 
-    public function getKeyVal()
+    public function getOriginalKeyVal()
     {
         return $this->originalKeyVal;
     }
-    private function setOriginaKeyValFromData()
+    public static function getTableStatic()
     {
-        $pk = $this->primaryKey;
-        if($this->data && isset($this->data->$pk)) {
-            $this->originalKeyVal = $this->data->$pk;
-        }
+        $model = new static();
+        return $model->table;
+    }
+    public static function getPrimaryKeyStatic(): string
+    {
+        $model = new static();
+        return $model->primaryKey;
+    }
+
+    public static function isCreatedAtStatic(): bool
+    {
+        $model = new static();
+        return $model->createdAt;
+    }
+
+    public static function getDataStatic()
+    {
+        $model = new static();
+        return $model->data;
+    }
+    public static function getFillableStatic(): array
+    {
+        $model = new static();
+        return $model->fillable;
+    }
+
+    public static function getJsonFieldsStatic(): array
+    {
+        $model = new static();
+        return $model->jsonFields;
+    }
+
+    public static function isAutoIncremnentStatic(): bool
+    {
+        $model = new static();
+        return $model->autoIncremnent;
+    }
+
+    public static function getOriginalKeyValStatic()
+    {
+        $model = new static();
+        return $model->originalKeyVal;
+    }
+    public static function __callStatic($method, $parameters)
+    {
+        return call_user_func_array([static::getModel(), $method], $parameters);
     }
 }

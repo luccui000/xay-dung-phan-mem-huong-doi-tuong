@@ -33,6 +33,22 @@
         table.dataTable.no-footer {
             border-bottom: 1px solid #ccc;
         }
+        .dataTables_wrapper {
+            position: relative;
+        }
+        .dataTables_filter {
+            height: 40px;
+        }
+        .dataTables_filter input {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .btn-create {
+            position: absolute;
+            right: 10px;
+            z-index: 99999;
+        }
     </style>
 </head>
 <body>
@@ -50,52 +66,53 @@
         </div>
         <div class="col-10 content pt-3 pl-0">
             <div class="card p-2">
-                <table id="example" class="table hover">
-                    <thead>
-                    <tr>
-                        <th>Mã sản phẩm</th>
-                        <th>Tên sản phẩm</th>
-                        <th>Số lượng tồn kho</th>
-                        <th>Giá trước khuyến mãi</th>
-                        <th>Giá khuyến mãi</th>
-                        <th>Trạng thái</th>
-                        <th></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <?php foreach ($sanphams as $sanpham) { ?>
-                        <tr>
-                            <td><?php echo $sanpham->ma_san_pham; ?></td>
-                            <td>
-                                <a class="text-primary" href="#">
-                                    <?php echo $sanpham->ten_san_pham; ?>
-                                </a>
-                            </td>
-                            <td><?php echo $sanpham->so_luong_nhap; ?></td>
-                            <td>
-                                <?php echo vnmoney($sanpham->gia_truoc_khuyen_mai); ?>
-                            </td>
-                            <td><?php echo vnmoney($sanpham->gia_sau_khuyen_mai); ?></td>
-                            <td><?php echo $sanpham->trang_thai; ?></td>
-                            <td>
-                                <a href="#" onclick="toggle_dropdown(this); return false" role="button" >
-                                    <i class="fa fa-ellipsis-v"></i>
-                                </a>
-                                <div class="dropdown dropdown-menu-right bg-white shadow">
-                                    <a href="#" class="dropdown-item cursor-pointer">
-                                        <i class="fa fa-pencil text-primary"></i>
-                                        <span class="ml-2">edit</span>
-                                    </a>
-                                    <a class="dropdown-item cursor-pointer">
-                                        <i class="fa fa-trash text-danger"></i>
-                                        <span class="ml-2">delete</span>
-                                    </a>
-                                </div>
-                            </td>
-                        </tr>
-                    <?php } ?>
-                    </tbody>
-                </table>
+                <a href="/admin/sanpham/create" class="btn btn-success btn-sm text-white btn-create" style="top: 20px"> <i class="fa fa-plus mr-1"></i>Thêm mới</a>
+                <div class="row mt-2">
+                    <div class="col-12">
+                        <table id="example" class="table hover">
+                            <thead>
+                            <tr>
+                                <th>Mã sản phẩm</th>
+                                <th>Tên sản phẩm</th>
+                                <th>Giá khuyến mãi</th>
+                                <th>Trạng thái</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <?php foreach ($sanphams as $sanpham) { ?>
+                                <tr>
+                                    <td><?php echo $sanpham->ma_san_pham; ?></td>
+                                    <td>
+                                        <a class="text-primary" href="#">
+                                            <?php echo $sanpham->ten_san_pham; ?>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <?php echo vnmoney($sanpham->gia_von); ?>
+                                    </td>
+                                    <td><?php echo $sanpham->trang_thai; ?></td>
+                                    <td>
+                                        <a href="#" onclick="toggle_dropdown(this); return false" role="button" >
+                                            <i class="fa fa-ellipsis-v"></i>
+                                        </a>
+                                        <div class="dropdown dropdown-menu-right bg-white shadow">
+                                            <a href="#" class="dropdown-item cursor-pointer">
+                                                <i class="fa fa-pencil text-primary"></i>
+                                                <span class="ml-2">edit</span>
+                                            </a>
+                                            <a class="dropdown-item cursor-pointer">
+                                                <i class="fa fa-trash text-danger"></i>
+                                                <span class="ml-2">delete</span>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            <?php } ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -106,10 +123,10 @@
     $(document).ready(function () {
         $("#example").DataTable({
             ...window.DataTableConfig,
-            "columnDefs": [{
-                "targets": 6,
-                "orderable": false
-            }]
+            // "columnDefs": [{
+            //     "targets": 6,
+            //     "orderable": false
+            // }]
         });
     })
 </script>

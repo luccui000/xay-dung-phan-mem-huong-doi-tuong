@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>Molla - Bootstrap eCommerce Template</title>
+        <title>SHOP - Bootstrap eCommerce Template</title>
         <meta name="keywords" content="HTML5 Template">
         <meta name="description" content="Molla - Bootstrap eCommerce Template">
         <meta name="author" content="p-themes">
@@ -85,7 +85,7 @@
                             </ul>
                         </div>
                     </div>
-                    <?php partial('sanpham/partials/arrival-product.php', 'client'); ?>
+                    <?php include CLIENT_BASE_PATH . 'sanpham/partials/arrival-product.php' ?>
                 </div>
                 <div class="mb-6"></div>
                 <div class="container">
@@ -152,7 +152,7 @@
                             <a href="#" class="title-link">View All Recommendadion <i class="icon-long-arrow-right"></i></a>
                         </div>
                     </div>
-                    <?php partial('sanpham/partials/recommend-product.php', 'client'); ?>
+                    <?php include CLIENT_BASE_PATH . 'sanpham/partials/recommend-product.php' ?>
                 </div>
                 <div class="mb-4"></div>
                 <div class="container">

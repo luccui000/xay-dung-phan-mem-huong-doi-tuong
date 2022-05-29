@@ -24,39 +24,51 @@
                         }
                     }
                 }'>
-            <div class="product product-2">
-                <figure class="product-media">
-                    <span class="product-label label-circle label-top">Top</span>
-                    <a href="product.html">
-                        <img src="public/client/images/products/product-1.jpg" alt="Product image" class="product-image">
-                    </a>
+            <?php foreach ($sanphams as $sanpham) { ?>
+                <?php if($sanpham->la_san_pham_moi) {?>
+                    <div class="product product-2">
+                        <figure class="product-media">
+                            <?php if($sanpham->la_san_pham_moi) {?>
+                                <span class="product-label label-circle label-new">New</span>
+                            <?php } ?>
+                            <?php if($sanpham->la_san_pham_giam_gia) {?>
+                                <span class="product-label label-circle label-sale">Sale</span>
+                            <?php } ?>
+                            <?php if($sanpham->la_san_pham_noi_bat) {?>
+                                <span class="product-label label-circle label-top">Top</span>
+                            <?php } ?>
+                            <a href="/san-pham/chi-tiet?id=<?php echo $sanpham->id; ?>">
+                                <img src="<?php echo $sanpham->duong_dan; ?>" alt="Product image" class="product-image">
+                            </a>
 
-                    <div class="product-action-vertical">
-                        <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"></a>
-                    </div><!-- End .product-action -->
+                            <div class="product-action-vertical">
+                                <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"></a>
+                            </div>
 
-                    <div class="product-action">
-                        <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
-                        <a href="popup/quickView.html" class="btn-product btn-quickview" title="Quick view"><span>quick view</span></a>
-                    </div><!-- End .product-action -->
-                </figure><!-- End .product-media -->
+                            <div class="product-action">
+                                <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
+                                <a href="popup/quickView.html" class="btn-product btn-quickview" title="Quick view"><span>quick view</span></a>
+                            </div>
+                        </figure>
 
-                <div class="product-body">
-                    <div class="product-cat">
-                        <a href="#">Laptops</a>
-                    </div><!-- End .product-cat -->
-                    <h3 class="product-title"><a href="product.html">MacBook Pro 13" Display, i5</a></h3><!-- End .product-title -->
-                    <div class="product-price">
-                        $1,199.99
-                    </div><!-- End .product-price -->
-                    <div class="ratings-container">
-                        <div class="ratings">
-                            <div class="ratings-val" style="width: 100%;"></div><!-- End .ratings-val -->
-                        </div><!-- End .ratings -->
-                        <span class="ratings-text">( 4 Reviews )</span>
-                    </div><!-- End .rating-container -->
-                </div><!-- End .product-body -->
-            </div><!-- End .product -->
+                        <div class="product-body">
+                            <div class="product-cat">
+                                <a href="#">Laptops</a>
+                            </div>
+                            <h3 class="product-title"><a href="/san-pham/chi-tiet?id=<?php echo $sanpham->id; ?>"><?php echo $sanpham->ten_san_pham ?></a></h3><!-- End .product-title -->
+                            <div class="product-price">
+                                <?php echo vnmoney($sanpham->gia_von); ?>
+                            </div>
+                            <div class="ratings-container">
+                                <div class="ratings">
+                                    <div class="ratings-val" style="width: 100%;"></div>
+                                </div>
+                                <span class="ratings-text">( 4 Reviews )</span>
+                            </div>
+                        </div>
+                    </div>
+                <?php } ?>
+            <?php } ?>
 
             <div class="product product-2">
                 <figure class="product-media">

@@ -18,8 +18,8 @@
 <script src="{! assets('public/admin/js/calendar/demo.js'); !}"></script>
 <script src="{! assets('public/admin/js/jquery.nice-select.min.js'); !}"></script>
 <script src="{! assets('public/admin/js/custom.js'); !}"></script>
-<script src="https://cdn.datatables.net/1.12.0/js/jquery.dataTables.min.js"></script>
 <script src="{! assets('public/js/dataTable.js'); !}"></script>
+<script src="{! assets('public/js/utils.js'); !}"></script>
 <script>
     $(document).ready(function() {
         $('.bulk-actions').niceSelect();

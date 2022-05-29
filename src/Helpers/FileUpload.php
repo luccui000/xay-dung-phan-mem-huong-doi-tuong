@@ -8,12 +8,12 @@ class FileUpload
     const ACCEPT_FILE_TYPE = ['jpg', 'jpeg', 'png', 'gif'];
     protected string $filename;
     protected string $extension;
-    protected string $path;
+    protected string $path = "";
 
-    public function setFileName($file, $name = "")
+    public function setFileName($file, $name = null)
     {
-        if(empty($name))
-            $name = pathinfo($file, PATHINFO_FILENAME);
+        if(is_null($name))
+            $name = pathinfo($file['name'], PATHINFO_FILENAME);
         $name = strtolower(str_replace(["-", ""], "", $name));
         $hash = md5(microtime());
         $ext = $this->getExtension($file);
@@ -25,7 +25,7 @@ class FileUpload
     }
     public function getExtension($file): string
     {
-        return $this->extension = pathinfo($file, PATHINFO_EXTENSION);
+        return $this->extension = pathinfo($file['name'], PATHINFO_EXTENSION);
     }
     public function getPath(): string
     {
@@ -41,7 +41,7 @@ class FileUpload
         $ext = $cls->getExtension($file);
         return in_array(strtolower($ext), FileUpload::ACCEPT_FILE_TYPE);
     }
-    public static function move($temp, $folder, $file, $newFilename): static|null
+    public static function move($temp, $folder, $file, $newFilename = null): static|null
     {
         $cls = new static;
         $cls->setFileName($file, $newFilename);
@@ -50,9 +50,13 @@ class FileUpload
             mkdir($folder, 0777, true);
         }
         $cls->path = $folder . DIRECTORY_SEPARATOR . $fileName;
-        $absolutePath = BASE_APP . DIRECTORY_SEPARATOR . "public" . DIRECTORY_SEPARATOR . $cls->path;
+        $absolutePath = BASE_APP . "public" . DIRECTORY_SEPARATOR . $cls->path;
         if(move_uploaded_file($temp, $absolutePath))
             return $cls;
         return null;
+    }
+    public static function save($file, $folder = "uploads")
+    {
+        return static::move($file['tmp_name'], $folder, $file);
     }
  }

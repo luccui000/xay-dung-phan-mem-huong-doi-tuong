@@ -18,11 +18,12 @@ class Request
                 $this->inputs[$key] = $value;
             }
         }
-//        if(count($_FILES) > 0) {
-//            foreach ($_FILES as $key => $value) {
-//                $this->inputs['file'][$key] = $value;
-//            }
-//        }
+        if(count($_FILES) > 0) {
+            $this->inputs['file'] = [];
+            foreach ($_FILES as $key => $value) {
+                $this->inputs['file'][$key] = $value;
+            }
+        }
     }
 
     public function hasFile()

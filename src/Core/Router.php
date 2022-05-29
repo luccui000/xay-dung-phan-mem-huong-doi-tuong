@@ -7,12 +7,13 @@ use Luccui\Exceptions\RouteNotFoundException;
 
 class Router
 {
-    private array $routes = [];
+    private static array $routes = [];
     private static array $names = [];
 
     public function register($requestMethod, $route, Closure|array $closure, $name = '')
     {
-        $this->routes[$requestMethod][$route] = $closure;
+        $route = DIRECTORY_SEPARATOR . ltrim($route, "/");
+        static::$routes[$requestMethod][$route] = $closure;
         if(!empty($name))
             static::$names[$name] = [
                 'route' => $route,
@@ -20,18 +21,18 @@ class Router
             ];
         return $this;
     }
-    public function get($route, Closure|array $action, $name = '')
+    public static function get($route, Closure|array $action, $name = '')
     {
-        return $this->register('get', $route, $action, $name);
+        return (new static())->register('get', $route, $action, $name);
     }
-    public function post($route, Closure|array $action, $name = '')
+    public static function post($route, Closure|array $action, $name = '')
     {
-        return $this->register('post', $route, $action, $name);
+        return (new static())->register('post', $route, $action, $name);
     }
 
-    public function getRoutes(): array
+    public static function getRoutes(): array
     {
-        return $this->routes;
+        return self::$routes;
     }
 
     public static function getNames(): array
@@ -42,10 +43,10 @@ class Router
     /**
      * @throws RouteNotFoundException
      */
-    public function resolve($requestUrl, $requestMethod): mixed
+    public static function resolve($requestUrl, $requestMethod): mixed
     {
         $route = explode("?", $requestUrl)[0];
-        $action = $this->routes[$requestMethod][$route] ?? null;
+        $action = self::$routes[$requestMethod][$route] ?? null;
         if(!$action) {
             throw new RouteNotFoundException();
         }
