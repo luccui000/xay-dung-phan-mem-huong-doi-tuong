@@ -12,3 +12,4 @@
 <link rel="stylesheet" href="{! assets('public/client/css/style.css'); !}">
 <link rel="stylesheet" href="{! assets('public/client/css/skin-demo-4.css'); !}">
 <link rel="stylesheet" href="{! assets('public/client/css/demo-4.css'); !}">
+<link rel="stylesheet" href="{! assets('public/css/client.css'); !}">

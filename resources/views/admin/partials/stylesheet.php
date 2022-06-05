@@ -1,12 +1,8 @@
-<link rel="stylesheet" href="{! assets('public/admin/css/bootstrap.min.css') !}">
-<link rel="stylesheet" href="{! assets('public/admin/css/quicksand.css'); !}">
-<link rel="stylesheet" href="{! assets('public/admin/css/style.css'); !}">
-<link rel="stylesheet" href="{! assets('public/admin/css/fontawesome-all.min.css'); !}">
-<link rel="stylesheet" href="{! assets('public/admin/css/fontawesome.css'); !}">
-<link rel="stylesheet" href="{! assets('public/admin/css/animate.min.css'); !}">
-<link rel="stylesheet" href="{! assets('public/admin/css/chartist.min.css'); !}">
-<link rel="stylesheet" href="{! assets('public/admin/css/jquery-jvectormap-2.0.2.css'); !}">
-<link rel="stylesheet" href="{! assets('public/admin/js/calendar/bootstrap_calendar.css'); !}">
-<link rel="stylesheet" href="{! assets('public/admin/css/nice-select.css'); !}">
+<link rel="icon" type="image/png" sizes="16x16" href="{! assets('public/admin/images/favicon.png'); !}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="{! assets('public/admin/plugins/owl.carousel/dist/css/owl.carousel.min.css'); !}">
+<link href="{! assets('public/admin/plugins/fullcalendar/css/fullcalendar.min.css') !}" rel="stylesheet">
+<link rel="stylesheet" href="{! assets('public/admin/plugins/chartist/css/chartist.min.css'); !}">
+<link href="{! assets('public/admin/css/style.css'); !}" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.datatables.net/1.12.0/css/jquery.dataTables.min.css">
-<script src="https://cdn.datatables.net/1.12.0/js/jquery.dataTables.min.js"></script>
+<link rel="stylesheet" href="{! assets('public/css/custom.css'); !}">

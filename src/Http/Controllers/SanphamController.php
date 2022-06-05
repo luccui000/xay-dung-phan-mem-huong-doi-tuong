@@ -3,13 +3,11 @@
 namespace Luccui\Http\Controllers;
 
 
-use Illuminate\Database\Capsule\Manager;
 use Luccui\Core\Request;
 use Luccui\Helpers\FileUpload;
-use Luccui\Models\BienThe;
 use Luccui\Models\DanhMuc;
-use Luccui\Models\GiaTri;
-use Luccui\Models\GiaTriTuyChon;
+use Luccui\Models\HinhAnh;
+use Luccui\Models\HinhAnhSanPham;
 use Luccui\Models\NhaCungCap;
 use Luccui\Models\SanPham;
 use Luccui\Models\TuyChon;
@@ -19,12 +17,7 @@ class SanphamController extends Controller
 
     public function index()
     {
-        $sanphams = SanPham::with(['nhacungcap', 'danhmuc'])
-            ->leftJoin("bienthe as b", function ($join) {
-                return $join->on('sanpham.id', '=', 'b.sanpham_id');
-            })
-            ->groupBy("id")
-            ->selectRaw("sanpham.id, sanpham.ma_san_pham, sanpham.ten_san_pham, sanpham.mo_ta_ngan, sanpham.la_san_pham_noi_bat, sanpham.la_san_pham_giam_gia, sanpham.la_san_pham_moi, sanpham.trang_thai, min(b.gia_von) as gia_von")
+        $sanphams = SanPham::orderBy('ngay_tao')
             ->get();
 
         return view('admin/sanpham/index.php', [
@@ -36,7 +29,7 @@ class SanphamController extends Controller
         $danhmucs = DanhMuc::all();
         $nhacungcaps = NhaCungCap::all();
         $tuychons = TuyChon::selectRaw("distinct(ten_tuy_chon)")->get();
-//        var_dump($tuychons);
+
         return view('admin/sanpham/create.php', [
             'danhmucs' => $danhmucs,
             'nhacungcaps' => $nhacungcaps,
@@ -45,59 +38,55 @@ class SanphamController extends Controller
     }
     public function store()
     {
-
-         $request = new Request();
-         var_dump($request);
-//         var_dump($request->file['hinhanhs_1']);
+        $request = new Request();
+        $sanpham_id = SanPham::insertGetId([
+            'ma_san_pham' => $request->ma_san_pham,
+            'ten_san_pham' => $request->ten_san_pham,
+            'nhacungcap_id' => $request->nhacungcap_id,
+            'danhmuc_id' => $request->danhmuc_id,
+            'mo_ta_ngan' => $request->mo_ta_ngan,
+            'mo_ta_chi_tiet' => $request->mo_ta_chi_tiet,
+            'gia_san_pham' => floatval($request->gia_san_pham),
+            'gia_cuoi_cung' => empty($request->gia_cuoi_cung) ?
+                floatval($request->gia_san_pham) :
+                floatval($request->gia_cuoi_cung),
+            'la_san_pham_giam_gia' => $request->gia_san_pham > $request->gia_cuoi_cung,
+            'la_san_pham_noi_bat' => $request->la_san_pham_noi_bat == "on" ? 1 : 0,
+            'la_san_pham_moi' => 1,
+            'nguoi_tao' => 1,
+            'trang_thai' => $request->trang_thai == "on" ? 1 : 0,
+            'ngay_tao' => date('Y/m/d')
+        ]);
+        $firstImage = null;
          for($i = 0; $i < SanPham::TOTAL_IMAGE_UPLOAD; $i++) {
-            if(FileUpload::isImage($request->file['hinhanhs_' . $i + 1])) {
-                FileUpload::save($request->file['hinhanhs_' . $i + 1], "uploads/sanpham");
-            }
+             $imagePath = $this->saveImage($request->file['hinhanhs_1']);
+
+             if($imagePath != null) {
+                 if(is_null($firstImage))
+                     $firstImage = $imagePath;
+
+                 $hinhanh_id = HinhAnh::insertGetId([
+                     'duong_dan' => $imagePath,
+                     'ngay_tao' => date('Y/m/d')
+                 ]);
+                 HinhAnhSanPham::insertGetId([
+                     'sanpham_id' => $sanpham_id,
+                     'hinhanh_id' => $hinhanh_id
+                 ]);
+             }
          }
-         $sanphamgiamgia = $request->gia_ban < $request->gia_von;
-         $sanpham_id = SanPham::insertGetId([
-             'ma_san_pham' => $request->ma_san_pham,
-             'ten_san_pham' => $request->ten_san_pham,
-             'nhacungcap_id' => $request->nhacungcap_id,
-             'danhmuc_id' => $request->danhmuc_id,
-             'mo_ta_ngan' => $request->mo_ta_ngan,
-             'mo_ta_chi_tiet' => $request->mo_ta,
-             'la_san_pham_giam_gia' => $sanphamgiamgia,
-             'la_san_pham_noi_bat' => $request->la_san_pham_noi_bat == "on" ? 1 : 0,
-             'la_san_pham_moi' => 1,
-             'nguoi_tao' => 1,
-             'trang_thai' => $request->trang_thai == "on" ? 1 : 0,
-             'ngay_tao' => date('Y/m/d')
-         ]);
-        if($request->co_bien_the == "on") {
-            $totalKey = count($request->thuoctinh_key);
-            for($i = 0; $i < $totalKey; $i++) {
-                TuyChon::insert([
-                    'id' => $i + 1,
-                    'sanpham_id' => $sanpham_id,
-                    'ten_tuy_chon' => $request->thuoctinh_key[$i]
-                ]);
-            }
-            for ($i = 0; $i < count($request->gia_tri); $i++) {
-                $giatri_id = GiaTri::insertGetId([
-                    'sanpham_id' => $sanpham_id,
-                    'ten_gia_tri' => $request->gia_tri[$i]
-                ]);
-                $giatri_tuychon_id = GiaTriTuyChon::insertGetId([
-                    'sanpham_id' => $sanpham_id,
-                    'giatri_id' => $giatri_id,
-                ]);
-                [$giaVon, $giaKhuyenMai, $soLuongNhap] = $request->bien_the[$request->gia_tri[$i]];
-                BienThe::insert([
-                    'id' => $i + 1,
-                    'sanpham_id' => $sanpham_id,
-                    'giatri_tuychon_id' => $giatri_tuychon_id,
-                    'gia_von' => $giaVon,
-                    'gia_khuyen_mai' => $giaKhuyenMai,
-                    'so_luong_nhap' => $soLuongNhap,
-                    'khoi_luong' => floatval($request->khoi_luong)
-                ]);
-            }
-        }
+         if(!is_null($firstImage)) {
+             SanPham::where('id', '=', $sanpham_id)
+                 ->update([
+                     'hinh_anh' => $firstImage,
+                 ]);
+         }
+         redirect('/admin/san-pham');
+    }
+    public function saveImage($image)
+    {
+        if(!FileUpload::isImage($image))
+            return null;
+        return FileUpload::save($image);
     }
 }

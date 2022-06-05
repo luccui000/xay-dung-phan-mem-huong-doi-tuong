@@ -4,16 +4,18 @@ namespace Luccui\Classes;
 use Luccui\Exceptions\ContainerException;
 use Psr\Container\ContainerInterface;
 use ReflectionClass;
+use ReflectionNamedType;
 use ReflectionParameter;
+use ReflectionUnionType;
 
 class Container implements ContainerInterface
 {
-    private array $entries = [];
+    private static array $entries = [];
 
     public function get(string $id)
     {
         if($this->has($id)) {
-            $entry = $this->entries[$id];
+            $entry = static::$entries[$id];
             if(is_callable($entry))
                 return $entry($this);
             $id = $entry;
@@ -23,13 +25,12 @@ class Container implements ContainerInterface
 
     public function has(string $id): bool
     {
-        return isset($this->entries[$id]);
+        return isset(static::$entries[$id]);
     }
     public function set($id, callable|string $concrete)
     {
-        $this->entries[$id] = $concrete;
+        static::$entries[$id] = $concrete;
     }
-
     public function resolve(string $id)
     {
         $reflectionClass = new ReflectionClass($id);
@@ -43,16 +44,16 @@ class Container implements ContainerInterface
         }
         $parameters = $constructor->getParameters();
         $dependencies = array_map(function(ReflectionParameter $param) {
-            // $name = $param->getName();
             $type = $param->getType();
 
             if(!$type)
                 throw new ContainerException("");
-            if($type instanceof \ReflectionUnionType)
+            if($type instanceof ReflectionUnionType)
                 throw new ContainerException("");
-            if($type instanceof \ReflectionNamedType && !$type->isBuiltin()) {
+            if($type instanceof ReflectionNamedType && !$type->isBuiltin()) {
                 return $this->get($type->getName());
             }
+            return null;
         }, $parameters);
         return $reflectionClass->newInstanceArgs($dependencies);
     }

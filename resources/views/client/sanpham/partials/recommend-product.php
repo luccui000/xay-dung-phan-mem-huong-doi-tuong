@@ -6,7 +6,7 @@
                     <figure class="product-media">
                         <span class="product-label label-circle label-sale">Sale</span>
                         <a href="/san-pham/chi-tiet?id=<?php echo $sanpham->id; ?>">
-                            <img src="<?php echo $sanpham->duong_dan; ?>" alt="Product image" class="product-image">
+                            <img src="<?php echo $sanpham->hinh_anh; ?>" alt="Product image" class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
@@ -25,7 +25,7 @@
                         </div><!-- End .product-cat -->
                         <h3 class="product-title"><a href="/san-pham/chi-tiet?id=<?php echo $sanpham->id; ?>"><?php echo $sanpham->ten_san_pham; ?></a></h3><!-- End .product-title -->
                         <div class="product-price">
-                            <span class="new-price"><?php echo vnmoney($sanpham->gia_von); ?></span>
+                            <span class="new-price"><?php echo vnmoney($sanpham->gia_cuoi_cung); ?></span>
                             <span class="old-price">Was $349.99</span>
                         </div><!-- End .product-price -->
                         <div class="ratings-container">

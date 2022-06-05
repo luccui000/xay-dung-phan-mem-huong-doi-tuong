@@ -9,7 +9,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="icon" href="#" type="image/x-icon">
     <?php partial('partials/stylesheet.php' ); ?>
-    <link rel="stylesheet" href="{! assets('public/dist/magicsuggest/magicsuggest.css'); !}">
     <title>Admin</title>
     <style>
         h6 {
@@ -51,7 +50,7 @@
             </div>
             <div class="col-10 content pt-3 pl-0">
                 <h5>Tạo sản phẩm</h5>
-                <form action="{! route('admin/sanpham/store'); !}" method="POST" enctype="multipart/form-data">
+                <form action="{! route('/admin/sanpham/store'); !}" method="POST" enctype="multipart/form-data">
                     <div class="row">
                         <div class="col-8">
                             <div class="row">
@@ -107,7 +106,7 @@
                                             <div class="col-12">
                                                 <div class="form-group">
                                                     <label for="mo_ta">Mô tả sản phẩm</label>
-                                                    <textarea name="mo_ta" placeholder="Mô tả sản phẩm" id="mo_ta" class="form-control" cols="30" rows="10"></textarea>
+                                                    <textarea name="mo_ta_chi_tiet" placeholder="Mô tả sản phẩm" id="mo_ta" class="form-control" cols="30" rows="10"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -160,14 +159,14 @@
                                         <div class="row">
                                             <div class="col-6">
                                                 <div class="form-group">
-                                                    <label for="gia_ban">Giá bán</label>
-                                                    <input class="form-control" name="gia_ban" id="gia_ban" placeholder="0đ">
+                                                    <label for="gia_ban">Giá sản phẩm</label>
+                                                    <input class="form-control" name="gia_san_pham" id="gia_ban" placeholder="0đ">
                                                 </div>
                                             </div>
                                             <div class="col-6">
                                                 <div class="form-group">
-                                                    <label for="gia_von">Giá vốn</label>
-                                                    <input class="form-control" name="gia_von" id="gia_von" placeholder="0đ">
+                                                    <label for="gia_von">Giá khuyến mãi</label>
+                                                    <input class="form-control" name="gia_cuoi_cung" id="gia_von" placeholder="0đ">
                                                 </div>
                                             </div>
                                         </div>
@@ -199,71 +198,71 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row mt-2">
-                                <div class="col-12">
-                                    <div class="card p-2">
-                                        <h6>Biến thể sản phẩm</h6>
-                                        <div class="line"></div>
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" name="co_bien_the" class="custom-control-input select-collapse" id="bien_the">
-                                                    <label class="custom-control-label" for="bien_the">Sản phẩm này có nhiều biến thể. Ví dụ như khác nhau về kích thước, màu sắc.</label>
-                                                    <div class="multi-collapse collapse mt-2" style="">
-                                                        <div class="card card-body accordion-body">
-                                                            <div id="them_bien_the">
-                                                                <div class="row">
-                                                                    <div class="col-3">
-                                                                        <div class="form-group">
-                                                                            <label for="thuoctinh_key">Thuộc tính</label>
-                                                                            <select name="thuoctinh_key[]" id="thuoctinh_key" class="form-control custom-select">
-                                                                                <?php foreach ($tuychons as $tuychon) {?>
-                                                                                    <option value="<?php echo $tuychon->ten_tuy_chon; ?>"><?php echo $tuychon->ten_tuy_chon; ?></option>
-                                                                                <?php } ?>
-                                                                            </select>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-8">
-                                                                        <label for="gia_tri_1" style="visibility: hidden">.</label>
-                                                                        <input id="gia_tri_1" placeholder="Giá trị"  class="form-control gia-tri" type="text">
-                                                                    </div>
-                                                                    <div class="col-1">
-                                                                        <div class="form-group">
-                                                                            <label for="" style="visibility: hidden">.</label>
-                                                                            <button class="btn btn-danger" type="button" onclick="xoa_thuoc_tinh(this, 1)">
-                                                                                <i class="fa fa-trash"></i>
-                                                                            </button>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="row mt-2">
-                                                                <div class="col-12">
-                                                                    <button class="btn" id="them_gia_tri" type="button" style="border: 1px dashed #ccc; width: 166px">
-                                                                        <i class="fa fa-plus"></i>
-                                                                        <span>Thêm thuộc tính</span>
-                                                                    </button>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row mt-2">
-                                                            <div class="col-12">
-                                                                <div id="xem_bien_the">
-                                                                    <table class="table table-hover">
-                                                                        <tbody>
-
-                                                                        </tbody>
-                                                                    </table>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+<!--                            <div class="row mt-2">-->
+<!--                                <div class="col-12">-->
+<!--                                    <div class="card p-2">-->
+<!--                                        <h6>Biến thể sản phẩm</h6>-->
+<!--                                        <div class="line"></div>-->
+<!--                                        <div class="row">-->
+<!--                                            <div class="col-12">-->
+<!--                                                <div class="custom-control custom-checkbox">-->
+<!--                                                    <input type="checkbox" name="co_bien_the" class="custom-control-input select-collapse" id="bien_the">-->
+<!--                                                    <label class="custom-control-label" for="bien_the">Sản phẩm này có nhiều biến thể. Ví dụ như khác nhau về kích thước, màu sắc.</label>-->
+<!--                                                    <div class="multi-collapse collapse mt-2" style="">-->
+<!--                                                        <div class="card card-body accordion-body">-->
+<!--                                                            <div id="them_bien_the">-->
+<!--                                                                <div class="row">-->
+<!--                                                                    <div class="col-3">-->
+<!--                                                                        <div class="form-group">-->
+<!--                                                                            <label for="thuoctinh_key">Thuộc tính</label>-->
+<!--                                                                            <select name="thuoctinh_key[]" id="thuoctinh_key" class="form-control custom-select">-->
+<!--                                                                                --><?php //foreach ($tuychons as $tuychon) {?>
+<!--                                                                                    <option value="--><?php //echo $tuychon->ten_tuy_chon; ?><!--">--><?php //echo $tuychon->ten_tuy_chon; ?><!--</option>-->
+<!--                                                                                --><?php //} ?>
+<!--                                                                            </select>-->
+<!--                                                                        </div>-->
+<!--                                                                    </div>-->
+<!--                                                                    <div class="col-8">-->
+<!--                                                                        <label for="gia_tri_1" style="visibility: hidden">.</label>-->
+<!--                                                                        <input id="gia_tri_1" placeholder="Giá trị"  class="form-control gia-tri" type="text">-->
+<!--                                                                    </div>-->
+<!--                                                                    <div class="col-1">-->
+<!--                                                                        <div class="form-group">-->
+<!--                                                                            <label for="" style="visibility: hidden">.</label>-->
+<!--                                                                            <button class="btn btn-danger" type="button" onclick="xoa_thuoc_tinh(this, 1)">-->
+<!--                                                                                <i class="fa fa-trash"></i>-->
+<!--                                                                            </button>-->
+<!--                                                                        </div>-->
+<!--                                                                    </div>-->
+<!--                                                                </div>-->
+<!--                                                            </div>-->
+<!--                                                            <div class="row mt-2">-->
+<!--                                                                <div class="col-12">-->
+<!--                                                                    <button class="btn" id="them_gia_tri" type="button" style="border: 1px dashed #ccc; width: 166px">-->
+<!--                                                                        <i class="fa fa-plus"></i>-->
+<!--                                                                        <span>Thêm thuộc tính</span>-->
+<!--                                                                    </button>-->
+<!--                                                                </div>-->
+<!--                                                            </div>-->
+<!--                                                        </div>-->
+<!--                                                        <div class="row mt-2">-->
+<!--                                                            <div class="col-12">-->
+<!--                                                                <div id="xem_bien_the">-->
+<!--                                                                    <table class="table table-hover">-->
+<!--                                                                        <tbody>-->
+<!---->
+<!--                                                                        </tbody>-->
+<!--                                                                    </table>-->
+<!--                                                                </div>-->
+<!--                                                            </div>-->
+<!--                                                        </div>-->
+<!--                                                    </div>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
                         </div>
                         <div class="col-4">
                         <div class="row">
@@ -282,13 +281,17 @@
                                     <div class="card p-2">
                                         <h6>Chọn </h6>
                                         <div class="line"></div>
-                                        <div class="custom-control custom-checkbox">
+                                        <div class="custom-control custom-checkbox mb-2">
                                             <input name="trang_thai" type="checkbox" class="custom-control-input" id="trang_thai">
                                             <label class="custom-control-label" for="trang_thai">Hiển thị website</label>
                                         </div>
-                                        <div class="custom-control custom-checkbox">
+                                        <div class="custom-control custom-checkbox mb-2">
                                             <input name="la_san_pham_noi_bat" type="checkbox" class="custom-control-input" id="la_san_pham_noi_bat">
                                             <label class="custom-control-label" for="la_san_pham_noi_bat">Sản phẩm nổi bật</label>
+                                        </div>
+                                        <div class="custom-control custom-checkbox mb-2">
+                                            <input name="la_san_pham_moi" type="checkbox" class="custom-control-input" id="la_san_pham_moi">
+                                            <label class="custom-control-label" for="la_san_pham_moi">Sản phẩm mới</label>
                                         </div>
                                     </div>
                                 </div>

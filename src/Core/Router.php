@@ -3,12 +3,23 @@
 namespace Luccui\Core;
 
 use Closure;
+use Luccui\Classes\Container;
+use Luccui\Exceptions\ContainerException;
 use Luccui\Exceptions\RouteNotFoundException;
+use ReflectionNamedType;
+use ReflectionParameter;
+use ReflectionUnionType;
 
 class Router
 {
     private static array $routes = [];
     private static array $names = [];
+    private Container $container;
+
+    public function __construct(Container $container = null)
+    {
+        $this->container = $container ?? new Container();
+    }
 
     public function register($requestMethod, $route, Closure|array $closure, $name = '')
     {
@@ -42,6 +53,7 @@ class Router
 
     /**
      * @throws RouteNotFoundException
+     * @throws \ReflectionException
      */
     public static function resolve($requestUrl, $requestMethod): mixed
     {
@@ -52,6 +64,7 @@ class Router
         }
         if(is_callable($action))
             return call_user_func($action);
+
         if(is_array($action)) {
             [$class, $method] = $action;
             if(class_exists($class)) {

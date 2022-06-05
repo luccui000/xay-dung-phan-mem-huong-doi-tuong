@@ -1,86 +1,173 @@
-<div class="row header shadow-sm">
-    <div class="col-sm-2 pl-0 text-center header-logo">
-        <div class="bg-theme pt-3 pb-2 mb-0">
-            <h3 class="logo"><a href="#" class="text-secondary logo">{! $_ENV['APP_NAME']; !} </a></h3>
+<div class="nav-header">
+    <div class="brand-logo">
+        <a href="/">
+            <b class="logo-abbr">D</b>
+            <span class="brand-title"><b>Drora</b></span>
+        </a>
+    </div>
+    <div class="nav-control">
+        <div class="hamburger">
+            <span class="toggle-icon"><i class="fa fa-bars"></i></span>
         </div>
     </div>
-    <div class="col-sm-10 header-menu pt-2 pb-0" style="height: 50px !important;">
-        <div class="row">
-            <div class="col-sm-4 col-8 pl-0">
-                    <span class="menu-icon" onclick="toggle_sidebar()">
-                        <span id="sidebar-toggle-btn"></span>
-                    </span>
-                <div class="menu-icon">
-                    <a href="#" onclick="toggle_dropdown(this); return false" role="button" class="dropdown-toggle">
-                        <i class="fa fa-bell"></i>
-                        <span class="badge badge-danger">5</span>
-                    </a>
-                    <div class="dropdown dropdown-left bg-white shadow border">
-                        <a class="dropdown-item" href="#"><strong>Notifications</strong></a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <div class="media">
-                                <div class="align-self-center mr-3 rounded-circle notify-icon bg-primary">
-                                    <i class="fa fa-bookmark"></i>
-                                </div>
-                                <div class="media-body">
-                                    <h6 class="mt-0"><strong>Meeting</strong></h6>
-                                    <p>You have a meeting by 8:00</p>
-                                    <small class="text-success">09:23am</small>
-                                </div>
-                            </div>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <div class="media">
-                                <div class="align-self-center mr-3 rounded-circle notify-icon bg-secondary">
-                                    <i class="fa fa-link"></i>
-                                </div>
-                                <div class="media-body">
-                                    <h6 class="mt-0"><strong>Events</strong></h6>
-                                    <p>Launching new programme</p>
-                                    <small class="text-success">09:23am</small>
-                                </div>
-                            </div>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <div class="media">
-                                <div class="align-self-center mr-3 rounded-circle notify-icon bg-warning">
-                                    <i class="fa fa-user"></i>
-                                </div>
-                                <div class="media-body">
-                                    <h6 class="mt-0"><strong>Personnel</strong></h6>
-                                    <p>New employee arrival</p>
-                                    <small class="text-success">09:23am</small>
-                                </div>
-                            </div>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item text-center link-all" href="#">See all notifications ></a>
-                    </div>
-                </div>
-            </div>
+</div>
+<div class="header">
+    <div class="header-content clearfix">
 
-            <div class="col-sm-8 col-4 text-right flex-header-menu justify-content-end">
-                <div class="search-rounded mr-3">
-                    <input type="text" class="form-control search-box" placeholder="Enter keywords.." />
+        <div class="header-left">
+            <div class="input-group icons">
+                <div class="input-group-prepend">
+                    <span class="input-group-text bg-transparent border-0" id="basic-addon1"><i class="fa fa-search"></i></span>
                 </div>
-                <div class="mr-4">
-                    <a class="" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img src="{! assets('public/admin/img/profile.jpg'); !}" alt="Adam" class="rounded-circle" width="40px" height="40px">
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right mt-13" aria-labelledby="dropdownMenuLink">
-                        <a class="dropdown-item" href="#"><i class="fa fa-user pr-2"></i> Profile</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#"><i class="fa fa-th-list pr-2"></i> Tasks</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#"><i class="fa fa-book pr-2"></i> Projects</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#"><i class="fa fa-power-off pr-2"></i> Logout</a>
-                    </div>
+                <input type="search" class="border-0" placeholder="Search Dashboard" aria-label="Search Dashboard">
+                <div class="drop-down animated flipInX d-md-none">
+                    <form action="#">
+                        <label>
+                            <input type="text" class="form-control" placeholder="Search">
+                        </label>
+                    </form>
                 </div>
             </div>
         </div>
+        <div class="header-right">
+
+            <ul class="clearfix">
+                <li class="icons d-none d-md-flex">
+                    <a href="javascript:void(0)" class="window_fullscreen-x">
+                        <i class="fa fa-fullscreen"></i>
+                    </a>
+                </li>
+                <li class="icons">
+                    <a href="javascript:void(0)" class="">
+                        <i class="fa fa-envelope"></i>
+                        <span class="badge badge-danger">3</span>
+                    </a>
+                    <div class="drop-down animated flipInX">
+                        <div class="dropdown-content-body">
+                            <ul>
+                                <li class="notification-unread">
+                                    <a href="javascript:void()">
+                                        <img class="float-left mr-3 avatar-img" src="{! assets('public/admin/images/avatar/1.jpg') !}" alt="avatar">
+                                        <div class="notification-content">
+                                            <div class="notification-text">Hey, What's up! You have a good news !!!</div>
+                                            <div class="notification-timestamp">08 Hours ago</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="notification-unread">
+                                    <a href="javascript:void()">
+                                        <img class="float-left mr-3 avatar-img" src="{! assets('public/admin/images/avatar/2.jpg') !}" alt="avatar">
+                                        <div class="notification-content">
+                                            <div class="notification-timestamp">08 Hours ago</div>
+                                            <div class="notification-text">Can you do me a favour?</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void()">
+                                        <img class="float-left mr-3 avatar-img" src="{! assets('public/admin/images/avatar/3.jpg') !}" alt="avatar">
+                                        <div class="notification-content">
+                                            <div class="notification-text">Hey!</div>
+                                            <div class="notification-timestamp">08 Hours ago</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void()">
+                                        <img class="float-left mr-3 avatar-img" src="{! assets('public/admin/images/avatar/4.jpg') !}" alt="avatar">
+                                        <div class="notification-content">
+                                            <div class="notification-text">And what do you do?</div>
+                                            <div class="notification-timestamp">08 Hours ago</div>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                            <a class="d-flex justify-content-center bg-primary px-4 text-white" href="#">
+                                <span>See all messagese </span>
+                            </a>
+                        </div>
+                    </div>
+                </li>
+                <li class="icons">
+                    <a href="javascript:void(0)" class="">
+                        <i class="fa fa-bell"></i>
+                        <span class="badge badge-primary">3</span>
+                    </a>
+                    <div class="drop-down animated flipInX dropdown-notfication">
+                        <div class="dropdown-content-body">
+                            <ul>
+                                <li>
+                                    <a href="javascript:void()">
+                                        <span class="mr-3 avatar-icon bg-success-lighten-2"><i class="fa fa-calendar"></i></span>
+                                        <div class="notification-content">
+                                            <h5 class="notification-heading">Event Started</h5>
+                                            <span class="notification-text">One hour ago</span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void()">
+                                        <span class="mr-3 avatar-icon bg-danger-lighten-2"><i class="fa fa-calendar"></i></span>
+                                        <div class="notification-content">
+                                            <h5 class="notification-heading">Event Started</h5>
+                                            <span class="notification-text">One hour ago</span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void()">
+                                        <span class="mr-3 avatar-icon bg-success-lighten-2"><i class="fa fa-calendar"></i></span>
+                                        <div class="notification-content">
+                                            <h5 class="notification-heading">Event Started</h5>
+                                            <span class="notification-text">One hour ago</span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void()">
+                                        <span class="mr-3 avatar-icon bg-danger-lighten-2"><i class="fa fa-calendar"></i></span>
+                                        <div class="notification-content">
+                                            <h5 class="notification-heading">Event Started</h5>
+                                            <span class="notification-text">One hour ago</span>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                            <a class="d-flex justify-content-between bg-primary px-4 text-white" href="javascript:void()">
+                                <span>All Notifications</span>
+                                <span><i class="icon-settings"></i></span>
+                            </a>
+                        </div>
+                    </div>
+                </li>
+                <li class="icons">
+                    <div class="user-img c-pointer-x">
+                        <span class="activity active"></span>
+                        <img src="{! assets('public/admin/images/user/1.png') !}" height="40" width="40" alt="avatar">
+                    </div>
+                    <div class="drop-down dropdown-profile animated flipInX">
+                        <div class="dropdown-content-body">
+                            <ul>
+                                <li><a href="javascript:void()"><i class="icon-user"></i> <span>My Profile</span></a>
+                                </li>
+                                <li><a href="javascript:void()"><i class="fa fa-calendar"></i> <span>My Calender</span></a>
+                                </li>
+                                <li><a href="javascript:void()"><i class="icon-envelope-open"></i> <span>My Inbox</span> <div class="badge gradient-3 badge-pill badge-primary">3</div></a>
+                                </li>
+                                <li><a href="javascript:void()"><i class="icon-paper-plane"></i> <span>My Tasks</span><div class="badge badge-pill bg-dark">3</div></a>
+                                </li>
+                                <li><a href="javascript:void()"><i class="icon-check"></i> <span>Online</span></a>
+                                </li>
+                                <li><a href="javascript:void()"><i class="icon-lock"></i> <span>Lock Screen</span></a>
+                                </li>
+                                <li><a href="javascript:void()"><i class="icon-key"></i> <span>Logout</span></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
     </div>
 </div>

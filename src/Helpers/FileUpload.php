@@ -41,7 +41,7 @@ class FileUpload
         $ext = $cls->getExtension($file);
         return in_array(strtolower($ext), FileUpload::ACCEPT_FILE_TYPE);
     }
-    public static function move($temp, $folder, $file, $newFilename = null): static|null
+    public static function move($temp, $folder, $file, $newFilename = null): string|null
     {
         $cls = new static;
         $cls->setFileName($file, $newFilename);
@@ -50,12 +50,14 @@ class FileUpload
             mkdir($folder, 0777, true);
         }
         $cls->path = $folder . DIRECTORY_SEPARATOR . $fileName;
-        $absolutePath = BASE_APP . "public" . DIRECTORY_SEPARATOR . $cls->path;
+        $relativePath = "public" . DIRECTORY_SEPARATOR . $cls->path;
+        $absolutePath = BASE_APP . $relativePath;
+
         if(move_uploaded_file($temp, $absolutePath))
-            return $cls;
+            return $relativePath;
         return null;
     }
-    public static function save($file, $folder = "uploads")
+    public static function save($file, $folder = "uploads"): string|null
     {
         return static::move($file['tmp_name'], $folder, $file);
     }

@@ -2,11 +2,13 @@
 
 namespace Luccui\Core;
 
+use Luccui\Classes\Cart;
 use Luccui\Classes\Container;
-use Luccui\Classes\DB;
 use Luccui\Exceptions\RouteNotFoundException;
 use Luccui\Helpers\Config;
 use Luccui\Services\Email\EmailService;
+use Luccui\Services\GiaoHang\GiaoHangInterface;
+use Luccui\Services\GiaoHang\GiaoHangNhanh;
 use Luccui\Services\Invoice\InvoiceService;
 use Luccui\Services\PaymentGateway\PaymentGatewayInterface;
 use Luccui\Services\PaymentGateway\VnPayGateway;
@@ -34,6 +36,14 @@ class Application
     {
         static::$container = new Container();
         static::$container->set(Request::class, fn() => new Request());
+        static::$container->set(GiaoHangInterface::class, GiaoHangNhanh::class);
+        static::$container->set(Cart::class, function () {
+            return new Cart([
+                'cartMaxItem'      => 0,
+                'itemMaxQuantity'  => 99,
+                'useCookie'        => true,
+            ]);
+        });
         static::$container->set(InvoiceService::class, function(Container $container) {
             return new InvoiceService(
                 $container->get(PaymentGatewayInterface::class),

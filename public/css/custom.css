@@ -1,0 +1,19 @@
+.form-group label {
+    color: #555;
+}
+input.form-control{
+    transition: border-color .2s linear;
+}
+.form-control:focus {
+    border-color: #0c85d0;
+}
+.line {
+    margin: 5px 0 !important;
+}
+
+.card-img-top {
+    cursor: pointer;
+}
+.outline-success {
+    /*outline:;*/
+}

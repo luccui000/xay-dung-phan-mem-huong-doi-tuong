@@ -38,7 +38,7 @@
                                 <span class="product-label label-circle label-top">Top</span>
                             <?php } ?>
                             <a href="/san-pham/chi-tiet?id=<?php echo $sanpham->id; ?>">
-                                <img src="<?php echo $sanpham->duong_dan; ?>" alt="Product image" class="product-image">
+                                <img src="<?php echo $sanpham->hinh_anh; ?>" alt="Product image" class="product-image">
                             </a>
 
                             <div class="product-action-vertical">
@@ -57,7 +57,7 @@
                             </div>
                             <h3 class="product-title"><a href="/san-pham/chi-tiet?id=<?php echo $sanpham->id; ?>"><?php echo $sanpham->ten_san_pham ?></a></h3><!-- End .product-title -->
                             <div class="product-price">
-                                <?php echo vnmoney($sanpham->gia_von); ?>
+                                <?php echo vnmoney($sanpham->gia_cuoi_cung); ?>
                             </div>
                             <div class="ratings-container">
                                 <div class="ratings">

@@ -27,6 +27,11 @@ if(!function_exists('app')) {
         return Application::$container->get($container);
     }
 }
+if(!function_exists('resolve')) {
+    function resolve($container) {
+        return Application::$container->get($container);
+    }
+}
 if(!function_exists('route')) {
     function route($name) {
         if(!isset(Router::getNames()[$name]))
@@ -65,5 +70,11 @@ if(!function_exists('objectToArray')) {
 if(!function_exists('clientBasePath')) {
     function clientBasePath(): string {
         return RESOURCE_PATH . 'client' . DIRECTORY_SEPARATOR;
+    }
+}
+if (!function_exists('redirect')) {
+    function redirect(string $url): void
+    {
+        header('Location: ' . $url);
     }
 }

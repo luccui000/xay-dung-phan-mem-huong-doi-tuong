@@ -17,7 +17,7 @@
                                             <li><a href="#">Eur</a></li>
                                             <li><a href="#">Usd</a></li>
                                         </ul>
-                                    </div><!-- End .header-menu -->
+                                    </div>
                                 </div>
                             </li>
                             <li>
@@ -29,17 +29,17 @@
                                             <li><a href="#">French</a></li>
                                             <li><a href="#">Spanish</a></li>
                                         </ul>
-                                    </div><!-- End .header-menu -->
+                                    </div>
                                 </div>
                             </li>
                             <li><a href="#signin-modal" data-toggle="modal">Sign in / Sign up</a></li>
                         </ul>
                     </li>
-                </ul><!-- End .top-menu -->
-            </div><!-- End .header-right -->
+                </ul>
+            </div>
 
-        </div><!-- End .container -->
-    </div><!-- End .header-top -->
+        </div>
+    </div>
 
     <div class="header-middle">
         <div class="container">
@@ -52,7 +52,7 @@
                 <a href="index.html" class="logo">
                     <img src="assets/images/demos/demo-4/logo.png" alt="Molla Logo" width="105" height="25">
                 </a>
-            </div><!-- End .header-left -->
+            </div>
 
             <div class="header-center">
                 <div class="header-search header-search-extended header-search-visible d-none d-lg-block">
@@ -62,9 +62,9 @@
                             <label for="q" class="sr-only">Search</label>
                             <button class="btn btn-primary" type="submit"><i class="icon-search"></i></button>
                             <input type="search" class="form-control" name="q" id="q" placeholder="Search product ..." required>
-                        </div><!-- End .header-search-wrapper -->
+                        </div>
                     </form>
-                </div><!-- End .header-search -->
+                </div>
             </div>
 
             <div class="header-right">
@@ -92,8 +92,8 @@
                             <a href="#" class="action-link">Clear All</a>
                             <a href="#" class="btn btn-outline-primary-2"><span>Compare</span><i class="icon-long-arrow-right"></i></a>
                         </div>
-                    </div><!-- End .dropdown-menu -->
-                </div><!-- End .compare-dropdown -->
+                    </div>
+                </div>
 
                 <div class="wishlist">
                     <a href="wishlist.html" title="Wishlist">
@@ -103,75 +103,60 @@
                         </div>
                         <p>Wishlist</p>
                     </a>
-                </div><!-- End .compare-dropdown -->
+                </div>
 
+                <?php $cart = resolve(\Luccui\Classes\Cart::class)->getItems(); ?>
                 <div class="dropdown cart-dropdown">
                     <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static">
                         <div class="icon">
                             <i class="icon-shopping-cart"></i>
-                            <span class="cart-count">2</span>
+                            <span class="cart-count"><?php echo count($cart); ?></span>
                         </div>
                         <p>Cart</p>
                     </a>
 
                     <div class="dropdown-menu dropdown-menu-right">
                         <div class="dropdown-cart-products">
-                            <div class="product">
-                                <div class="product-cart-details">
-                                    <h4 class="product-title">
-                                        <a href="product.html">Beige knitted elastic runner shoes</a>
-                                    </h4>
+                            <?php foreach ($cart as $items) {?>
+                                <?php foreach ($items as $item) {?>
+                                    <div class="product">
+                                        <div class="product-cart-details">
+                                            <h4 class="product-title">
+                                                <a href="/san-pham/chi-tiet?id=<?php echo $item['id']; ?>"><?php echo $item['attributes']['ten_san_pham']; ?></a>
+                                            </h4>
 
-                                    <span class="cart-product-info">
-                                                <span class="cart-product-qty">1</span>
-                                                x $84.00
-                                            </span>
-                                </div><!-- End .product-cart-details -->
+                                            <span class="cart-product-info">
+                                                        <span class="cart-product-qty"><?php echo $item['quantity']; ?></span>
+                                                        x <?php echo vnmoney($item['attributes']['gia_cuoi_cung']); ?>
+                                                    </span>
+                                        </div>
 
-                                <figure class="product-image-container">
-                                    <a href="product.html" class="product-image">
-                                        <img src="assets/images/products/cart/product-1.jpg" alt="product">
-                                    </a>
-                                </figure>
-                                <a href="#" class="btn-remove" title="Remove Product"><i class="icon-close"></i></a>
-                            </div><!-- End .product -->
-
-                            <div class="product">
-                                <div class="product-cart-details">
-                                    <h4 class="product-title">
-                                        <a href="product.html">Blue utility pinafore denim dress</a>
-                                    </h4>
-
-                                    <span class="cart-product-info">
-                                                <span class="cart-product-qty">1</span>
-                                                x $76.00
-                                            </span>
-                                </div><!-- End .product-cart-details -->
-
-                                <figure class="product-image-container">
-                                    <a href="product.html" class="product-image">
-                                        <img src="assets/images/products/cart/product-2.jpg" alt="product">
-                                    </a>
-                                </figure>
-                                <a href="#" class="btn-remove" title="Remove Product"><i class="icon-close"></i></a>
-                            </div><!-- End .product -->
-                        </div><!-- End .cart-product -->
+                                        <figure class="product-image-container">
+                                            <a href="/san-pham/chi-tiet?id=<?php echo $item['id']; ?>" class="product-image">
+                                                <img src="<?php echo assets($item['attributes']['hinh_anh']); ?>" alt="product">
+                                            </a>
+                                        </figure>
+                                        <a href="#" class="btn-remove" title="Remove Product"><i class="icon-close"></i></a>
+                                    </div>
+                                <?php } ?>
+                            <?php } ?>
+                        </div>
 
                         <div class="dropdown-cart-total">
                             <span>Total</span>
 
-                            <span class="cart-total-price">$160.00</span>
-                        </div><!-- End .dropdown-cart-total -->
+                            <span class="cart-total-price"><?php echo vnmoney(resolve(\Luccui\Classes\Cart::class)->getAttributeTotal('gia_cuoi_cung')); ?></span>
+                        </div>
 
                         <div class="dropdown-cart-action">
-                            <a href="cart.html" class="btn btn-primary">View Cart</a>
-                            <a href="checkout.html" class="btn btn-outline-primary-2"><span>Checkout</span><i class="icon-long-arrow-right"></i></a>
-                        </div><!-- End .dropdown-cart-total -->
-                    </div><!-- End .dropdown-menu -->
-                </div><!-- End .cart-dropdown -->
-            </div><!-- End .header-right -->
-        </div><!-- End .container -->
-    </div><!-- End .header-middle -->
+                            <a href="{! route('/san-pham/gio-hang'); !}" class="btn btn-primary">Xem giỏ hàng</a>
+                            <a href="{! route('/san-pham/thanh-toan'); !}" class="btn btn-outline-primary-2"><span>Checkout</span><i class="icon-long-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="header-bottom sticky-header">
         <div class="container">
@@ -195,11 +180,11 @@
                                 <li><a href="#">Kitchen Cabinets</a></li>
                                 <li><a href="#">Coffee & Tables</a></li>
                                 <li><a href="#">Outdoor Furniture </a></li>
-                            </ul><!-- End .menu-vertical -->
-                        </nav><!-- End .side-nav -->
-                    </div><!-- End .dropdown-menu -->
-                </div><!-- End .category-dropdown -->
-            </div><!-- End .header-left -->
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
 
             <div class="header-center">
                 <nav class="main-nav">
@@ -209,7 +194,7 @@
 
                             <div class="megamenu demo">
                                 <div class="menu-col">
-                                    <div class="menu-title">Choose your demo</div><!-- End .menu-title -->
+                                    <div class="menu-title">Choose your demo</div>
 
                                     <div class="demo-list">
                                         <div class="demo-item">
@@ -217,176 +202,176 @@
                                                 <span class="demo-bg" style="background-image: url(assets/images/menu/demos/1.jpg);"></span>
                                                 <span class="demo-title">01 - furniture store</span>
                                             </a>
-                                        </div><!-- End .demo-item -->
+                                        </div>
 
                                         <div class="demo-item">
                                             <a href="index-2.html">
                                                 <span class="demo-bg" style="background-image: url(assets/images/menu/demos/2.jpg);"></span>
                                                 <span class="demo-title">02 - furniture store</span>
                                             </a>
-                                        </div><!-- End .demo-item -->
+                                        </div>
 
                                         <div class="demo-item">
                                             <a href="index-3.html">
                                                 <span class="demo-bg" style="background-image: url(assets/images/menu/demos/3.jpg);"></span>
                                                 <span class="demo-title">03 - electronic store</span>
                                             </a>
-                                        </div><!-- End .demo-item -->
+                                        </div>
 
                                         <div class="demo-item">
                                             <a href="index-4.html">
                                                 <span class="demo-bg" style="background-image: url(assets/images/menu/demos/4.jpg);"></span>
                                                 <span class="demo-title">04 - electronic store</span>
                                             </a>
-                                        </div><!-- End .demo-item -->
+                                        </div>
 
                                         <div class="demo-item">
                                             <a href="index-5.html">
                                                 <span class="demo-bg" style="background-image: url(assets/images/menu/demos/5.jpg);"></span>
                                                 <span class="demo-title">05 - fashion store</span>
                                             </a>
-                                        </div><!-- End .demo-item -->
+                                        </div>
 
                                         <div class="demo-item">
                                             <a href="index-6.html">
                                                 <span class="demo-bg" style="background-image: url(assets/images/menu/demos/6.jpg);"></span>
                                                 <span class="demo-title">06 - fashion store</span>
                                             </a>
-                                        </div><!-- End .demo-item -->
+                                        </div>
 
                                         <div class="demo-item">
                                             <a href="index-7.html">
                                                 <span class="demo-bg" style="background-image: url(assets/images/menu/demos/7.jpg);"></span>
                                                 <span class="demo-title">07 - fashion store</span>
                                             </a>
-                                        </div><!-- End .demo-item -->
+                                        </div>
 
                                         <div class="demo-item">
                                             <a href="index-8.html">
                                                 <span class="demo-bg" style="background-image: url(assets/images/menu/demos/8.jpg);"></span>
                                                 <span class="demo-title">08 - fashion store</span>
                                             </a>
-                                        </div><!-- End .demo-item -->
+                                        </div>
 
                                         <div class="demo-item">
                                             <a href="index-9.html">
                                                 <span class="demo-bg" style="background-image: url(assets/images/menu/demos/9.jpg);"></span>
                                                 <span class="demo-title">09 - fashion store</span>
                                             </a>
-                                        </div><!-- End .demo-item -->
+                                        </div>
 
                                         <div class="demo-item">
                                             <a href="index-10.html">
                                                 <span class="demo-bg" style="background-image: url(assets/images/menu/demos/10.jpg);"></span>
                                                 <span class="demo-title">10 - shoes store</span>
                                             </a>
-                                        </div><!-- End .demo-item -->
+                                        </div>
 
                                         <div class="demo-item hidden">
                                             <a href="index-11.html">
                                                 <span class="demo-bg" style="background-image: url(assets/images/menu/demos/11.jpg);"></span>
                                                 <span class="demo-title">11 - furniture simple store</span>
                                             </a>
-                                        </div><!-- End .demo-item -->
+                                        </div>
 
                                         <div class="demo-item hidden">
                                             <a href="index-12.html">
                                                 <span class="demo-bg" style="background-image: url(assets/images/menu/demos/12.jpg);"></span>
                                                 <span class="demo-title">12 - fashion simple store</span>
                                             </a>
-                                        </div><!-- End .demo-item -->
+                                        </div>
 
                                         <div class="demo-item hidden">
                                             <a href="index-13.html">
                                                 <span class="demo-bg" style="background-image: url(assets/images/menu/demos/13.jpg);"></span>
                                                 <span class="demo-title">13 - market</span>
                                             </a>
-                                        </div><!-- End .demo-item -->
+                                        </div>
 
                                         <div class="demo-item hidden">
                                             <a href="index-14.html">
                                                 <span class="demo-bg" style="background-image: url(assets/images/menu/demos/14.jpg);"></span>
                                                 <span class="demo-title">14 - market fullwidth</span>
                                             </a>
-                                        </div><!-- End .demo-item -->
+                                        </div>
 
                                         <div class="demo-item hidden">
                                             <a href="index-15.html">
                                                 <span class="demo-bg" style="background-image: url(assets/images/menu/demos/15.jpg);"></span>
                                                 <span class="demo-title">15 - lookbook 1</span>
                                             </a>
-                                        </div><!-- End .demo-item -->
+                                        </div>
 
                                         <div class="demo-item hidden">
                                             <a href="index-16.html">
                                                 <span class="demo-bg" style="background-image: url(assets/images/menu/demos/16.jpg);"></span>
                                                 <span class="demo-title">16 - lookbook 2</span>
                                             </a>
-                                        </div><!-- End .demo-item -->
+                                        </div>
 
                                         <div class="demo-item hidden">
                                             <a href="index-17.html">
                                                 <span class="demo-bg" style="background-image: url(assets/images/menu/demos/17.jpg);"></span>
                                                 <span class="demo-title">17 - fashion store</span>
                                             </a>
-                                        </div><!-- End .demo-item -->
+                                        </div>
 
                                         <div class="demo-item hidden">
                                             <a href="index-18.html">
                                                 <span class="demo-bg" style="background-image: url(assets/images/menu/demos/18.jpg);"></span>
                                                 <span class="demo-title">18 - fashion store (with sidebar)</span>
                                             </a>
-                                        </div><!-- End .demo-item -->
+                                        </div>
 
                                         <div class="demo-item hidden">
                                             <a href="index-19.html">
                                                 <span class="demo-bg" style="background-image: url(assets/images/menu/demos/19.jpg);"></span>
                                                 <span class="demo-title">19 - games store</span>
                                             </a>
-                                        </div><!-- End .demo-item -->
+                                        </div>
 
                                         <div class="demo-item hidden">
                                             <a href="index-20.html">
                                                 <span class="demo-bg" style="background-image: url(assets/images/menu/demos/20.jpg);"></span>
                                                 <span class="demo-title">20 - book store</span>
                                             </a>
-                                        </div><!-- End .demo-item -->
+                                        </div>
 
                                         <div class="demo-item hidden">
                                             <a href="index-21.html">
                                                 <span class="demo-bg" style="background-image: url(assets/images/menu/demos/21.jpg);"></span>
                                                 <span class="demo-title">21 - sport store</span>
                                             </a>
-                                        </div><!-- End .demo-item -->
+                                        </div>
 
                                         <div class="demo-item hidden">
                                             <a href="index-22.html">
                                                 <span class="demo-bg" style="background-image: url(assets/images/menu/demos/22.jpg);"></span>
                                                 <span class="demo-title">22 - tools store</span>
                                             </a>
-                                        </div><!-- End .demo-item -->
+                                        </div>
 
                                         <div class="demo-item hidden">
                                             <a href="index-23.html">
                                                 <span class="demo-bg" style="background-image: url(assets/images/menu/demos/23.jpg);"></span>
                                                 <span class="demo-title">23 - fashion left navigation store</span>
                                             </a>
-                                        </div><!-- End .demo-item -->
+                                        </div>
 
                                         <div class="demo-item hidden">
                                             <a href="index-24.html">
                                                 <span class="demo-bg" style="background-image: url(assets/images/menu/demos/24.jpg);"></span>
                                                 <span class="demo-title">24 - extreme sport store</span>
                                             </a>
-                                        </div><!-- End .demo-item -->
+                                        </div>
 
-                                    </div><!-- End .demo-list -->
+                                    </div>
 
                                     <div class="megamenu-action text-center">
                                         <a href="#" class="btn btn-outline-primary-2 view-all-demos"><span>View All Demos</span><i class="icon-long-arrow-right"></i></a>
-                                    </div><!-- End .text-center -->
-                                </div><!-- End .menu-col -->
-                            </div><!-- End .megamenu -->
+                                    </div>
+                                </div>
+                            </div>
                         </li>
                         <li>
                             <a href="category.html" class="sf-with-ul">Shop</a>
@@ -397,7 +382,7 @@
                                         <div class="menu-col">
                                             <div class="row">
                                                 <div class="col-md-6">
-                                                    <div class="menu-title">Shop with sidebar</div><!-- End .menu-title -->
+                                                    <div class="menu-title">Shop with sidebar</div>
                                                     <ul>
                                                         <li><a href="category-list.html">Shop List</a></li>
                                                         <li><a href="category-2cols.html">Shop Grid 2 Columns</a></li>
@@ -406,20 +391,20 @@
                                                         <li><a href="category-market.html"><span>Shop Market<span class="tip tip-new">New</span></span></a></li>
                                                     </ul>
 
-                                                    <div class="menu-title">Shop no sidebar</div><!-- End .menu-title -->
+                                                    <div class="menu-title">Shop no sidebar</div>
                                                     <ul>
                                                         <li><a href="category-boxed.html"><span>Shop Boxed No Sidebar<span class="tip tip-hot">Hot</span></span></a></li>
                                                         <li><a href="category-fullwidth.html">Shop Fullwidth No Sidebar</a></li>
                                                     </ul>
-                                                </div><!-- End .col-md-6 -->
+                                                </div>
 
                                                 <div class="col-md-6">
-                                                    <div class="menu-title">Product Category</div><!-- End .menu-title -->
+                                                    <div class="menu-title">Product Category</div>
                                                     <ul>
                                                         <li><a href="product-category-boxed.html">Product Category Boxed</a></li>
                                                         <li><a href="product-category-fullwidth.html"><span>Product Category Fullwidth<span class="tip tip-new">New</span></span></a></li>
                                                     </ul>
-                                                    <div class="menu-title">Shop Pages</div><!-- End .menu-title -->
+                                                    <div class="menu-title">Shop Pages</div>
                                                     <ul>
                                                         <li><a href="cart.html">Cart</a></li>
                                                         <li><a href="checkout.html">Checkout</a></li>
@@ -427,10 +412,10 @@
                                                         <li><a href="dashboard.html">My Account</a></li>
                                                         <li><a href="#">Lookbook</a></li>
                                                     </ul>
-                                                </div><!-- End .col-md-6 -->
-                                            </div><!-- End .row -->
-                                        </div><!-- End .menu-col -->
-                                    </div><!-- End .col-md-8 -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
 
                                     <div class="col-md-4">
                                         <div class="banner banner-overlay">
@@ -438,13 +423,13 @@
                                                 <img src="assets/images/menu/banner-1.jpg" alt="Banner">
 
                                                 <div class="banner-content banner-content-top">
-                                                    <div class="banner-title text-white">Last <br>Chance<br><span><strong>Sale</strong></span></div><!-- End .banner-title -->
-                                                </div><!-- End .banner-content -->
+                                                    <div class="banner-title text-white">Last <br>Chance<br><span><strong>Sale</strong></span></div>
+                                                </div>
                                             </a>
-                                        </div><!-- End .banner banner-overlay -->
-                                    </div><!-- End .col-md-4 -->
-                                </div><!-- End .row -->
-                            </div><!-- End .megamenu megamenu-md -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </li>
                         <li>
                             <a href="product.html" class="sf-with-ul">Product</a>
@@ -453,7 +438,7 @@
                                 <div class="row no-gutters">
                                     <div class="col-md-6">
                                         <div class="menu-col">
-                                            <div class="menu-title">Product Details</div><!-- End .menu-title -->
+                                            <div class="menu-title">Product Details</div>
                                             <ul>
                                                 <li><a href="product.html">Default</a></li>
                                                 <li><a href="product-centered.html">Centered</a></li>
@@ -464,8 +449,8 @@
                                                 <li><a href="product-fullwidth.html">Full Width</a></li>
                                                 <li><a href="product-masonry.html">Masonry Sticky Info</a></li>
                                             </ul>
-                                        </div><!-- End .menu-col -->
-                                    </div><!-- End .col-md-6 -->
+                                        </div>
+                                    </div>
 
                                     <div class="col-md-6">
                                         <div class="banner banner-overlay">
@@ -473,13 +458,13 @@
                                                 <img src="assets/images/menu/banner-2.jpg" alt="Banner">
 
                                                 <div class="banner-content banner-content-bottom">
-                                                    <div class="banner-title text-white">New Trends<br><span><strong>spring 2019</strong></span></div><!-- End .banner-title -->
-                                                </div><!-- End .banner-content -->
+                                                    <div class="banner-title text-white">New Trends<br><span><strong>spring 2019</strong></span></div>
+                                                </div>
                                             </a>
-                                        </div><!-- End .banner -->
-                                    </div><!-- End .col-md-6 -->
-                                </div><!-- End .row -->
-                            </div><!-- End .megamenu megamenu-sm -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </li>
                         <li>
                             <a href="#" class="sf-with-ul">Pages</a>
@@ -568,13 +553,13 @@
                                 <li><a href="elements-icon-boxes.html">Icon Boxes</a></li>
                             </ul>
                         </li>
-                    </ul><!-- End .menu -->
-                </nav><!-- End .main-nav -->
-            </div><!-- End .header-center -->
+                    </ul>
+                </nav>
+            </div>
 
             <div class="header-right">
                 <i class="la la-lightbulb-o"></i><p>Clearance<span class="highlight">&nbsp;Up to 30% Off</span></p>
             </div>
-        </div><!-- End .container -->
-    </div><!-- End .header-bottom -->
-</header><!-- End .header -->
+        </div>
+    </div>
+</header>
