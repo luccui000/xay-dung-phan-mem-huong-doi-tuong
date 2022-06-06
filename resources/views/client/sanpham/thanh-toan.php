@@ -51,43 +51,56 @@
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <label>Họ *</label>
-                                        <input type="text" class="form-control" required>
+                                        <input name="ho_khach_hang" type="text" class="form-control" required>
                                     </div>
 
                                     <div class="col-sm-6">
                                         <label>Tên *</label>
-                                        <input type="text" class="form-control" required>
+                                        <input name="ten_khach_hang" type="text" class="form-control" required>
                                     </div>
                                 </div>
-
-                                <label>Tên công ty (Không bắt buộc)</label>
-                                <input type="text" class="form-control">
-
-                                <label>Thành phố *</label>
-                                <input type="text" class="form-control" required>
-
-                                <label>Địa chỉ chi tiết *</label>
-                                <input type="text" class="form-control" placeholder="Số nhà tên đường địa chỉ nhà" required>
-                                <input type="text" class="form-control" placeholder="Văn phòng, công ty ..." required>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label>Tên công ty (Không bắt buộc)</label>
+                                            <input name="ten_cong_ty" type="text" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label>Địa chỉ chi tiết *</label>
+                                            <input type="text" class="form-control" placeholder="Số nhà tên đường địa chỉ nhà" required>
+                                        </div>
+                                    </div>
+                                </div>
+<!--                                <input type="text" class="form-control" placeholder="Văn phòng, công ty ..." required>-->
 
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <label>Tỉnh / Thành phố *</label>
-                                        <select name="" class="form-control"  required>
-                                            <option value="">1</option>
+                                        <label for="ma_tinh">Tỉnh / Thành phố *</label>
+                                        <select name="ma_tinh" id="ma_tinh" class="form-control"  required>
+                                            <?php foreach ($tinhs as $tinh) {?>
+                                                <option value="<?php echo $tinh['id']; ?>"><?php echo $tinh['name']; ?></option>
+                                            <?php } ?>
                                         </select>
                                     </div>
 
                                     <div class="col-sm-6">
-                                        <label>Quận / Huyện *</label>
-                                        <input type="text" class="form-control" required>
+                                        <label for="ma_huyen">Quận / Huyện *</label>
+                                        <select name="ma_huyen" id="ma_huyen" class="form-control"  required>
+
+                                        </select>
                                     </div>
                                 </div>
 
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <label>Mã bưu điện *</label>
-                                        <input type="text" class="form-control" required>
+                                        <label for="ma_xa">Xã *</label>
+                                        <select name="ma_xa" id="ma_xa" class="form-control" required>
+
+                                        </select>
                                     </div>
 
                                     <div class="col-sm-6">
@@ -95,22 +108,32 @@
                                         <input type="tel" class="form-control" required>
                                     </div>
                                 </div>
-
-                                <label>Địa chỉ email *</label>
-                                <input type="email" class="form-control" required>
-
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="checkout-create-acc">
-                                    <label class="custom-control-label" for="checkout-create-acc">Đăng ký tài khoản?</label>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label>Địa chỉ email *</label>
+                                            <input type="email" class="form-control" required>
+                                        </div>
+                                    </div>
                                 </div>
 
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="checkout-diff-address">
-                                    <label class="custom-control-label" for="checkout-diff-address">Thêm địa chỉ mới?</label>
+<!--                                <div class="custom-control custom-checkbox">-->
+<!--                                    <input type="checkbox" class="custom-control-input" id="checkout-create-acc">-->
+<!--                                    <label class="custom-control-label" for="checkout-create-acc">Đăng ký tài khoản?</label>-->
+<!--                                </div>-->
+<!---->
+<!--                                <div class="custom-control custom-checkbox">-->
+<!--                                    <input type="checkbox" class="custom-control-input" id="checkout-diff-address">-->
+<!--                                    <label class="custom-control-label" for="checkout-diff-address">Thêm địa chỉ mới?</label>-->
+<!--                                </div>-->
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label>Ghi chú giao hàng (không bắt buộc)</label>
+                                            <textarea name="ghi_chu" class="form-control" cols="30" rows="4" placeholder="Ghi chú chi tiết nội dung mà khách hàng yêu cầu,.."></textarea>
+                                        </div>
+                                    </div>
                                 </div>
-
-                                <label>Ghi chú giao hàng (không bắt buộc)</label>
-                                <textarea class="form-control" cols="30" rows="4" placeholder="Ghi chú chi tiết nội dung mà khách hàng yêu cầu,.."></textarea>
                             </div>
                             <aside class="col-lg-3">
                                 <div class="summary">
@@ -140,7 +163,10 @@
                                             </tr>
                                             <tr>
                                                 <td>Phí giao hàng:</td>
-                                                <td>Miễn phí</td>
+                                                <td>
+                                                    <input type="text" hidden name="phi_giao_hang" >
+                                                    <span>Miễn phí</span>
+                                                </td>
                                             </tr>
                                             <tr class="summary-total">
                                                 <td>Thành tiền:</td>
@@ -197,6 +223,64 @@
     <?php partial('includes/footer.php', 'client'); ?>
 </div>
 <?php partial('includes/script.php', 'client'); ?>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        $("#ma_tinh").on("change", function () {
+            const maTinh = $("#ma_tinh option:selected").val();
+
+            $.ajax({
+                'type': 'GET',
+                'url': "{! route('/api/dia-chi/danh-sach-huyen') !}",
+                'data': {
+                    'ma_tinh': maTinh
+                },
+                success: function(response) {
+                    const { data } = JSON.parse(response);
+                    const optionHuyen = data.map(huyen => {
+                        return `<option value="${huyen.id}">${huyen.name}</option>`;
+                    })
+                    $("#ma_xa").empty();
+                    $("#ma_huyen").empty().append(optionHuyen);
+                }
+            })
+        })
+        $("#ma_huyen").on("change", function() {
+            const maHuyen = $("#ma_huyen option:selected").val();
+
+            $.ajax({
+                'type': 'GET',
+                'url': "{! route('/api/dia-chi/danh-sach-xa') !}",
+                'data': {
+                    'ma_huyen': maHuyen
+                },
+                success: function(response) {
+                    // console.log(response)
+                    const { data } = JSON.parse(response);
+                    const optionXa = data.map(xa => {
+                        return `<option value="${xa.id}">${xa.name}</option>`;
+                    })
+                    $("#ma_xa").empty().append(optionXa);
+                }
+            })
+        });
+        $("#ma_xa").on("change", function() {
+            const maXa = $("#ma_xa").val();
+            const maHuyen = $("#ma_huyen").val();
+
+            $.ajax({
+                type: "POST",
+                url: "{! route('/api/giao-hang/tinh-phi'); !}",
+                data: {
+                    'ma_huyen': maHuyen,
+                    'ma_xa': maXa
+                },
+                success: function(response) {
+                    console.log(response);
+                }
+            })
+        })
+    })
+</script>
 </body>
 </html>
 

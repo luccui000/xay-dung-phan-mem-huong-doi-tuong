@@ -5,6 +5,7 @@ namespace Luccui\Classes;
 use Illuminate\Support\Collection;
 use Luccui\Core\Database;
 use Illuminate\Database\Capsule\Manager as Capsule;
+use Luccui\Helpers\Config;
 
 class Model extends Capsule
 {
@@ -22,7 +23,7 @@ class Model extends Capsule
     public function __construct()
     {
         parent::__construct();
-        $this->db = new Database(app('config')->db);
+        $this->db = new Database(app(Config::class)->db);
         $modelNamespace = explode("\\", get_class($this));
         $this->table = !is_null($this->table) ? $this->table : strtolower(end($modelNamespace));
     }

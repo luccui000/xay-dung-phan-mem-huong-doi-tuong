@@ -4,6 +4,7 @@ namespace Luccui\Http\Controllers;
 
 use Luccui\Core\Database;
 use Luccui\Core\Request;
+use Luccui\Helpers\Config;
 use Luccui\Models\BienThe;
 use Luccui\Models\DanhMuc;
 use Luccui\Models\HinhAnhSanPham;
@@ -13,7 +14,7 @@ class HomeController
 {
     public function index()
     {
-        new Database(app('config')->db);
+        new Database(app(Config::class)->db);
         $sanphams = SanPham::all();
 //        var_dump($sanphams);
         $danhmucs = DanhMuc::take(6)->get();

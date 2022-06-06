@@ -6,7 +6,10 @@ use Luccui\Classes\Cart;
 use Luccui\Classes\Container;
 use Luccui\Exceptions\RouteNotFoundException;
 use Luccui\Helpers\Config;
+use Luccui\Services\DiaChi\DiaChi;
+use Luccui\Services\DiaChi\DiaChiInterface;
 use Luccui\Services\Email\EmailService;
+use Luccui\Services\GiaoHang\GiaoHang;
 use Luccui\Services\GiaoHang\GiaoHangInterface;
 use Luccui\Services\GiaoHang\GiaoHangNhanh;
 use Luccui\Services\Invoice\InvoiceService;
@@ -22,21 +25,28 @@ class Application
         public string $requestUri,
         public string $requestMethod
     ) {
-        $this->register();
         $this->boot();
+        $this->register();
         $this->config = new Config($_ENV);
     }
 
     public function boot()
     {
-        static::$container->set('config', fn() => new Config($_ENV));
-        static::$container->set('DB', fn() => new Database(app('config')->db));
+        static::$container = new Container();
+        static::$container->set(Config::class, fn() => new Config($_ENV));
+        static::$container->set('DB', fn() => new Database(app(Config::class)->db));
     }
     public function register()
     {
-        static::$container = new Container();
         static::$container->set(Request::class, fn() => new Request());
         static::$container->set(GiaoHangInterface::class, GiaoHangNhanh::class);
+        static::$container->set(GiaoHang::class, function ($container) {
+            return new GiaoHang(
+                new GiaoHangNhanh($container->get(Config::class))
+            );
+        });
+        static::$container->set(DiaChi::class, fn() => new DiaChi(app(Config::class)));
+        static::$container->set(GiaoHangNhanh::class, fn() => new GiaoHangNhanh(app(Config::class)));
         static::$container->set(Cart::class, function () {
             return new Cart([
                 'cartMaxItem'      => 0,
