@@ -1,0 +1,26 @@
+{
+  "name": "lara-ecommerce",
+  "version": "1.0.0",
+  "description": "Xác định chức năng ## Khách hàng: -\tĐăng ký/ đăng nhập -\tTìm kiếm sản phẩm -\tThêm sản phẩm vào giỏ hàng -\tĐặt hàng -\tQuản lý đơn hàng -\tThanh toán VNPay ## Quản trị viên -\tXem báo cáo -\tXác nhận đơn hàng -\tQuản lý sản phẩm, danh mục, hình ảnh, hãng sản xuất, khách hàng, giao dịch",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luccui000/xay-dung-phan-mem-huong-doi-tuong.git"
+  },
+  "author": "luccui <minhluc15.ok@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/luccui000/xay-dung-phan-mem-huong-doi-tuong/issues"
+  },
+  "homepage": "https://github.com/luccui000/xay-dung-phan-mem-huong-doi-tuong#readme",
+  "devDependencies": {
+    "webpack": "^5.73.0",
+    "webpack-cli": "^4.9.2"
+  }
+}
