@@ -18,7 +18,6 @@ class Model extends Capsule
     protected bool $autoIncremnent = true;
     protected $originalKeyVal = null;
     protected Database $db;
-    protected array $withs = [];
 
     public function __construct()
     {
@@ -31,6 +30,10 @@ class Model extends Capsule
     {
         return static::getModel()->get();
     }
+    public static function findFirst($id)
+    {
+        return static::getModel()->where(static::getPrimaryKeyStatic(), '=', $id)->first();
+    }
     public static function insert(array $values)
     {
         return static::getModel()->insert($values);
@@ -42,6 +45,18 @@ class Model extends Capsule
     public static function where($column, $operator = null, $value = null, $boolean = 'and')
     {
         return static::getModel()->where($column, $operator, $value, $boolean);
+    }
+    public static function whereIn($column, $values, $boolean = 'and', $not = false)
+    {
+        return static::getModel()->whereIn($column, $values, $boolean, $not);
+    }
+    public static function leftJoin($table, $first, $operator = null, $second = null)
+    {
+        return static::getModel()->leftJoin($table, $first, $operator, $second);
+    }
+    public static function join($table, $first, $operator = null, $second = null, $type = 'inner', $where = false)
+    {
+        return static::getModel()->join($table, $first, $operator, $second, $type, $where);
     }
     public static function with($withModel)
     {

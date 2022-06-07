@@ -1,8 +1,8 @@
 <?php
 
-use Luccui\Http\Controllers\{
-    ChiTietSanPhamController,
+use Luccui\Http\Controllers\{ChiTietSanPhamController,
     DanhMucController,
+    DanhMucSanPhamController,
     DashboardController,
     AdminController,
     GioHangController,
@@ -12,8 +12,9 @@ use Luccui\Http\Controllers\{
     NhaCungCapController,
     SanphamController,
     TaiKhoanController,
-    ThanhToanController
-};
+    ThanhToanController,
+    WishlistController};
+use Luccui\Classes\Wishlist;
 use Luccui\Core\Router;
 
 Router::get('/', [HomeController::class, 'index'], '/home');
@@ -21,6 +22,12 @@ Router::get('/san-pham/chi-tiet', [ChiTietSanPhamController::class, 'detail'], '
 Router::post('/san-pham/them-vao-gio-hang', [GioHangController::class, 'add'], '/san-pham/them-vao-gio-hang');
 Router::post('/san-pham/cap-nhat-gio-hang', [GioHangController::class, 'update'], '/san-pham/cap-nhat-gio-hang');
 Router::get('/san-pham/gio-hang', [GioHangController::class, 'cart'], '/san-pham/gio-hang');
+
+Router::get('/san-pham/danh-muc', [DanhMucSanPhamController::class, 'show'], '/san-pham/danh-muc');
+
+Router::get('/san-pham/danh-sach-yeu-thich', [WishlistController::class, 'index'], '/san-pham/danh-sach-yeu-thich');
+Router::get('/san-pham/them-vao-yeu-thich', [WishlistController::class, 'add'], '/san-pham/them-vao-yeu-thich');
+Router::post('/san-pham/xoa-khoi-yeu-thich', [WishlistController::class, 'remove'], '/san-pham/xoa-khoi-yeu-thich');
 
 Router::get('/san-pham/thanh-toan', [ThanhToanController::class, 'checkout'], '/san-pham/thanh-toan');
 Router::post('/san-pham/thanh-toan', [ThanhToanController::class, 'confirm'], '/san-pham/thanh-toan/store');

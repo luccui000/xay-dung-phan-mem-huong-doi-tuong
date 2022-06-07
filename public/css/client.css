@@ -8,12 +8,16 @@
     object-fit: cover;
     object-position: center;
 }
-.btn-cart {
+.product-details-action .btn-cart {
     max-width: 350px !important;
     background: #fff;
 }
-.btn-cart:hover span {
+.product-details-action .btn-cart:hover span {
     color: #fff !important;
+}
+.product-action .btn-cart {
+    background-color: transparent !important;
+    border: 1px solid transparent !important;
 }
 .cart-dropdown .product-image-container {
     position: relative;

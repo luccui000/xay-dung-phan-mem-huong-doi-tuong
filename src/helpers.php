@@ -33,10 +33,14 @@ if(!function_exists('resolve')) {
     }
 }
 if(!function_exists('route')) {
-    function route($name) {
+    function route($name, $params = []) {
         if(!isset(Router::getNames()[$name]))
             throw new RouteNotFoundException("Route not found");
-        return Router::getNames()[$name]['route'];
+        if(is_array($params) && count($params) > 0) {
+            $query = http_build_query($params);
+            return Router::getNames()[$name]['route'] . '?' . $query;
+        }
+        return Router::getNames()[$name]['route'] ;
     }
 }
 if(!function_exists('vnmoney')) {

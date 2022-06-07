@@ -4,19 +4,30 @@ namespace Luccui\Http\Controllers;
 
 use Luccui\Classes\Cart;
 use Luccui\Core\Request;
+use Luccui\Core\Session;
 use Luccui\Models\SanPham;
 
-class GioHangController
+class GioHangController extends Controller
 {
     public function cart()
     {
-        return view('/client/sanpham/gio-hang.php');
+        $cart = app(Cart::class)->getItems();
+        $sanphamIds = [];
+        foreach ($cart as $items) {
+            foreach ($items as $item) {
+                $sanphamIds[] = $item['id'];
+            }
+        }
+        $sanphams = SanPham::whereIn('id', array_values($sanphamIds))->get();
+
+        return view('/client/sanpham/gio-hang.php', [
+            'sanphams' => $sanphams
+        ]);
     }
     public function add()
     {
-        $request = resolve(Request::class);
-        $sanpham_id = $request->sanpham_id;
-        $so_luong = $request->so_luong;
+        $sanpham_id = $this->request->sanpham_id;
+        $so_luong = $this->request->so_luong ?? 1;
         $sanpham = SanPham::where('id', '=', $sanpham_id)->first();
 
         if($sanpham) {
@@ -26,6 +37,7 @@ class GioHangController
                 'gia_cuoi_cung' => $sanpham->gia_cuoi_cung
             ]);
         }
+        Session::back();
     }
     public function update()
     {

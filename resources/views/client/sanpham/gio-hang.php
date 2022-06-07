@@ -52,36 +52,34 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <?php $cart = app(\Luccui\Classes\Cart::class)->getItems(); ?>
-                                                <?php foreach ($cart as $items) {?>
-                                                    <?php foreach ($items as $item) {?>
-                                                        <tr>
-                                                            <td class="product-col">
-                                                                <div class="product">
-                                                                    <figure class="product-media">
-                                                                        <a href="#">
-                                                                            <img src="<?php echo assets($item['attributes']['hinh_anh']); ?>" alt="Product image">
-                                                                        </a>
-                                                                    </figure>
+                                            <?php foreach ($sanphams as $sanpham) { ?>
+                                                <tr>
+                                                    <?php $item = app(\Luccui\Classes\Cart::class)->getItem($sanpham->id); ?>
+                                                    <td class="product-col">
+                                                        <div class="product">
+                                                            <figure class="product-media">
+                                                                <a href="#">
+                                                                    <img src="<?php echo assets($sanpham->hinh_anh); ?>" alt="Product image">
+                                                                </a>
+                                                            </figure>
 
-                                                                    <h3 class="product-title">
-                                                                        <a href="/san-pham/chi-tiet?id=<?php echo $item['id']; ?>"><?php echo $item['attributes']['ten_san_pham']; ?></a>
-                                                                    </h3>
-                                                                </div>
-                                                            </td>
-                                                            <td class="price-col"><?php echo vnmoney($item['attributes']['gia_cuoi_cung']); ?></td>
-                                                            <td class="quantity-col">
-                                                                <div class="cart-product-quantity">
-                                                                    <label>
-                                                                        <input name="so_luong" data-sanpham_id="<?php echo $item['id']; ?>" type="number" class="form-control" value="<?php echo $item['quantity']; ?>" min="1" step="1" data-decimals="0" required>
-                                                                    </label>
-                                                                </div>
-                                                            </td>
-                                                            <td class="total-col"><?php echo vnmoney($item['quantity'] * $item['attributes']['gia_cuoi_cung']); ?></td>
-                                                            <td class="remove-col"><button class="btn-remove"><i class="icon-close"></i></button></td>
-                                                        </tr>
-                                                    <?php } ?>
-                                                <?php } ?>
+                                                            <h3 class="product-title">
+                                                                <a href="/san-pham/chi-tiet?id=<?php echo $sanpham->id; ?>"><?php echo $sanpham->ten_san_pham; ?></a>
+                                                            </h3>
+                                                        </div>
+                                                    </td>
+                                                    <td class="price-col"><?php echo vnmoney($sanpham->gia_cuoi_cung); ?></td>
+                                                    <td class="quantity-col">
+                                                        <div class="cart-product-quantity">
+                                                            <label>
+                                                                <input value="<?php echo $item['quantity']; ?>" name="so_luong" data-sanpham_id="<?php echo $sanpham->id; ?>" type="number" class="form-control"  min="1" max="<?php echo $sanpham->so_luong; ?>" step="1" data-decimals="0" required>
+                                                            </label>
+                                                        </div>
+                                                    </td>
+                                                    <td class="total-col"><?php echo  vnmoney($item['quantity'] * $sanpham->gia_cuoi_cung); ?></td>
+                                                    <td class="remove-col"><button class="btn-remove"><i class="icon-close"></i></button></td>
+                                                </tr>
+                                            <?php } ?>
                                         </tbody>
                                     </table>
                                 </form>

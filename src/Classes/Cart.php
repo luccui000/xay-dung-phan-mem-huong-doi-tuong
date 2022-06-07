@@ -50,7 +50,7 @@ class Cart
      *
      * @var array
      */
-    private $items = [];
+    protected $items = [];
 
     /**
      * Initialize cart.

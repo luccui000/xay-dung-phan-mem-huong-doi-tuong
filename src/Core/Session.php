@@ -35,4 +35,9 @@ class Session
             throw new SessionNotFoundException("Session {$key} not found");
         unset($_SESSION[$key]);
     }
+    public static function back()
+    {
+        $url = $_SERVER['HTTP_REFERER'];
+        header("Location: $url");
+    }
 }

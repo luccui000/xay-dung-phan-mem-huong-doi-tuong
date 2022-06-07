@@ -10,7 +10,7 @@ class VNPayFactory
     public static function make(array $attributes): VNPayValueObject
     {
         return new VNPayValueObject(
-            TxnRef: 5,
+            TxnRef: data_get($attributes, 'donhang_id'),
             OrderInfo: 'Thanh toan hoa don hang hoa, so tien: ' . vnmoney(data_get($attributes, 'thanh_tien')),
             OrderType:  array_key_exists('loai_thanh_toan', $attributes) ?
                     data_get($attributes, 'loai_thanh_toan') : 'thanhtoan',

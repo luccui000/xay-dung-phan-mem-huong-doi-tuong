@@ -13,7 +13,6 @@
     <meta name="msapplication-TileColor" content="#cc9966">
     <meta name="msapplication-config" content="{! assets('public/client/images/icons/browserconfig.xml'); !}">
     <meta name="theme-color" content="#ffffff">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
     <script src="{! assets('public/dist/js/apis.js'); !}" defer></script>
     <?php partial('includes/stylesheet.php', 'client'); ?>
 </head>

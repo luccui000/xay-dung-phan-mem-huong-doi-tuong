@@ -2,7 +2,7 @@
     <div class="header-top">
         <div class="container">
             <div class="header-left">
-                <a href="tel:#"><i class="icon-phone"></i>Call: +0123 456 789</a>
+                <a href="tel:#"><i class="icon-phone"></i>Liên hệ: +0123 456 789</a>
             </div>
             <div class="header-right">
                 <ul class="top-menu">
@@ -11,28 +11,16 @@
                         <ul>
                             <li>
                                 <div class="header-dropdown">
-                                    <a href="#">USD</a>
+                                    <a href="#">Việt Nam</a>
                                     <div class="header-menu">
                                         <ul>
-                                            <li><a href="#">Eur</a></li>
-                                            <li><a href="#">Usd</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="header-dropdown">
-                                    <a href="#">English</a>
-                                    <div class="header-menu">
-                                        <ul>
+                                            <li><a href="#">Việt Nam</a></li>
                                             <li><a href="#">English</a></li>
-                                            <li><a href="#">French</a></li>
-                                            <li><a href="#">Spanish</a></li>
                                         </ul>
                                     </div>
                                 </div>
                             </li>
-                            <li><a href="#signin-modal" data-toggle="modal">Sign in / Sign up</a></li>
+                            <li><a href="#" data-toggle="modal">Đăng ký / Đăng nhập</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -45,12 +33,12 @@
         <div class="container">
             <div class="header-left">
                 <button class="mobile-menu-toggler">
-                    <span class="sr-only">Toggle mobile menu</span>
+                    <span class="sr-only">Mở menu</span>
                     <i class="icon-bars"></i>
                 </button>
 
-                <a href="index.html" class="logo">
-                    <img src="assets/images/demos/demo-4/logo.png" alt="Molla Logo" width="105" height="25">
+                <a href="/" class="logo">
+                    <img src="{! assets('public/client/images/logo.png') !}" alt="Molla Logo" width="105" height="25">
                 </a>
             </div>
 
@@ -59,9 +47,9 @@
                     <a href="#" class="search-toggle" role="button"><i class="icon-search"></i></a>
                     <form action="#" method="get">
                         <div class="header-search-wrapper search-wrapper-wide">
-                            <label for="q" class="sr-only">Search</label>
+                            <label for="q" class="sr-only">Tìm kiếm</label>
                             <button class="btn btn-primary" type="submit"><i class="icon-search"></i></button>
-                            <input type="search" class="form-control" name="q" id="q" placeholder="Search product ..." required>
+                            <input type="search" class="form-control" name="q" id="q" placeholder="Tìm kiếm sản phẩm ..." required>
                         </div>
                     </form>
                 </div>
@@ -73,7 +61,7 @@
                         <div class="icon">
                             <i class="icon-random"></i>
                         </div>
-                        <p>Compare</p>
+                        <p>So sánh</p>
                     </a>
 
                     <div class="dropdown-menu dropdown-menu-right">
@@ -89,17 +77,17 @@
                         </ul>
 
                         <div class="compare-actions">
-                            <a href="#" class="action-link">Clear All</a>
-                            <a href="#" class="btn btn-outline-primary-2"><span>Compare</span><i class="icon-long-arrow-right"></i></a>
+                            <a href="#" class="action-link">Xóa tất cả</a>
+                            <a href="#" class="btn btn-outline-primary-2"><span>So sánh ngay</span><i class="icon-long-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
-
+                <?php $wishlist = resolve(\Luccui\Classes\Wishlist::class)->getItems(); ?>
                 <div class="wishlist">
-                    <a href="wishlist.html" title="Wishlist">
+                    <a href="{! route('/san-pham/danh-sach-yeu-thich') !}" title="Wishlist">
                         <div class="icon">
                             <i class="icon-heart-o"></i>
-                            <span class="wishlist-count badge">3</span>
+                            <span class="wishlist-count badge"><?php echo count($wishlist); ?></span>
                         </div>
                         <p>Wishlist</p>
                     </a>
@@ -406,10 +394,10 @@
                                                     </ul>
                                                     <div class="menu-title">Shop Pages</div>
                                                     <ul>
-                                                        <li><a href="cart.html">Cart</a></li>
-                                                        <li><a href="checkout.html">Checkout</a></li>
-                                                        <li><a href="wishlist.html">Wishlist</a></li>
-                                                        <li><a href="dashboard.html">My Account</a></li>
+                                                        <li><a href="#">Cart</a></li>
+                                                        <li><a href="#">Checkout</a></li>
+                                                        <li><a href="">Wishlist</a></li>
+                                                        <li><a href="#">My Account</a></li>
                                                         <li><a href="#">Lookbook</a></li>
                                                     </ul>
                                                 </div>

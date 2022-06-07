@@ -4,6 +4,7 @@ namespace Luccui\Core;
 
 use Luccui\Classes\Cart;
 use Luccui\Classes\Container;
+use Luccui\Classes\Wishlist;
 use Luccui\Exceptions\RouteNotFoundException;
 use Luccui\Helpers\Config;
 use Luccui\Services\DiaChi\DiaChi;
@@ -53,6 +54,11 @@ class Application
             return new Cart([
                 'cartMaxItem'      => 0,
                 'itemMaxQuantity'  => 99,
+                'useCookie'        => true,
+            ]);
+        });
+        static::$container->set(Wishlist::class, function () {
+            return new Wishlist([
                 'useCookie'        => true,
             ]);
         });

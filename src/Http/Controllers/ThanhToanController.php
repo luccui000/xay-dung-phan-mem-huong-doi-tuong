@@ -30,22 +30,24 @@ class ThanhToanController
     public function confirm()
     {
         $request = app(Request::class);
-//        $donhang_id = $this->saveDonHang($request->all());
-//
-//        $cart = app(Cart::class)->getItems();
-//        foreach ($cart as $items) {
-//            foreach ($items as $item) {
-//                $this->saveChiTietDonHang($donhang_id, $item);
-//            }
-//        }
+        $donhang_id = $this->saveDonHang($request->all());
 
-//        app(Cart::class)->destroy();
-        $donhang_id = 2;
+        $cart = app(Cart::class)->getItems();
+        foreach ($cart as $items) {
+            foreach ($items as $item) {
+                $this->saveChiTietDonHang($donhang_id, $item);
+            }
+        }
+
+
         $donhang = DonHang::where('id', '=', $donhang_id)->first();
 
-//        if($request->phuong_thuc_thanh_toan == "online") {
-//            $this->makePurchase($request->all());
-//        }
+        if($request->phuong_thuc_thanh_toan == "online") {
+            $data = $request->all();
+            $data['donhang_id'] = $donhang_id;
+            $this->makePurchase($data);
+        }
+        app(Cart::class)->clear();
         return view("client/sanpham/dat-hang-thanh-cong.php", [
             'donhang' => $donhang
         ]);
@@ -79,6 +81,10 @@ class ThanhToanController
     public function callback()
     {
         $request = app(Request::class);
-        var_dump($request);
+        $donhang = DonHang::where('id', '=', $request->query['vnp_TxnRef'])->first();
+
+        return view("client/sanpham/dat-hang-thanh-cong.php", [
+            'donhang' => $donhang
+        ]);
     }
 }

@@ -15,7 +15,12 @@ class HomeController
     public function index()
     {
         new Database(app(Config::class)->db);
-        $sanphams = SanPham::all();
+        $sanphams = SanPham::join('danhmuc', 'danhmuc.id', '=', 'sanpham.danhmuc_id')
+            ->select([
+                'sanpham.*',
+                'danhmuc.ten_danh_muc'
+            ])
+            ->get();
 //        var_dump($sanphams);
         $danhmucs = DanhMuc::take(6)->get();
 
