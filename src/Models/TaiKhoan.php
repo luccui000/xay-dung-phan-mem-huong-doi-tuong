@@ -2,11 +2,12 @@
 
 namespace Luccui\Models;
 
-use Illuminate\Database\Eloquent\Model;
+
+use Luccui\Classes\Model;
 
 class TaiKhoan extends Model
 {
-    protected $fillable = [
+    protected array $fillable = [
         'id',
         'ho',
         'ten',

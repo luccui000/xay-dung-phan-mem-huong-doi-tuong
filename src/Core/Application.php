@@ -7,7 +7,6 @@ use Luccui\Classes\Container;
 use Luccui\Exceptions\RouteNotFoundException;
 use Luccui\Helpers\Config;
 use Luccui\Services\DiaChi\DiaChi;
-use Luccui\Services\DiaChi\DiaChiInterface;
 use Luccui\Services\Email\EmailService;
 use Luccui\Services\GiaoHang\GiaoHang;
 use Luccui\Services\GiaoHang\GiaoHangInterface;
@@ -15,6 +14,8 @@ use Luccui\Services\GiaoHang\GiaoHangNhanh;
 use Luccui\Services\Invoice\InvoiceService;
 use Luccui\Services\PaymentGateway\PaymentGatewayInterface;
 use Luccui\Services\PaymentGateway\VnPayGateway;
+use Luccui\Services\ThanhToan\ThanhToanGateway;
+use Luccui\Services\ThanhToan\VNPay;
 
 class Application
 {
@@ -40,6 +41,7 @@ class Application
     {
         static::$container->set(Request::class, fn() => new Request());
         static::$container->set(GiaoHangInterface::class, GiaoHangNhanh::class);
+        static::$container->set(ThanhToanGateway::class, VNPay::class);
         static::$container->set(GiaoHang::class, function ($container) {
             return new GiaoHang(
                 new GiaoHangNhanh($container->get(Config::class))

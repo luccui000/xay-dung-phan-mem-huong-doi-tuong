@@ -1,13 +1,11 @@
-(function() {
-    window.HDTShop = {
-        global: {
+import MyLocalStorage from "./MyLocalStorage";
 
-        },
-        apis: {
-
-        },
-        config: {
-
-        }
-    }
-})();
+export const HDTShop =  {
+    global: {
+        DIA_CHI: 'DIA_CHI'
+    },
+    apis: {},
+    config: {},
+    utils: {},
+    MyLocalStorage: MyLocalStorage
+};

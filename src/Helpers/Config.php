@@ -20,6 +20,10 @@ class Config
                 'shopid' => $env['GIAO_HANG_NHANH_SHOPID'],
                 'token' => $env['GIAO_HANG_NHANH_TOKEN'],
                 'from_district_id' => $env['GIAO_HANG_NHANH_FROM_DISTRICT_ID']
+            ],
+            'vnpay' => [
+                'code' => $env['VNPAY_TMNCODE'],
+                'hash' => $env['VNPAY_HASHSECRET'],
             ]
         ];
     }

@@ -52,3 +52,17 @@
     z-index: 999;
     transform: translateX(-50%);
 }
+.details-filter-row label {
+    display: flex;
+    align-self: center;
+    margin-right: 10px;
+}
+.thanhtoan {
+    display: flex;
+    align-items: center;
+}
+input[name=phuong_thuc_thanh_toan] ~ label {
+    margin-top: 4px !important;
+    margin-left: 5px;
+    cursor: pointer;
+}

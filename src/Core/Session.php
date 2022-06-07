@@ -13,13 +13,13 @@ class Session
     {
         if(!static::has($key))
             throw new SessionNotFoundException("Session {$key} not found");
-        return $_SESSION[$key];
+        return unserialize($_SESSION[$key]);
     }
-    public static function set($key, $value): array|null
+    public static function set($key, $value)
     {
         if(empty($key) || empty($value))
             return null;
-        return $_SESSION[$key] = $value;
+        return $_SESSION[$key] = serialize($value);
     }
     public static function has($key): bool
     {

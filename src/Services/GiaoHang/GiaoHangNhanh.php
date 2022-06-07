@@ -4,7 +4,7 @@ namespace Luccui\Services\GiaoHang;
 
 use GuzzleHttp\Client;
 use Luccui\Helpers\Config;
-use Luccui\ValueObjects\DonHangValueObject;
+use Luccui\ValueObjects\DatHangValueObject;
 
 class GiaoHangNhanh implements GiaoHangInterface
 {
@@ -85,7 +85,7 @@ class GiaoHangNhanh implements GiaoHangInterface
     }
     public function taoDonHang()
     {
-        $donhang = new DonHangValueObject(
+        $donhang = new DatHangValueObject(
             payment_type_id: 2,
             note: "",
             required_note: "",

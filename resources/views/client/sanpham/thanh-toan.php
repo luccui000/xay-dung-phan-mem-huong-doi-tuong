@@ -14,6 +14,7 @@
     <meta name="msapplication-config" content="{! assets('public/client/images/icons/browserconfig.xml'); !}">
     <meta name="theme-color" content="#ffffff">
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <script src="{! assets('public/dist/js/apis.js'); !}" defer></script>
     <?php partial('includes/stylesheet.php', 'client'); ?>
 </head>
 <body>
@@ -44,14 +45,14 @@
                             <label for="checkout-discount-input" class="text-truncate">Bạn có mã giảm giá? <span>Nhấn vào đây để điền mã giảm giá</span></label>
                         </form>
                     </div>
-                    <form action="#">
+                    <form action="/san-pham/thanh-toan" method="post">
                         <div class="row">
                             <div class="col-lg-9">
                                 <h2 class="checkout-title">Chi tiết hóa đơn</h2>
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <label>Họ *</label>
-                                        <input name="ho_khach_hang" type="text" class="form-control" required>
+                                        <label for="ho_khach_hang">Họ *</label>
+                                        <input name="ho_khach_hang" id="ho_khach_hang" type="text" class="form-control" required>
                                     </div>
 
                                     <div class="col-sm-6">
@@ -71,7 +72,7 @@
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label>Địa chỉ chi tiết *</label>
-                                            <input type="text" class="form-control" placeholder="Số nhà tên đường địa chỉ nhà" required>
+                                            <input name="dia_chi" type="text" class="form-control" placeholder="Số nhà tên đường địa chỉ nhà" required>
                                         </div>
                                     </div>
                                 </div>
@@ -105,14 +106,14 @@
 
                                     <div class="col-sm-6">
                                         <label>Số điện thoại *</label>
-                                        <input type="tel" class="form-control" required>
+                                        <input name="so_dien_thoai" type="tel" class="form-control" required>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label>Địa chỉ email *</label>
-                                            <input type="email" class="form-control" required>
+                                            <input name="email" type="email" class="form-control" required>
                                         </div>
                                     </div>
                                 </div>
@@ -165,12 +166,15 @@
                                                 <td>Phí giao hàng:</td>
                                                 <td>
                                                     <input type="text" hidden name="phi_giao_hang" >
-                                                    <span>Miễn phí</span>
+                                                    <span id="phi_giao_hang">Miễn phí</span>
                                                 </td>
                                             </tr>
                                             <tr class="summary-total">
                                                 <td>Thành tiền:</td>
-                                                <td><?php echo vnmoney(resolve(\Luccui\Classes\Cart::class)->getAttributeTotal('gia_cuoi_cung')); ?></td>
+                                                <td>
+                                                    <input name="thanh_tien" hidden type="text" value="<?php echo resolve(\Luccui\Classes\Cart::class)->getAttributeTotal('gia_cuoi_cung'); ?>">
+                                                    <span id="thanh_tien"><?php echo vnmoney(resolve(\Luccui\Classes\Cart::class)->getAttributeTotal('gia_cuoi_cung')); ?></span>
+                                                </td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -178,13 +182,14 @@
                                     <div class="accordion-summary" id="accordion-payment">
                                         <div class="card">
                                             <div class="card-header" id="heading-1">
-                                                <h2 class="card-title">
-                                                    <a role="button" data-toggle="collapse" href="#collapse-1" aria-expanded="true" aria-controls="collapse-1">
+                                                <h2 class="card-title thanhtoan">
+                                                    <input value="nhanhang" id="tt_khi_nhan_hang" name="phuong_thuc_thanh_toan" type="radio">
+                                                    <label for="tt_khi_nhan_hang" data-toggle="collapse" href="#collapse-1">
                                                         Thanh toán khi nhận hàng
-                                                    </a>
+                                                    </label>
                                                 </h2>
                                             </div>
-                                            <div id="collapse-1" class="collapse show" aria-labelledby="heading-1" data-parent="#accordion-payment">
+                                            <div id="collapse-1" class="collapse" data-parent="#accordion-payment">
                                                 <div class="card-body">
                                                     Sau khi thanh toán khách hàng có thể kiểm tra tình trạng máy sau đó thanh toán với nhân viên giao hàng
                                                 </div>
@@ -193,10 +198,11 @@
 
                                         <div class="card">
                                             <div class="card-header" id="heading-4">
-                                                <h2 class="card-title">
-                                                    <a class="collapsed" role="button" data-toggle="collapse" href="#collapse-4" aria-expanded="false" aria-controls="collapse-4">
+                                                <h2 class="card-title thanhtoan">
+                                                    <input value="online" id="tt_online" name="phuong_thuc_thanh_toan" type="radio">
+                                                    <label for="tt_online" data-toggle="collapse" href="#collapse-4">
                                                         Thanh toán online qua VNPay
-                                                    </a>
+                                                    </label>
                                                 </h2>
                                             </div>
                                             <div id="collapse-4" class="collapse" aria-labelledby="heading-4" data-parent="#accordion-payment">
@@ -224,59 +230,52 @@
 </div>
 <?php partial('includes/script.php', 'client'); ?>
 <script>
+
+
     document.addEventListener("DOMContentLoaded", function() {
+        const { danhSachHuyen, danhSachXa, tinhPhi } = HDTShop.apis;
+        const { VNDFormat } = HDTShop.utils;
         $("#ma_tinh").on("change", function () {
             const maTinh = $("#ma_tinh option:selected").val();
-
-            $.ajax({
-                'type': 'GET',
-                'url': "{! route('/api/dia-chi/danh-sach-huyen') !}",
-                'data': {
-                    'ma_tinh': maTinh
-                },
-                success: function(response) {
-                    const { data } = JSON.parse(response);
-                    const optionHuyen = data.map(huyen => {
-                        return `<option value="${huyen.id}">${huyen.name}</option>`;
-                    })
-                    $("#ma_xa").empty();
-                    $("#ma_huyen").empty().append(optionHuyen);
-                }
+            danhSachHuyen(maTinh).then(response => {
+                const { data } = JSON.parse(response);
+                const optionHuyen = data.map(huyen => {
+                    return `<option value="${huyen.id}">${huyen.name}</option>`;
+                })
+                $("#ma_xa").empty();
+                $("#ma_huyen").empty().append(optionHuyen);
             })
         })
         $("#ma_huyen").on("change", function() {
             const maHuyen = $("#ma_huyen option:selected").val();
 
-            $.ajax({
-                'type': 'GET',
-                'url': "{! route('/api/dia-chi/danh-sach-xa') !}",
-                'data': {
-                    'ma_huyen': maHuyen
-                },
-                success: function(response) {
-                    // console.log(response)
-                    const { data } = JSON.parse(response);
-                    const optionXa = data.map(xa => {
-                        return `<option value="${xa.id}">${xa.name}</option>`;
-                    })
-                    $("#ma_xa").empty().append(optionXa);
-                }
+            danhSachXa(maHuyen).then(response => {
+                const { data } = JSON.parse(response);
+                const optionXa = data.map(xa => {
+                    return `<option value="${xa.id}">${xa.name}</option>`;
+                })
+                $("#ma_xa").empty().append(optionXa);
             })
         });
         $("#ma_xa").on("change", function() {
             const maXa = $("#ma_xa").val();
             const maHuyen = $("#ma_huyen").val();
 
-            $.ajax({
-                type: "POST",
-                url: "{! route('/api/giao-hang/tinh-phi'); !}",
-                data: {
-                    'ma_huyen': maHuyen,
-                    'ma_xa': maXa
-                },
-                success: function(response) {
-                    console.log(response);
-                }
+            tinhPhi(maXa, maHuyen).then(response => {
+                const { total } = JSON.parse(response);
+
+                $("input[name=phi_giao_hang]").val(total);
+                $("#phi_giao_hang").text(VNDFormat(total));
+
+                const inpThanhTien = $("input[name=thanh_tien]").val();
+
+                $("#thanh_tien").text(VNDFormat(+inpThanhTien + total));
+
+                HDTShop.MyLocalStorage.add(HDTShop.global.DIA_CHI, {
+                    maTinh: $("#ma_tinh").val(),
+                    maHuyen: $("#ma_huyen").val(),
+                    maXa: $("#ma_xa").val()
+                });
             })
         })
     })
