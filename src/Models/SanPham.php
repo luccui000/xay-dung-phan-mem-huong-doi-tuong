@@ -26,5 +26,4 @@ class SanPham extends Model
         'nguoi_tao',
         'trang_thai',
     ];
-
 }

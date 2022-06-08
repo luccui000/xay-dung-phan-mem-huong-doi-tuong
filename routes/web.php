@@ -3,6 +3,7 @@
 use Luccui\Http\Controllers\{ChiTietSanPhamController,
     DanhMucController,
     DanhMucSanPhamController,
+    DanhSachSanPhamController,
     DashboardController,
     AdminController,
     GioHangController,
@@ -19,6 +20,7 @@ use Luccui\Core\Router;
 
 Router::get('/', [HomeController::class, 'index'], '/home');
 Router::get('/san-pham/chi-tiet', [ChiTietSanPhamController::class, 'detail'], 'chi-tiet');
+Router::get('/san-pham/tat-ca', [DanhSachSanPhamController::class, 'index'], '/san-pham/tat-ca');
 Router::post('/san-pham/them-vao-gio-hang', [GioHangController::class, 'add'], '/san-pham/them-vao-gio-hang');
 Router::post('/san-pham/cap-nhat-gio-hang', [GioHangController::class, 'update'], '/san-pham/cap-nhat-gio-hang');
 Router::get('/san-pham/gio-hang', [GioHangController::class, 'cart'], '/san-pham/gio-hang');

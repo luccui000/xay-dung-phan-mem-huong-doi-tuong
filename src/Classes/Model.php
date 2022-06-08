@@ -18,6 +18,7 @@ class Model extends Capsule
     protected bool $autoIncremnent = true;
     protected $originalKeyVal = null;
     protected Database $db;
+    protected $output;
 
     public function __construct()
     {
@@ -29,6 +30,10 @@ class Model extends Capsule
     public static function all(): Collection
     {
         return static::getModel()->get();
+    }
+    public static function select($columns = ['*'])
+    {
+        return static::getModel()->select($columns);
     }
     public static function findFirst($id)
     {
@@ -80,6 +85,15 @@ class Model extends Capsule
             return $staticModel;
         }
         return null;
+    }
+    public static function withRelation($where)
+    {
+        $output = static::getModel()->where('id', '=', $where)
+            ->get()
+            ->toArray();
+        return array_map(function ($item) {
+            return get_object_vars($item);
+        }, $output);
     }
     public static function getModel($model = null)
     {

@@ -7,6 +7,7 @@ use Luccui\Classes\Model;
 class DanhMuc extends Model
 {
     protected $table = 'danhmuc';
+
     protected array $fillable = [
         'id',
         'ten_danh_muc',

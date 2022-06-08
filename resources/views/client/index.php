@@ -144,11 +144,11 @@
                 <div class="container for-you">
                     <div class="heading heading-flex mb-3">
                         <div class="heading-left">
-                            <h2 class="title">Recommendation For You</h2>
+                            <h2 class="title">Đề xuất cho bạn</h2>
                         </div>
 
                         <div class="heading-right">
-                            <a href="#" class="title-link">View All Recommendadion <i class="icon-long-arrow-right"></i></a>
+                            <a href="{! route('/san-pham/tat-ca') !}" class="title-link">Xem tất cả <i class="icon-long-arrow-right"></i></a>
                         </div>
                     </div>
                     <?php include CLIENT_BASE_PATH . 'sanpham/partials/recommend-product.php' ?>
