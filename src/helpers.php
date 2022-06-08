@@ -71,6 +71,11 @@ if(!function_exists('objectToArray')) {
         return $array;
     }
 }
+if(!function_exists('stdClassToArray')) {
+    function stdClassToArray($input): array {
+        return get_object_vars($input);
+    }
+}
 if(!function_exists('clientBasePath')) {
     function clientBasePath(): string {
         return RESOURCE_PATH . 'client' . DIRECTORY_SEPARATOR;
