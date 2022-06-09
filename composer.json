@@ -18,7 +18,8 @@
         "psr/container": "^2.0",
         "illuminate/database": "^9.14",
         "guzzlehttp/guzzle": "^7.0",
-        "illuminate/pagination": "^9.17"
+        "illuminate/pagination": "^9.17",
+        "delight-im/auth": "^8.3"
     },
     "require-dev": {
         "phpunit/phpunit": "^9.5"
