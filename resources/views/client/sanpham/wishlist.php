@@ -70,6 +70,7 @@
                                 </td>
                                 <td class="action-col">
                                     <form action="{! route('/san-pham/them-vao-gio-hang') !}" method="POST">
+                                        <input name="wishlist_id" value="<?php echo $sanpham->id; ?>" hidden type="text">
                                         <input name="sanpham_id" value="<?php echo $sanpham->id; ?>" hidden type="text">
                                         <button class="btn btn-block btn-outline-primary-2"><i class="icon-cart-plus"></i>Thêm vào giỏ hàng</button>
                                     </form>

@@ -76,8 +76,12 @@
                                                             </label>
                                                         </div>
                                                     </td>
-                                                    <td class="total-col"><?php echo  vnmoney($item['quantity'] * $sanpham->gia_cuoi_cung); ?></td>
-                                                    <td class="remove-col"><button class="btn-remove"><i class="icon-close"></i></button></td>
+                                                    <td class="total-col">
+                                                        <?php echo  vnmoney($item['quantity'] * $sanpham->gia_cuoi_cung); ?>
+                                                    </td>
+                                                    <td class="remove-col">
+                                                        <a href="/san-pham/xoa-khoi-gio-hang?id=<?php echo $sanpham->id; ?>" class="btn-remove"><i class="icon-close"></i></a>
+                                                    </td>
                                                 </tr>
                                             <?php } ?>
                                         </tbody>

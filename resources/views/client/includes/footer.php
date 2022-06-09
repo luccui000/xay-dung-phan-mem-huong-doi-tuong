@@ -1,25 +1,27 @@
 <footer class="footer">
-    <div class="cta bg-image bg-dark pt-4 pb-5 mb-0" style="background-image: url(assets/images/demos/demo-4/bg-5.jpg);">
+    <?php if(!str_contains($_SERVER['REQUEST_URI'], 'dang-ky')) { ?>
+    <div class="cta bg-image bg-dark pt-4 pb-5 mb-0" style="background-image: url(<?php echo assets('public/client/images/bg-5.jpg') ?>);">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-sm-10 col-md-8 col-lg-6">
                     <div class="cta-heading text-center">
-                        <h3 class="cta-title text-white">Get The Latest Deals</h3><!-- End .cta-title -->
-                        <p class="cta-desc text-white">and receive <span class="font-weight-normal">$20 coupon</span> for first shopping</p><!-- End .cta-desc -->
-                    </div><!-- End .text-center -->
+                        <h3 class="cta-title text-white">Nhận ngay ưu đãi</h3>
+                        <p class="cta-desc text-white">đến từ cửa hàng <span class="font-weight-normal">voucher 200k</span> và hàng nghìn phần quà hấp dẫn</p>
+                    </div>
 
                     <form action="#">
                         <div class="input-group input-group-round">
-                            <input type="email" class="form-control form-control-white" placeholder="Enter your Email Address" aria-label="Email Adress" required>
+                            <input type="email" class="form-control form-control-white" placeholder="Nhập vào địa chỉ email" aria-label="Email Adress" required>
                             <div class="input-group-append">
-                                <button class="btn btn-primary" type="submit"><span>Subscribe</span><i class="icon-long-arrow-right"></i></button>
-                            </div><!-- .End .input-group-append -->
-                        </div><!-- .End .input-group -->
+                                <button class="btn btn-primary" type="submit"><span>Nhận ưu đãi ngay</span><i class="icon-long-arrow-right"></i></button>
+                            </div>
+                        </div>
                     </form>
-                </div><!-- End .col-sm-10 col-md-8 col-lg-6 -->
-            </div><!-- End .row -->
-        </div><!-- End .container -->
-    </div><!-- End .cta -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php } ?>
     <div class="footer-middle">
         <div class="container">
             <div class="row">
@@ -32,13 +34,13 @@
                             <i class="icon-phone"></i>
                             Got Question? Call us 24/7
                             <a href="tel:#">+0123 456 789</a>
-                        </div><!-- End .widget-call -->
-                    </div><!-- End .widget about-widget -->
-                </div><!-- End .col-sm-6 col-lg-3 -->
+                        </div>
+                    </div>
+                </div>
 
                 <div class="col-sm-6 col-lg-3">
                     <div class="widget">
-                        <h4 class="widget-title">Useful Links</h4><!-- End .widget-title -->
+                        <h4 class="widget-title">Useful Links</h4>
 
                         <ul class="widget-list">
                             <li><a href="about.html">About Molla</a></li>
@@ -46,13 +48,13 @@
                             <li><a href="#">How to shop on Molla</a></li>
                             <li><a href="faq.html">FAQ</a></li>
                             <li><a href="contact.html">Contact us</a></li>
-                        </ul><!-- End .widget-list -->
-                    </div><!-- End .widget -->
-                </div><!-- End .col-sm-6 col-lg-3 -->
+                        </ul>
+                    </div>
+                </div>
 
                 <div class="col-sm-6 col-lg-3">
                     <div class="widget">
-                        <h4 class="widget-title">Customer Service</h4><!-- End .widget-title -->
+                        <h4 class="widget-title">Customer Service</h4>
 
                         <ul class="widget-list">
                             <li><a href="#">Payment Methods</a></li>
@@ -61,13 +63,13 @@
                             <li><a href="#">Shipping</a></li>
                             <li><a href="#">Terms and conditions</a></li>
                             <li><a href="#">Privacy Policy</a></li>
-                        </ul><!-- End .widget-list -->
-                    </div><!-- End .widget -->
-                </div><!-- End .col-sm-6 col-lg-3 -->
+                        </ul>
+                    </div>
+                </div>
 
                 <div class="col-sm-6 col-lg-3">
                     <div class="widget">
-                        <h4 class="widget-title">My Account</h4><!-- End .widget-title -->
+                        <h4 class="widget-title">My Account</h4>
 
                         <ul class="widget-list">
                             <li><a href="#">Sign In</a></li>
@@ -75,16 +77,16 @@
                             <li><a href="#">My Wishlist</a></li>
                             <li><a href="#">Track My Order</a></li>
                             <li><a href="#">Help</a></li>
-                        </ul><!-- End .widget-list -->
-                    </div><!-- End .widget -->
-                </div><!-- End .col-sm-6 col-lg-3 -->
-            </div><!-- End .row -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
     <div class="footer-bottom">
         <div class="container">
-            <p class="footer-copyright">Copyright © 2019 Molla Store. All Rights Reserved.</p><!-- End .footer-copyright -->
+            <p class="footer-copyright">Copyright © 2019 Molla Store. All Rights Reserved.</p>
             <figure class="footer-payments">
                 <img src="assets/images/payments.png" alt="Payment methods" width="272" height="20">
             </figure>

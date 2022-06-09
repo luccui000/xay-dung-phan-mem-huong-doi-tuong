@@ -2,6 +2,7 @@
 
 namespace Luccui\Classes;
 
+use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Collection;
 use Luccui\Core\Database;
 use Illuminate\Database\Capsule\Manager as Capsule;
@@ -9,7 +10,7 @@ use Luccui\Helpers\Config;
 
 class Model extends Capsule
 {
-    protected $table = null;
+    protected $table = '';
     protected $primaryKey = 'id';
     protected $createdAt = false;
     protected $data = null;
@@ -23,9 +24,13 @@ class Model extends Capsule
     public function __construct()
     {
         parent::__construct();
+        $this->table = $this->resolveTableName();
         $this->db = new Database(app(Config::class)->db);
+    }
+    public function resolveTableName()
+    {
         $modelNamespace = explode("\\", get_class($this));
-        $this->table = !is_null($this->table) ? $this->table : strtolower(end($modelNamespace));
+        return !empty($this->table) ? $this->table : strtolower(end($modelNamespace));
     }
     public static function all(): Collection
     {
@@ -59,9 +64,26 @@ class Model extends Capsule
     {
         return static::getModel()->leftJoin($table, $first, $operator, $second);
     }
+    public static function selectRaw($expression, array $bindings = [])
+    {
+        return static::getModel()->selectRaw($expression, $bindings);
+    }
     public static function join($table, $first, $operator = null, $second = null, $type = 'inner', $where = false)
     {
         return static::getModel()->join($table, $first, $operator, $second, $type, $where);
+    }
+    public static function groupBy($groups)
+    {
+        return static::getModel()->groupBy(...$groups);
+    }
+    public static function query()
+    {
+        $database = new Database(app(Config::class)->db);
+        return new Builder($database->getConnection());
+    }
+    public static function paginate($perPage = 15, $columns = ['*'], $pageName = 'page', $page = null)
+    {
+        return static::getModel()->paginate($perPage, $columns, $pageName, $page);
     }
     public static function with($withModel)
     {

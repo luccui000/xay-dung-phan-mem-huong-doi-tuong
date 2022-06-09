@@ -21,7 +21,7 @@
     <main class="main">
         <div class="page-header text-center" style="background-image: url('<?php echo assets('public/client/images/page-header-bg.jpg'); ?>')">
             <div class="container">
-                <h1 class="page-title">Grid 4 Columns<span>Shop</span></h1>
+                <h1 class="page-title">Trang sản phẩm</h1>
             </div>
         </div>
         <nav aria-label="breadcrumb" class="breadcrumb-nav mb-2">
@@ -44,18 +44,18 @@
                         <div class="toolbox">
                             <div class="toolbox-left">
                                 <div class="toolbox-info">
-                                    Showing <span>9 of 56</span> Products
+                                    Hiển thị <span>9 of 56</span> Products
                                 </div>
                             </div>
 
                             <div class="toolbox-right">
                                 <div class="toolbox-sort">
-                                    <label for="sortby">Sort by:</label>
+                                    <label for="sortby">Sắp xếp theo:</label>
                                     <div class="select-custom">
                                         <select name="sortby" id="sortby" class="form-control">
-                                            <option value="popularity" selected="selected">Most Popular</option>
-                                            <option value="rating">Most Rated</option>
-                                            <option value="date">Date</option>
+                                            <option value="popularity" selected="selected">Độ phổ biến</option>
+                                            <option value="rating">Sao đánh giá</option>
+                                            <option value="date">Ngày</option>
                                         </select>
                                     </div>
                                 </div>
@@ -107,14 +107,14 @@
 
                         <div class="products mb-3">
                             <div class="row justify-content-center">
-                                <?php foreach ($sanphams as $sanpham) { ?>
+                                <?php foreach ($sanphams['data'] as $sanpham) { ?>
                                     <div class="col-6 col-md-4 col-lg-4 col-xl-3">
                                         <div class="product product-7 text-center">
                                             <figure class="product-media">
                                                 <?php if($sanpham[0]['la_san_pham_moi']) {?>
                                                     <span class="product-label label-new">New</span>
                                                 <?php } ?>
-                                                <a href="product.html">
+                                                <a href="#">
                                                     <img src="<?php echo assets($sanpham[0]['hinh_anh']); ?>" alt="<?php echo $sanpham[0]['ten_san_pham']; ?>" class="product-image">
                                                 </a>
 
@@ -161,740 +161,146 @@
                                         </div>
                                     </div>
                                 <?php } ?>
-
-                                <div class="col-6 col-md-4 col-lg-4 col-xl-3">
-                                    <div class="product product-7 text-center">
-                                        <figure class="product-media">
-                                            <a href="product.html">
-                                                <img src="assets/images/products/product-5.jpg" alt="Product image" class="product-image">
-                                            </a>
-
-                                            <div class="product-action-vertical">
-                                                <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
-                                                <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-                                                <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
-                                            </div>
-
-                                            <div class="product-action">
-                                                <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
-                                            </div>
-                                        </figure>
-
-                                        <div class="product-body">
-                                            <div class="product-cat">
-                                                <a href="#">Dresses</a>
-                                            </div>
-                                            <h3 class="product-title"><a href="product.html">Dark yellow lace cut out swing dress</a></h3>
-                                            <div class="product-price">
-                                                $84.00
-                                            </div>
-                                            <div class="ratings-container">
-                                                <div class="ratings">
-                                                    <div class="ratings-val" style="width: 0%;"></div>
-                                                </div>
-                                                <span class="ratings-text">( 0 Reviews )</span>
-                                            </div>
-
-                                            <div class="product-nav product-nav-thumbs">
-                                                <a href="#" class="active">
-                                                    <img src="assets/images/products/product-5-thumb.jpg" alt="product desc">
-                                                </a>
-                                                <a href="#">
-                                                    <img src="assets/images/products/product-5-2-thumb.jpg" alt="product desc">
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-6 col-md-4 col-lg-4 col-xl-3">
-                                    <div class="product product-7 text-center">
-                                        <figure class="product-media">
-                                            <span class="product-label label-out">Out of Stock</span>
-                                            <a href="product.html">
-                                                <img src="assets/images/products/product-6.jpg" alt="Product image" class="product-image">
-                                            </a>
-
-                                            <div class="product-action-vertical">
-                                                <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
-                                                <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-                                                <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
-                                            </div>
-
-                                            <div class="product-action">
-                                                <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
-                                            </div>
-                                        </figure>
-
-                                        <div class="product-body">
-                                            <div class="product-cat">
-                                                <a href="#">Jackets</a>
-                                            </div>
-                                            <h3 class="product-title"><a href="product.html">Khaki utility boiler jumpsuit</a></h3>
-                                            <div class="product-price">
-                                                <span class="out-price">$120.00</span>
-                                            </div>
-                                            <div class="ratings-container">
-                                                <div class="ratings">
-                                                    <div class="ratings-val" style="width: 80%;"></div>
-                                                </div>
-                                                <span class="ratings-text">( 6 Reviews )</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-6 col-md-4 col-lg-4 col-xl-3">
-                                    <div class="product product-7 text-center">
-                                        <figure class="product-media">
-                                            <a href="product.html">
-                                                <img src="assets/images/products/product-7.jpg" alt="Product image" class="product-image">
-                                            </a>
-
-                                            <div class="product-action-vertical">
-                                                <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
-                                                <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-                                                <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
-                                            </div>
-
-                                            <div class="product-action">
-                                                <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
-                                            </div>
-                                        </figure>
-
-                                        <div class="product-body">
-                                            <div class="product-cat">
-                                                <a href="#">Jeans</a>
-                                            </div>
-                                            <h3 class="product-title"><a href="product.html">Blue utility pinafore denim dress</a></h3>
-                                            <div class="product-price">
-                                                $76.00
-                                            </div>
-                                            <div class="ratings-container">
-                                                <div class="ratings">
-                                                    <div class="ratings-val" style="width: 20%;"></div>
-                                                </div>
-                                                <span class="ratings-text">( 2 Reviews )</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-6 col-md-4 col-lg-4 col-xl-3">
-                                    <div class="product product-7 text-center">
-                                        <figure class="product-media">
-                                            <span class="product-label label-new">New</span>
-                                            <a href="product.html">
-                                                <img src="assets/images/products/product-8.jpg" alt="Product image" class="product-image">
-                                            </a>
-
-                                            <div class="product-action-vertical">
-                                                <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
-                                                <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-                                                <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
-                                            </div>
-
-                                            <div class="product-action">
-                                                <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
-                                            </div>
-                                        </figure>
-
-                                        <div class="product-body">
-                                            <div class="product-cat">
-                                                <a href="#">Shoes</a>
-                                            </div>
-                                            <h3 class="product-title"><a href="product.html">Beige knitted elastic runner shoes</a></h3>
-                                            <div class="product-price">
-                                                $84.00
-                                            </div>
-                                            <div class="ratings-container">
-                                                <div class="ratings">
-                                                    <div class="ratings-val" style="width: 0%;"></div>
-                                                </div>
-                                                <span class="ratings-text">( 0 Reviews )</span>
-                                            </div>
-
-                                            <div class="product-nav product-nav-thumbs">
-                                                <a href="#" class="active">
-                                                    <img src="assets/images/products/product-8-thumb.jpg" alt="product desc">
-                                                </a>
-                                                <a href="#">
-                                                    <img src="assets/images/products/product-8-2-thumb.jpg" alt="product desc">
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-6 col-md-4 col-lg-4 col-xl-3">
-                                    <div class="product product-7 text-center">
-                                        <figure class="product-media">
-                                            <a href="product.html">
-                                                <img src="assets/images/products/product-9.jpg" alt="Product image" class="product-image">
-                                            </a>
-
-                                            <div class="product-action-vertical">
-                                                <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
-                                                <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-                                                <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
-                                            </div>
-
-                                            <div class="product-action">
-                                                <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
-                                            </div>
-                                        </figure>
-
-                                        <div class="product-body">
-                                            <div class="product-cat">
-                                                <a href="#">Bags</a>
-                                            </div>
-                                            <h3 class="product-title"><a href="product.html">Orange saddle lock front chain cross body bag</a></h3>
-                                            <div class="product-price">
-                                                $84.00
-                                            </div>
-                                            <div class="ratings-container">
-                                                <div class="ratings">
-                                                    <div class="ratings-val" style="width: 60%;"></div>
-                                                </div>
-                                                <span class="ratings-text">( 1 Reviews )</span>
-                                            </div>
-
-                                            <div class="product-nav product-nav-thumbs">
-                                                <a href="#" class="active">
-                                                    <img src="assets/images/products/product-9-thumb.jpg" alt="product desc">
-                                                </a>
-                                                <a href="#">
-                                                    <img src="assets/images/products/product-9-2-thumb.jpg" alt="product desc">
-                                                </a>
-                                                <a href="#">
-                                                    <img src="assets/images/products/product-9-3-thumb.jpg" alt="product desc">
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-6 col-md-4 col-lg-4 col-xl-3">
-                                    <div class="product product-7 text-center">
-                                        <figure class="product-media">
-                                            <span class="product-label label-top">Top</span>
-                                            <a href="product.html">
-                                                <img src="assets/images/products/product-11.jpg" alt="Product image" class="product-image">
-                                            </a>
-
-                                            <div class="product-action-vertical">
-                                                <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
-                                                <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-                                                <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
-                                            </div>
-
-                                            <div class="product-action">
-                                                <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
-                                            </div>
-                                        </figure>
-
-                                        <div class="product-body">
-                                            <div class="product-cat">
-                                                <a href="#">Shoes</a>
-                                            </div>
-                                            <h3 class="product-title"><a href="product.html">Light brown studded Wide fit wedges</a></h3>
-                                            <div class="product-price">
-                                                $110.00
-                                            </div>
-                                            <div class="ratings-container">
-                                                <div class="ratings">
-                                                    <div class="ratings-val" style="width: 80%;"></div>
-                                                </div>
-                                                <span class="ratings-text">( 1 Reviews )</span>
-                                            </div>
-
-                                            <div class="product-nav product-nav-thumbs">
-                                                <a href="#" class="active">
-                                                    <img src="assets/images/products/product-11-thumb.jpg" alt="product desc">
-                                                </a>
-                                                <a href="#">
-                                                    <img src="assets/images/products/product-11-2-thumb.jpg" alt="product desc">
-                                                </a>
-
-                                                <a href="#">
-                                                    <img src="assets/images/products/product-11-3-thumb.jpg" alt="product desc">
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-6 col-md-4 col-lg-4 col-xl-3">
-                                    <div class="product product-7 text-center">
-                                        <figure class="product-media">
-                                            <a href="product.html">
-                                                <img src="assets/images/products/product-10.jpg" alt="Product image" class="product-image">
-                                            </a>
-
-                                            <div class="product-action-vertical">
-                                                <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
-                                                <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-                                                <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
-                                            </div>
-
-                                            <div class="product-action">
-                                                <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
-                                            </div>
-                                        </figure>
-
-                                        <div class="product-body">
-                                            <div class="product-cat">
-                                                <a href="#">Jumpers</a>
-                                            </div>
-                                            <h3 class="product-title"><a href="product.html">Yellow button front tea top</a></h3>
-                                            <div class="product-price">
-                                                $56.00
-                                            </div>
-                                            <div class="ratings-container">
-                                                <div class="ratings">
-                                                    <div class="ratings-val" style="width: 0%;"></div>
-                                                </div>
-                                                <span class="ratings-text">( 0 Reviews )</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-6 col-md-4 col-lg-4 col-xl-3">
-                                    <div class="product product-7 text-center">
-                                        <figure class="product-media">
-                                            <a href="product.html">
-                                                <img src="assets/images/products/product-12.jpg" alt="Product image" class="product-image">
-                                            </a>
-
-                                            <div class="product-action-vertical">
-                                                <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
-                                                <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-                                                <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
-                                            </div>
-
-                                            <div class="product-action">
-                                                <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
-                                            </div>
-                                        </figure>
-
-                                        <div class="product-body">
-                                            <div class="product-cat">
-                                                <a href="#">Bags</a>
-                                            </div>
-                                            <h3 class="product-title"><a href="product.html">Black soft RI weekend travel bag</a></h3>
-                                            <div class="product-price">
-                                                $68.00
-                                            </div>
-                                            <div class="ratings-container">
-                                                <div class="ratings">
-                                                    <div class="ratings-val" style="width: 0%;"></div>
-                                                </div>
-                                                <span class="ratings-text">( 0 Reviews )</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-6 col-md-4 col-lg-4 col-xl-3">
-                                    <div class="product product-7 text-center">
-                                        <figure class="product-media">
-                                            <a href="product.html">
-                                                <img src="assets/images/products/product-13.jpg" alt="Product image" class="product-image">
-                                            </a>
-
-                                            <div class="product-action-vertical">
-                                                <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
-                                                <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-                                                <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
-                                            </div>
-
-                                            <div class="product-action">
-                                                <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
-                                            </div>
-                                        </figure>
-
-                                        <div class="product-body">
-                                            <div class="product-cat">
-                                                <a href="#">Bags</a>
-                                            </div>
-                                            <h3 class="product-title"><a href="product.html">Beige metal hoop tote bag</a></h3>
-                                            <div class="product-price">
-                                                $76.00
-                                            </div>
-                                            <div class="ratings-container">
-                                                <div class="ratings">
-                                                    <div class="ratings-val" style="width: 40%;"></div>
-                                                </div>
-                                                <span class="ratings-text">( 1 Reviews )</span>
-                                            </div>
-
-                                            <div class="product-nav product-nav-thumbs">
-                                                <a href="#" class="active">
-                                                    <img src="assets/images/products/product-13-thumb.jpg" alt="product desc">
-                                                </a>
-                                                <a href="#">
-                                                    <img src="assets/images/products/product-13-2-thumb.jpg" alt="product desc">
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-6 col-md-4 col-lg-4 col-xl-3">
-                                    <div class="product product-7 text-center">
-                                        <figure class="product-media">
-                                            <a href="product.html">
-                                                <img src="assets/images/products/product-14.jpg" alt="Product image" class="product-image">
-                                            </a>
-
-                                            <div class="product-action-vertical">
-                                                <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
-                                                <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-                                                <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
-                                            </div>
-
-                                            <div class="product-action">
-                                                <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
-                                            </div>
-                                        </figure>
-
-                                        <div class="product-body">
-                                            <div class="product-cat">
-                                                <a href="#">Dresses</a>
-                                            </div>
-                                            <h3 class="product-title"><a href="product.html">Brown zebra print dungaree dress</a></h3>
-                                            <div class="product-price">
-                                                $80.00
-                                            </div>
-                                            <div class="ratings-container">
-                                                <div class="ratings">
-                                                    <div class="ratings-val" style="width: 0%;"></div>
-                                                </div>
-                                                <span class="ratings-text">( 0 Reviews )</span>
-                                            </div>
-
-                                            <div class="product-nav product-nav-thumbs">
-                                                <a href="#" class="active">
-                                                    <img src="assets/images/products/product-14-thumb.jpg" alt="product desc">
-                                                </a>
-                                                <a href="#">
-                                                    <img src="assets/images/products/product-14-2-thumb.jpg" alt="product desc">
-                                                </a>
-                                                <a href="#">
-                                                    <img src="assets/images/products/product-14-3-thumb.jpg" alt="product desc">
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-6 col-md-4 col-lg-4 col-xl-3">
-                                    <div class="product product-7 text-center">
-                                        <figure class="product-media">
-                                            <a href="product.html">
-                                                <img src="assets/images/products/product-15.jpg" alt="Product image" class="product-image">
-                                            </a>
-
-                                            <div class="product-action-vertical">
-                                                <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
-                                                <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-                                                <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
-                                            </div>
-
-                                            <div class="product-action">
-                                                <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
-                                            </div>
-                                        </figure>
-
-                                        <div class="product-body">
-                                            <div class="product-cat">
-                                                <a href="#">Bags</a>
-                                            </div>
-                                            <h3 class="product-title"><a href="product.html">Beige ring handle circle cross body bag</a></h3>
-                                            <div class="product-price">
-                                                $56.00
-                                            </div>
-                                            <div class="ratings-container">
-                                                <div class="ratings">
-                                                    <div class="ratings-val" style="width: 0%;"></div>
-                                                </div>
-                                                <span class="ratings-text">( 0 Reviews )</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
-
-
                         <nav aria-label="Page navigation">
                             <ul class="pagination justify-content-center">
-                                <li class="page-item disabled">
-                                    <a class="page-link page-link-prev" href="#" aria-label="Previous" tabindex="-1" aria-disabled="true">
-                                        <span aria-hidden="true"><i class="icon-long-arrow-left"></i></span>Prev
-                                    </a>
-                                </li>
-                                <li class="page-item active" aria-current="page"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item-total">of 6</li>
-                                <li class="page-item">
-                                    <a class="page-link page-link-next" href="#" aria-label="Next">
-                                        Next <span aria-hidden="true"><i class="icon-long-arrow-right"></i></span>
-                                    </a>
-                                </li>
+                                <?php foreach ($sanphams['links'] as $link) { ?>
+                                    <?php if($link['label'] == "Previous") {?>
+                                        <li class="page-item <?php echo is_null($link['url']) ? 'disabled' : ''; ?>">
+                                            <a class="page-link page-link-prev" href="/san-pham/tat-ca<?php echo ltrim($link['url'], '/') ?>" aria-label="Trang trước" tabindex="-1" aria-disabled="true">
+                                                <span aria-hidden="true"><i class="icon-long-arrow-left"></i></span>Trang trước
+                                            </a>
+                                        </li>
+                                    <?php } else if($link['label'] == "Next") {?>
+                                        <li class="page-item <?php echo is_null($link['url']) ? 'disabled' : ''; ?>">
+                                            <a class="page-link page-link-prev" href="/san-pham/tat-ca<?php echo ltrim($link['url'], '/') ?>" aria-label="Trang trước" tabindex="-1" aria-disabled="true">
+                                                Trang kế <span aria-hidden="true"><i class="icon-long-arrow-right"></i></span>
+                                            </a>
+                                        </li>
+                                    <?php } else { ?>
+                                        <li class="page-item <?php echo $link['active'] ? 'active' : ''; ?>" aria-current="page">
+                                            <a class="page-link" href="/san-pham/tat-ca<?php echo ltrim($link['url'], '/') ?>">
+                                                <?php echo $link['label'] ?>
+                                            </a>
+                                        </li>
+                                    <?php } ?>
+                                <?php } ?>
+<!--                                <li class="page-item-total">of </li> -->
                             </ul>
                         </nav>
                     </div>
                     <aside class="col-lg-3 order-lg-first">
                         <div class="sidebar sidebar-shop">
                             <div class="widget widget-clean">
-                                <label>Filters:</label>
-                                <a href="#" class="sidebar-filter-clear">Clean All</a>
+                                <label>Lọc theo:</label>
+                                <a href="#" class="sidebar-filter-clear">Xóa bộ lọc</a>
                             </div>
+                            <form method="GET" action="{! route('/san-pham/tat-ca') !}">
+                                <div class="widget widget-collapsible">
+                                    <h3 class="widget-title">
+                                        <a data-toggle="collapse" href="#widget-1" role="button" aria-expanded="true" aria-controls="widget-1">
+                                            Danh mục
+                                        </a>
+                                    </h3>
 
-                            <div class="widget widget-collapsible">
-                                <h3 class="widget-title">
-                                    <a data-toggle="collapse" href="#widget-1" role="button" aria-expanded="true" aria-controls="widget-1">
-                                        Category
-                                    </a>
-                                </h3>
-
-                                <div class="collapse show" id="widget-1">
-                                    <div class="widget-body">
-                                        <div class="filter-items filter-items-count">
-                                            <div class="filter-item">
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="cat-1">
-                                                    <label class="custom-control-label" for="cat-1">Dresses</label>
-                                                </div>
-                                                <span class="item-count">3</span>
-                                            </div>
-
-                                            <div class="filter-item">
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="cat-2">
-                                                    <label class="custom-control-label" for="cat-2">T-shirts</label>
-                                                </div>
-                                                <span class="item-count">0</span>
-                                            </div>
-
-                                            <div class="filter-item">
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="cat-3">
-                                                    <label class="custom-control-label" for="cat-3">Bags</label>
-                                                </div>
-                                                <span class="item-count">4</span>
-                                            </div>
-
-                                            <div class="filter-item">
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="cat-4">
-                                                    <label class="custom-control-label" for="cat-4">Jackets</label>
-                                                </div>
-                                                <span class="item-count">2</span>
-                                            </div>
-
-                                            <div class="filter-item">
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="cat-5">
-                                                    <label class="custom-control-label" for="cat-5">Shoes</label>
-                                                </div>
-                                                <span class="item-count">2</span>
-                                            </div>
-
-                                            <div class="filter-item">
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="cat-6">
-                                                    <label class="custom-control-label" for="cat-6">Jumpers</label>
-                                                </div>
-                                                <span class="item-count">1</span>
-                                            </div>
-
-                                            <div class="filter-item">
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="cat-7">
-                                                    <label class="custom-control-label" for="cat-7">Jeans</label>
-                                                </div>
-                                                <span class="item-count">1</span>
-                                            </div>
-
-                                            <div class="filter-item">
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="cat-8">
-                                                    <label class="custom-control-label" for="cat-8">Sportwear</label>
-                                                </div>
-                                                <span class="item-count">0</span>
+                                    <div class="collapse show" id="widget-1">
+                                        <div class="widget-body">
+                                            <div class="filter-items filter-items-count">
+                                                <?php
+                                                    if(isset($_GET['danhmuc'])) {
+                                                        $dms = $_GET['danhmuc'];
+                                                    }
+                                                ?>
+                                                <?php foreach ($danhmucs as $danhmuc) { ?>
+                                                    <div class="filter-item">
+                                                        <div class="custom-control custom-checkbox">
+                                                            <input
+                                                                name="danhmuc[]" type="checkbox"
+                                                                <?php
+                                                                    if(isset($dms) && in_array($danhmuc->id, $dms))
+                                                                        echo 'checked';
+                                                                ?>
+                                                                id="cat-<?php echo $danhmuc->id; ?>"
+                                                                value="<?php echo $danhmuc->id; ?>"
+                                                                class="custom-control-input">
+                                                            <label class="custom-control-label" for="cat-<?php echo $danhmuc->id; ?>">
+                                                                <?php echo $danhmuc->ten_danh_muc; ?>
+                                                            </label>
+                                                        </div>
+                                                        <span class="item-count"><?php echo $danhmuc->so_luong_san_pham; ?></span>
+                                                    </div>
+                                                <?php } ?>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="widget widget-collapsible">
-                                <h3 class="widget-title">
-                                    <a data-toggle="collapse" href="#widget-2" role="button" aria-expanded="true" aria-controls="widget-2">
-                                        Size
-                                    </a>
-                                </h3>
-
-                                <div class="collapse show" id="widget-2">
-                                    <div class="widget-body">
-                                        <div class="filter-items">
-                                            <div class="filter-item">
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="size-1">
-                                                    <label class="custom-control-label" for="size-1">XS</label>
-                                                </div>
-                                            </div>
-
-                                            <div class="filter-item">
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="size-2">
-                                                    <label class="custom-control-label" for="size-2">S</label>
-                                                </div>
-                                            </div>
-
-                                            <div class="filter-item">
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" checked id="size-3">
-                                                    <label class="custom-control-label" for="size-3">M</label>
-                                                </div>
-                                            </div>
-
-                                            <div class="filter-item">
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" checked id="size-4">
-                                                    <label class="custom-control-label" for="size-4">L</label>
-                                                </div>
-                                            </div>
-
-                                            <div class="filter-item">
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="size-5">
-                                                    <label class="custom-control-label" for="size-5">XL</label>
-                                                </div>
-                                            </div>
-
-                                            <div class="filter-item">
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="size-6">
-                                                    <label class="custom-control-label" for="size-6">XXL</label>
-                                                </div>
+                                <div class="widget widget-collapsible">
+                                    <h3 class="widget-title">
+                                        <a data-toggle="collapse" href="#widget-4" role="button" aria-expanded="true" aria-controls="widget-4">
+                                            Nhà cung cấp
+                                        </a>
+                                    </h3>
+                                    <?php
+                                        if(isset($_GET['nhacungcap'])) {
+                                            $ncc = $_GET['nhacungcap'];
+                                        }
+                                    ?>
+                                    <div class="collapse show" id="widget-4">
+                                        <div class="widget-body">
+                                            <div class="filter-items">
+                                                <?php foreach ($nhacungcaps as $nhacungcap) {?>
+                                                    <div class="filter-item">
+                                                        <div class="custom-control custom-checkbox">
+                                                            <input
+                                                                type="checkbox"
+                                                                name="nhacungcap[]"
+                                                                class="custom-control-input"
+                                                                value="<?php echo $nhacungcap->id; ?>"
+                                                                id="brand-<?php echo $nhacungcap->id; ?>"
+                                                                <?php
+                                                                    if(isset($ncc) && in_array($nhacungcap->id, $ncc))
+                                                                        echo 'checked';
+                                                                ?>
+                                                            >
+                                                            <label class="custom-control-label" for="brand-<?php echo $nhacungcap->id; ?>">
+                                                                <?php echo $nhacungcap->ten_nha_cung_cap; ?>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                <?php } ?>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="widget widget-collapsible">
-                                <h3 class="widget-title">
-                                    <a data-toggle="collapse" href="#widget-3" role="button" aria-expanded="true" aria-controls="widget-3">
-                                        Colour
-                                    </a>
-                                </h3>
+                                <div class="widget widget-collapsible">
+                                    <h3 class="widget-title">
+                                        <a data-toggle="collapse" href="#widget-5" role="button" aria-expanded="true" aria-controls="widget-5">
+                                            Giá
+                                        </a>
+                                    </h3>
 
-                                <div class="collapse show" id="widget-3">
-                                    <div class="widget-body">
-                                        <div class="filter-colors">
-                                            <a href="#" style="background: #b87145;"><span class="sr-only">Color Name</span></a>
-                                            <a href="#" style="background: #f0c04a;"><span class="sr-only">Color Name</span></a>
-                                            <a href="#" style="background: #333333;"><span class="sr-only">Color Name</span></a>
-                                            <a href="#" class="selected" style="background: #cc3333;"><span class="sr-only">Color Name</span></a>
-                                            <a href="#" style="background: #3399cc;"><span class="sr-only">Color Name</span></a>
-                                            <a href="#" style="background: #669933;"><span class="sr-only">Color Name</span></a>
-                                            <a href="#" style="background: #f2719c;"><span class="sr-only">Color Name</span></a>
-                                            <a href="#" style="background: #ebebeb;"><span class="sr-only">Color Name</span></a>
+                                    <div class="collapse show" id="widget-5">
+                                        <div class="widget-body">
+                                            <div class="filter-price">
+                                                <div class="filter-price-text">
+                                                    Giá từ:
+                                                    <span id="filter-price-range"></span>
+                                                </div>
+
+                                                <div id="price-slider"></div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-
-                            <div class="widget widget-collapsible">
-                                <h3 class="widget-title">
-                                    <a data-toggle="collapse" href="#widget-4" role="button" aria-expanded="true" aria-controls="widget-4">
-                                        Brand
-                                    </a>
-                                </h3>
-
-                                <div class="collapse show" id="widget-4">
-                                    <div class="widget-body">
-                                        <div class="filter-items">
-                                            <div class="filter-item">
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="brand-1">
-                                                    <label class="custom-control-label" for="brand-1">Next</label>
-                                                </div>
-                                            </div>
-
-                                            <div class="filter-item">
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="brand-2">
-                                                    <label class="custom-control-label" for="brand-2">River Island</label>
-                                                </div>
-                                            </div>
-
-                                            <div class="filter-item">
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="brand-3">
-                                                    <label class="custom-control-label" for="brand-3">Geox</label>
-                                                </div>
-                                            </div>
-
-                                            <div class="filter-item">
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="brand-4">
-                                                    <label class="custom-control-label" for="brand-4">New Balance</label>
-                                                </div>
-                                            </div>
-
-                                            <div class="filter-item">
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="brand-5">
-                                                    <label class="custom-control-label" for="brand-5">UGG</label>
-                                                </div>
-                                            </div>
-
-                                            <div class="filter-item">
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="brand-6">
-                                                    <label class="custom-control-label" for="brand-6">F&F</label>
-                                                </div>
-                                            </div>
-
-                                            <div class="filter-item">
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="brand-7">
-                                                    <label class="custom-control-label" for="brand-7">Nike</label>
-                                                </div>
-                                            </div>
-
-                                        </div>
+                                <div class="row">
+                                    <div class="col-12 d-flex justify-content-end">
+                                        <button class="btn btn-primary">Áp dụng</button>
                                     </div>
                                 </div>
-                            </div>
-
-                            <div class="widget widget-collapsible">
-                                <h3 class="widget-title">
-                                    <a data-toggle="collapse" href="#widget-5" role="button" aria-expanded="true" aria-controls="widget-5">
-                                        Price
-                                    </a>
-                                </h3>
-
-                                <div class="collapse show" id="widget-5">
-                                    <div class="widget-body">
-                                        <div class="filter-price">
-                                            <div class="filter-price-text">
-                                                Price Range:
-                                                <span id="filter-price-range"></span>
-                                            </div>
-
-                                            <div id="price-slider"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            </form>
                         </div>
                     </aside>
                 </div>

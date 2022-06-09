@@ -13,13 +13,13 @@ class Session
     {
         if(!static::has($key))
             throw new SessionNotFoundException("Session {$key} not found");
-        return unserialize($_SESSION[$key]);
+        return $_SESSION[$key];
     }
     public static function set($key, $value)
     {
         if(empty($key) || empty($value))
             return null;
-        return $_SESSION[$key] = serialize($value);
+        return $_SESSION[$key] = $value;
     }
     public static function has($key): bool
     {
@@ -39,5 +39,13 @@ class Session
     {
         $url = $_SERVER['HTTP_REFERER'];
         header("Location: $url");
+        return static::class;
+    }
+    public static function with($data = [])
+    {
+        foreach ($data as $key => $value) {
+            static::set($key, $value);
+        }
+        return self::class;
     }
 }

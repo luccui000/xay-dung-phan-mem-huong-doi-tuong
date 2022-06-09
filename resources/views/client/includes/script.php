@@ -9,5 +9,6 @@
 <script src="{! assets('public/client/js/jquery.magnific-popup.min.js'); !}"></script>
 <script src="{! assets('public/client/js/jquery.countdown.min.js'); !}"></script>
 
-<script src="{! assets('public/client/js/main.js'); !}"></script>
 <script src="{! assets('public/client/js/demo-4.js'); !}"></script>
+<script src="{! assets('public/client/js/main.js'); !}"></script>
+<script src="{! assets('public/dist/js/app.js'); !}"></script>

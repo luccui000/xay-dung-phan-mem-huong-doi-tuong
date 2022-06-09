@@ -20,7 +20,15 @@
                                     </div>
                                 </div>
                             </li>
-                            <li><a href="#" data-toggle="modal">Đăng ký / Đăng nhập</a></li>
+                            <?php if(\Luccui\Core\Session::has(\Luccui\Classes\XacThuc::SESSION_DA_DANG_NHAP)) { ?>
+                                <li>
+                                    <a href="{! route('dang-ky') !}">
+                                        <?php echo \Luccui\Core\Session::get(\Luccui\Classes\XacThuc::SESSION_TEN_TAI_KHOAN); ?>
+                                    </a>
+                                </li>
+                            <?php } else { ?>
+                                <li><a href="{! route('dang-ky') !}">Đăng ký / Đăng nhập</a></li>
+                            <?php } ?>
                         </ul>
                     </li>
                 </ul>
@@ -89,7 +97,7 @@
                             <i class="icon-heart-o"></i>
                             <span class="wishlist-count badge"><?php echo count($wishlist); ?></span>
                         </div>
-                        <p>Wishlist</p>
+                        <p>Yêu thích</p>
                     </a>
                 </div>
 
@@ -131,14 +139,14 @@
                         </div>
 
                         <div class="dropdown-cart-total">
-                            <span>Total</span>
+                            <span>Tổng tiền</span>
 
                             <span class="cart-total-price"><?php echo vnmoney(resolve(\Luccui\Classes\Cart::class)->getAttributeTotal('gia_cuoi_cung')); ?></span>
                         </div>
 
                         <div class="dropdown-cart-action">
                             <a href="{! route('/san-pham/gio-hang'); !}" class="btn btn-primary">Xem giỏ hàng</a>
-                            <a href="{! route('/san-pham/thanh-toan'); !}" class="btn btn-outline-primary-2"><span>Checkout</span><i class="icon-long-arrow-right"></i></a>
+                            <a href="{! route('/san-pham/thanh-toan'); !}" class="btn btn-outline-primary-2"><span>Thanh toán</span></a>
                         </div>
                     </div>
                 </div>
@@ -151,23 +159,15 @@
             <div class="header-left">
                 <div class="dropdown category-dropdown">
                     <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static" title="Browse Categories">
-                        Browse Categories <i class="icon-angle-down"></i>
+                        Danh mục sản phẩm <i class="icon-angle-down"></i>
                     </a>
 
                     <div class="dropdown-menu">
                         <nav class="side-nav">
                             <ul class="menu-vertical sf-arrows">
-                                <li class="item-lead"><a href="#">Daily offers</a></li>
-                                <li class="item-lead"><a href="#">Gift Ideas</a></li>
-                                <li><a href="#">Beds</a></li>
-                                <li><a href="#">Lighting</a></li>
-                                <li><a href="#">Sofas & Sleeper sofas</a></li>
-                                <li><a href="#">Storage</a></li>
-                                <li><a href="#">Armchairs & Chaises</a></li>
-                                <li><a href="#">Decoration </a></li>
-                                <li><a href="#">Kitchen Cabinets</a></li>
-                                <li><a href="#">Coffee & Tables</a></li>
-                                <li><a href="#">Outdoor Furniture </a></li>
+                                <?php foreach (\Luccui\Models\DanhMuc::all() as $danhmuc) { ?>
+                                    <li><a href="/san-pham/tat-ca?danhmuc%5B%5D=<?php echo $danhmuc->id; ?>"><?php echo $danhmuc->ten_danh_muc; ?></a></li>
+                                <?php } ?>
                             </ul>
                         </nav>
                     </div>

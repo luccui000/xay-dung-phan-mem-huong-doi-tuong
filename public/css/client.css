@@ -70,3 +70,35 @@ input[name=phuong_thuc_thanh_toan] ~ label {
     margin-left: 5px;
     cursor: pointer;
 }
+@media screen and (min-width: 992px) {
+    .product-gallery-vertical .product-gallery-item {
+        flex: 0 0 100%;
+        max-width: 100%;
+        padding-left: 0;
+        padding-right: 0;
+        margin-bottom: 1rem;
+        max-height: 130px;
+    }
+}
+.noUi-connect {
+    background-color: #ccc;
+}
+.noUi-horizontal {
+    height: 2px !important;
+}
+.noUi-handle {
+    width: 20px !important;
+    height: 20px !important;
+    margin: -5px 10px;
+    border-radius: 50% !important;
+}
+.noUi-handle:before, .noUi-handle:after {
+    display: none !important;
+    background: transparent;
+    left: 14px !important;
+    top: 6px !important;
+}
+.noUi-connect {
+    background-color: #000 !important;
+    height: 2px;
+}

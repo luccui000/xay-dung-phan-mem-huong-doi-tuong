@@ -2,8 +2,8 @@
 
 namespace Luccui\Models;
 
-
 use Luccui\Classes\Model;
+use Luccui\Factories\TaiKhoanFactory;
 
 class TaiKhoan extends Model
 {

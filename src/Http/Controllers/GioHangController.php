@@ -43,4 +43,10 @@ class GioHangController extends Controller
     {
         var_dump(app(Request::class));
     }
+    public function delete()
+    {
+        if(!is_null($this->request->query['id']))
+            app(Cart::class)->remove($this->request->query['id']);
+        Session::back();
+    }
 }

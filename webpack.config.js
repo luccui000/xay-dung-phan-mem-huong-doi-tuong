@@ -2,12 +2,21 @@ const path = require("path");
 
 module.exports = {
     entry: {
-        apis: "./resources/js/apis/index.js",
+        app: "./resources/js/index.js",
+        thanhtoan: "./resources/js/noUiSlider/index.js"
     },
     mode: "development",
     output: {
         filename: "[name].js",
         path: path.resolve(__dirname, "public/dist/js"),
         clean: true
+    },
+    module: {
+        rules: [
+            {
+                test: /\.css$/i,
+                use: ["style-loader", "css-loader"],
+            },
+        ],
     }
 }

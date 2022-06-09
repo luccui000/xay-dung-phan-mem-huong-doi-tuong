@@ -82,7 +82,7 @@ if(!function_exists('clientBasePath')) {
     }
 }
 if (!function_exists('redirect')) {
-    function redirect(string $url): void
+    function redirect(string $url)
     {
         header('Location: ' . $url);
     }

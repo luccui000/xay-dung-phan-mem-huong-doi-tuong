@@ -2,8 +2,11 @@
 
 namespace Luccui\Core;
 
+use Delight\Auth\Auth;
+use Illuminate\Database\Capsule\Manager;
 use Luccui\Classes\Cart;
 use Luccui\Classes\Container;
+use Luccui\Classes\Hash;
 use Luccui\Classes\Wishlist;
 use Luccui\Exceptions\RouteNotFoundException;
 use Luccui\Helpers\Config;
@@ -36,10 +39,20 @@ class Application
     {
         static::$container = new Container();
         static::$container->set(Config::class, fn() => new Config($_ENV));
-        static::$container->set('DB', fn() => new Database(app(Config::class)->db));
+        static::$container->set('DB', function($container) {
+            return new Database(
+                $container->get(Config::class)->db
+            );
+        });
     }
     public function register()
     {
+        static::$container->set('Auth', function ($container) {
+            return new Auth(
+                $container->get('DB')->getConnection()->getPdo()
+            );
+        });
+        static::$container->set('Hash', fn() => new Hash());
         static::$container->set(Request::class, fn() => new Request());
         static::$container->set(GiaoHangInterface::class, GiaoHangNhanh::class);
         static::$container->set(ThanhToanGateway::class, VNPay::class);

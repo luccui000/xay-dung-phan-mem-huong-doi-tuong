@@ -7,6 +7,7 @@ use Luccui\Classes\Model;
 class SanPham extends Model
 {
     const TOTAL_IMAGE_UPLOAD  = 4;
+    protected $table = 'sanpham';
 
     protected array $fillable = [
         'id',

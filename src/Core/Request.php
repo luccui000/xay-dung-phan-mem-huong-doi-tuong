@@ -4,7 +4,9 @@ namespace Luccui\Core;
 
 class Request
 {
-    protected array $inputs = [];
+    protected array $inputs = [
+        'query' => []
+    ];
 
     public function __construct()
     {

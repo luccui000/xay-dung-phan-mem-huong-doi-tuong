@@ -1,7 +1,9 @@
 <?php
+session_start();
 
 header("Content-type: text/html; charset=utf-8");
 
+use Luccui\Classes\GlobalSearch;
 use Luccui\Core\Application;
 
 require_once "./vendor/autoload.php";
@@ -13,6 +15,8 @@ $dotenv->load();
 
 require_once "./routes/web.php";
 require_once "./routes/api.php";
+
+new GlobalSearch($_SERVER['REQUEST_URI']);
 
 (new Application(
     $_SERVER['REQUEST_URI'] != "/" ?
