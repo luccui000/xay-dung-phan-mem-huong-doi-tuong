@@ -1,0 +1,9 @@
+#toggle-menu {
+    position: absolute;
+    top: 5px;
+    left: 280px;
+    z-index: 999;
+    background-color: transparent;
+    border: transparent;
+    cursor: pointer;
+}

@@ -1,10 +1,11 @@
 <?php
 
-use Luccui\Http\Controllers\{ChiTietSanPhamController,
+use Luccui\Http\Controllers\{
+    Admin\TrangChuController,
+    ChiTietSanPhamController,
     DanhMucController,
     DanhMucSanPhamController,
     DanhSachSanPhamController,
-    DashboardController,
     AdminController,
     GioHangController,
     HinhAnhController,
@@ -15,7 +16,6 @@ use Luccui\Http\Controllers\{ChiTietSanPhamController,
     TaiKhoanController,
     ThanhToanController,
     WishlistController};
-use Luccui\Classes\Wishlist;
 use Luccui\Core\Router;
 
 Router::get('/', [HomeController::class, 'index'], '/home');
@@ -46,7 +46,8 @@ Router::post('/dang-nhap', [TaiKhoanController::class, 'DangNhap'], 'luu-dang-nh
 
 Router::get('/admin', fn () => redirect('/admin/dang-nhap'));
 Router::get('/admin/dang-nhap', [AdminController::class, 'formDangNhap'], '/admin/dang-nhap');
-Router::get('/admin/dashboard', [DashboardController::class, 'index'], '/admin/dashboard/index');
+Router::post('/admin/dang-nhap', [TrangChuController::class, 'dangnhap'], '/post/admin/dang-nhap');
+Router::get('/admin/trang-chu', [TrangChuController::class, 'index'], '/admin/trang-chu');
 Router::get('/admin/danh-muc', [DanhMucController::class, 'index'], '/admin/danhmuc/index');
 Router::get('/admin/san-pham', [SanphamController::class, 'index'], '/admin/sanpham/index');
 Router::get('/admin/san-pham/create', [SanphamController::class, 'create'], '/admin/sanpham/create');

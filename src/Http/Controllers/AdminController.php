@@ -10,7 +10,7 @@ class AdminController
 {
     public function formDangNhap()
     {
-        return view("/admin/auth/login.php");
+        return view("/admin/auth/dang-nhap.php");
     }
     public function index()
     {
