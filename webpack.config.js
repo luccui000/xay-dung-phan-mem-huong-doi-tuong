@@ -3,7 +3,8 @@ const path = require("path");
 module.exports = {
     entry: {
         app: "./resources/js/index.js",
-        thanhtoan: "./resources/js/noUiSlider/index.js"
+        thanhtoan: "./resources/js/noUiSlider/index.js",
+        admin: "./resources/js/admin/index.js"
     },
     mode: "development",
     output: {
