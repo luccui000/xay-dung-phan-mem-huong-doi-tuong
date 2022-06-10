@@ -31,6 +31,16 @@ class TaiKhoanFactory
                     data_get($attributes, 'gioi_thieu') : '',
             quyen: array_key_exists('quyen', $attributes) ?
                 data_get($attributes, 'quyen') : 0,
+            dia_chi: array_key_exists('dia_chi', $attributes) ?
+                data_get($attributes, 'dia_chi') : '',
+            ma_tinh: array_key_exists('ma_tinh', $attributes) ?
+                data_get($attributes, 'ma_tinh') : null,
+            ma_huyen: array_key_exists('ma_huyen', $attributes) ?
+                data_get($attributes, 'ma_huyen') : null,
+            ma_xa: array_key_exists('ma_xa', $attributes) ?
+                data_get($attributes, 'ma_xa') : null,
+            ten_cong_ty: array_key_exists('ten_cong_ty', $attributes) ?
+                data_get($attributes, 'ten_cong_ty') : ''
         );
     }
 }

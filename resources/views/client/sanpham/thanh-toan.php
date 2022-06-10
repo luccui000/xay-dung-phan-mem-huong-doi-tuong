@@ -46,23 +46,35 @@
                     <form action="/san-pham/thanh-toan" method="post">
                         <div class="row">
                             <div class="col-lg-9">
+                                <?php
+                                    if(\Luccui\Core\Session::has(\Luccui\Classes\XacThuc::SESSION_DA_DANG_NHAP)) {
+                                        $taikhoan_id = \Luccui\Core\Session::get(\Luccui\Classes\XacThuc::SESSION_ID_TAI_KHOAN);
+                                        $taikhoan = \Luccui\Models\TaiKhoan::where('id', '=', $taikhoan_id)->first();
+//                                        var_dump($taikhoan);
+                                        function fillIfExist($taikhoan, $field) {
+                                            if($taikhoan) {
+                                               echo $taikhoan->$field;
+                                            }
+                                        }
+                                    }
+                                ?>
                                 <h2 class="checkout-title">Chi tiết hóa đơn</h2>
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <label for="ho_khach_hang">Họ *</label>
-                                        <input name="ho_khach_hang" id="ho_khach_hang" type="text" class="form-control" required>
+                                        <input value="<?php fillIfExist($taikhoan, 'ho'); ?>" name="ho_khach_hang" id="ho_khach_hang" type="text" class="form-control" required>
                                     </div>
 
                                     <div class="col-sm-6">
                                         <label>Tên *</label>
-                                        <input name="ten_khach_hang" type="text" class="form-control" required>
+                                        <input value="<?php fillIfExist($taikhoan, 'ten'); ?>" name="ten_khach_hang" type="text" class="form-control" required>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label>Tên công ty (Không bắt buộc)</label>
-                                            <input name="ten_cong_ty" type="text" class="form-control">
+                                            <input value="<?php fillIfExist($taikhoan, 'ten_cong_ty'); ?>" name="ten_cong_ty" type="text" class="form-control">
                                         </div>
                                     </div>
                                 </div>
@@ -70,7 +82,7 @@
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label>Địa chỉ chi tiết *</label>
-                                            <input name="dia_chi" type="text" class="form-control" placeholder="Số nhà tên đường địa chỉ nhà" required>
+                                            <input value="<?php fillIfExist($taikhoan, 'dia_chi'); ?>" name="dia_chi" type="text" class="form-control" placeholder="Số nhà tên đường địa chỉ nhà" required>
                                         </div>
                                     </div>
                                 </div>
@@ -104,14 +116,14 @@
 
                                     <div class="col-sm-6">
                                         <label>Số điện thoại *</label>
-                                        <input name="so_dien_thoai" type="tel" class="form-control" required>
+                                        <input value="<?php fillIfExist($taikhoan, 'so_dien_thoai'); ?>" name="so_dien_thoai" type="tel" class="form-control" required>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label>Địa chỉ email *</label>
-                                            <input name="email" type="email" class="form-control" required>
+                                            <input value="<?php fillIfExist($taikhoan, 'email'); ?>" name="email" type="email" class="form-control" required>
                                         </div>
                                     </div>
                                 </div>

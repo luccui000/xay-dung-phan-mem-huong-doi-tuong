@@ -3,6 +3,7 @@
 namespace Luccui\Http\Controllers;
 
 use Luccui\Classes\Cart;
+use Luccui\Classes\XacThuc;
 use Luccui\Core\Request;
 use Luccui\Core\Session;
 use Luccui\Core\Str;
@@ -54,8 +55,17 @@ class ThanhToanController
     }
     public function saveDonHang($data)
     {
-        $khachhang_id = TaiKhoan::insertGetId(
-            TaiKhoanFactory::make($data)->toArray());
+        if(!Session::has(XacThuc::SESSION_DA_DANG_NHAP)) {
+            $khachhang_id = TaiKhoan::insertGetId(
+                TaiKhoanFactory::make($data)->toArray());
+        } else {
+            $khachhang_id = Session::get(XacThuc::SESSION_ID_TAI_KHOAN);
+            $newValueKhachHang = TaiKhoanFactory::make($data)->toArray();
+            unset($newValueKhachHang['id']);
+            unset($newValueKhachHang['ten_dang_nhap']);
+            TaiKhoan::where('id', '=', $khachhang_id)
+                ->update($newValueKhachHang);
+        }
         return DonHang::insertGetId(DonHangFactory::make(
             array_merge([
                 'nguoi_dat' => $khachhang_id

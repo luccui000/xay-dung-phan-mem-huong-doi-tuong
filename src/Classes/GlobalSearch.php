@@ -24,7 +24,6 @@ class GlobalSearch
             return ;
         if(isset($_GET['q'])) {
             $q = $_GET['q'];
-            var_dump($url);
         }
     }
 }

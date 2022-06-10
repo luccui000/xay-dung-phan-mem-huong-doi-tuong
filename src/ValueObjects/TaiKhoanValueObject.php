@@ -15,7 +15,12 @@ class TaiKhoanValueObject implements ValueObject
         private string $ngay_tao,
         private string|null $lan_dang_nhap_cuoi,
         private string|null $gioi_thieu,
-        private int $quyen
+        private int $quyen,
+        private string|null $dia_chi,
+        private int|null $ma_tinh,
+        private int|null $ma_huyen,
+        private int|null $ma_xa,
+        private string|null $ten_cong_ty
     )
     {
     }
@@ -34,6 +39,11 @@ class TaiKhoanValueObject implements ValueObject
             'lan_dang_nhap_cuoi' => $this->lan_dang_nhap_cuoi,
             'gioi_thieu' => $this->gioi_thieu,
             'quyen' => $this->quyen,
+            'dia_chi' => $this->dia_chi,
+            'ma_tinh' => $this->ma_tinh,
+            'ma_huyen' => $this->ma_huyen,
+            'ma_xa' => $this->ma_xa,
+            'ten_cong_ty' => $this->ten_cong_ty
         ];
     }
 }

@@ -53,7 +53,7 @@
             <div class="header-center">
                 <div class="header-search header-search-extended header-search-visible d-none d-lg-block">
                     <a href="#" class="search-toggle" role="button"><i class="icon-search"></i></a>
-                    <form action="#" method="get">
+                    <form action="/san-pham/tat-ca" method="get">
                         <div class="header-search-wrapper search-wrapper-wide">
                             <label for="q" class="sr-only">Tìm kiếm</label>
                             <button class="btn btn-primary" type="submit"><i class="icon-search"></i></button>
@@ -108,7 +108,7 @@
                             <i class="icon-shopping-cart"></i>
                             <span class="cart-count"><?php echo count($cart); ?></span>
                         </div>
-                        <p>Cart</p>
+                        <p>Giỏ hàng</p>
                     </a>
 
                     <div class="dropdown-menu dropdown-menu-right">

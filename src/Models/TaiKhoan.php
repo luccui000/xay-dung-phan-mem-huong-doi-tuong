@@ -3,7 +3,6 @@
 namespace Luccui\Models;
 
 use Luccui\Classes\Model;
-use Luccui\Factories\TaiKhoanFactory;
 
 class TaiKhoan extends Model
 {
@@ -19,5 +18,10 @@ class TaiKhoan extends Model
         'lan_dang_nhap_cuoi',
         'gioi_thieu',
         'quyen',
+        'dia_chi',
+        'ma_tinh',
+        'ma_huyen',
+        'ma_xa',
+        'ten_cong_ty'
     ];
 }

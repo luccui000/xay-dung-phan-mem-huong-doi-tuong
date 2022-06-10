@@ -8,7 +8,7 @@ use Luccui\Core\Request;
 
 class AdminController
 {
-    public function login()
+    public function formDangNhap()
     {
         return view("/admin/auth/login.php");
     }

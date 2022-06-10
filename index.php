@@ -16,7 +16,7 @@ $dotenv->load();
 require_once "./routes/web.php";
 require_once "./routes/api.php";
 
-new GlobalSearch($_SERVER['REQUEST_URI']);
+//new GlobalSearch($_SERVER['REQUEST_URI']);
 
 (new Application(
     $_SERVER['REQUEST_URI'] != "/" ?
