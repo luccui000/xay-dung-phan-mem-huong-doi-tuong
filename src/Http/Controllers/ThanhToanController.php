@@ -40,7 +40,6 @@ class ThanhToanController
             }
         }
 
-
         $donhang = DonHang::where('id', '=', $donhang_id)->first();
 
         if($request->phuong_thuc_thanh_toan == "online") {

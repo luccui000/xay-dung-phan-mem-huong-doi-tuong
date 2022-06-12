@@ -1,7 +1,9 @@
 <?php
 
-use Luccui\Http\Controllers\{
+use Luccui\Http\Controllers\{Admin\DonHangController,
+    Admin\PDFController,
     Admin\TrangChuController,
+    Admin\SanphamController,
     ChiTietSanPhamController,
     DanhMucController,
     DanhMucSanPhamController,
@@ -12,11 +14,11 @@ use Luccui\Http\Controllers\{
     HomeController,
     LienHeController,
     NhaCungCapController,
-    SanphamController,
     TaiKhoanController,
     ThanhToanController,
     WishlistController};
 use Luccui\Core\Router;
+
 
 Router::get('/', [HomeController::class, 'index'], '/home');
 Router::get('/san-pham/chi-tiet', [ChiTietSanPhamController::class, 'detail'], 'chi-tiet');
@@ -49,9 +51,14 @@ Router::get('/admin/dang-nhap', [AdminController::class, 'formDangNhap'], '/admi
 Router::post('/admin/dang-nhap', [TrangChuController::class, 'dangnhap'], '/post/admin/dang-nhap');
 Router::get('/admin/trang-chu', [TrangChuController::class, 'index'], '/admin/trang-chu');
 Router::get('/admin/danh-muc', [DanhMucController::class, 'index'], '/admin/danhmuc/index');
-Router::get('/admin/san-pham', [SanphamController::class, 'index'], '/admin/sanpham/index');
+Router::get('/admin/san-pham', [SanphamController::class, 'index'], '/admin/sanpham');
 Router::get('/admin/san-pham/create', [SanphamController::class, 'create'], '/admin/sanpham/create');
 Router::post('/admin/san-pham/store', [SanphamController::class, 'store'], '/admin/sanpham/store');
+
+Router::get('/admin/don-hang', [DonHangController::class, 'index'], '/admin/don-hang');
+Router::get('/admin/don-hang/chi-tiet', [DonHangController::class, 'show'], '/admin/don-hang/chi-tiet');
+Router::post('/admin/don-hang/in-hoa-don', [PDFController::class, 'inHoaDon'], '/admin/don-hang/in-hoa-don');
+
 Router::get('/admin/nha-cung-cap', [NhaCungCapController::class, 'index'], '/admin/nhacungcap/index');
 Router::get('/admin/hinh-anh', [HinhAnhController::class, 'index'], '/admin/hinhanh/index');
 

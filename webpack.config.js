@@ -10,14 +10,16 @@ module.exports = {
     output: {
         filename: "[name].js",
         path: path.resolve(__dirname, "public/dist/js"),
-        clean: true
+        // clean: true
     },
     module: {
         rules: [
             {
                 test: /\.css$/i,
                 use: ["style-loader", "css-loader"],
-            },
+            }
         ],
-    }
+    },
+    devtool: 'source-map',
+    performance: { hints: false }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Luccui\Http\Controllers;
+namespace Luccui\Http\Controllers\Admin;
 
 
 use Luccui\Core\Request;
@@ -12,9 +12,8 @@ use Luccui\Models\NhaCungCap;
 use Luccui\Models\SanPham;
 use Luccui\Models\TuyChon;
 
-class SanphamController extends Controller
+class SanphamController extends BaseController
 {
-
     public function index()
     {
         $sanphams = SanPham::orderBy('ngay_tao')
@@ -28,12 +27,12 @@ class SanphamController extends Controller
     {
         $danhmucs = DanhMuc::all();
         $nhacungcaps = NhaCungCap::all();
-        $tuychons = TuyChon::selectRaw("distinct(ten_tuy_chon)")->get();
+//        $tuychons = TuyChon::selectRaw("distinct(ten_tuy_chon)")->get();
 
         return view('admin/sanpham/create.php', [
             'danhmucs' => $danhmucs,
             'nhacungcaps' => $nhacungcaps,
-            'tuychons' => $tuychons
+//            'tuychons' => $tuychons
         ]);
     }
     public function store()

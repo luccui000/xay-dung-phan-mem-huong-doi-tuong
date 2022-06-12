@@ -1,22 +1,110 @@
-/*
- * ATTENTION: The "eval" devtool has been used (maybe by default in mode: "development").
- * This devtool is neither made for production nor for readable output files.
- * It uses "eval()" calls to create a separate source file in the browser devtools.
- * If you are trying to read the output file, select a different devtool (https://webpack.js.org/configuration/devtool/)
- * or disable the default devtool with "devtool: false".
- * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
- */
-/******/ (() => { // webpackBootstrap
-/******/ 	"use strict";
-/******/ 	var __webpack_modules__ = ({
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// create a fake namespace object
+/******/ 	// mode & 1: value is a module id, require it
+/******/ 	// mode & 2: merge all properties of value into the ns
+/******/ 	// mode & 4: return value when already ns object
+/******/ 	// mode & 8|1: behave like require
+/******/ 	__webpack_require__.t = function(value, mode) {
+/******/ 		if(mode & 1) value = __webpack_require__(value);
+/******/ 		if(mode & 8) return value;
+/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		var ns = Object.create(null);
+/******/ 		__webpack_require__.r(ns);
+/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/ 		return ns;
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = "./resources/js/index.js");
+/******/ })
+/************************************************************************/
+/******/ ({
 
 /***/ "./resources/js/apis/index.js":
 /*!************************************!*\
   !*** ./resources/js/apis/index.js ***!
   \************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _thanhtoan__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./thanhtoan */ \"./resources/js/apis/thanhtoan.js\");\n\n\nconst apis = {\n    danhSachHuyen: _thanhtoan__WEBPACK_IMPORTED_MODULE_0__.danhSachHuyen,\n    danhSachXa: _thanhtoan__WEBPACK_IMPORTED_MODULE_0__.danhSachXa,\n    tinhPhi: _thanhtoan__WEBPACK_IMPORTED_MODULE_0__.tinhPhi,\n}\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (apis);\n\n\n//# sourceURL=webpack://lara-ecommerce/./resources/js/apis/index.js?");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _thanhtoan__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./thanhtoan */ "./resources/js/apis/thanhtoan.js");
+
+
+const apis = {
+    danhSachHuyen: _thanhtoan__WEBPACK_IMPORTED_MODULE_0__["danhSachHuyen"],
+    danhSachXa: _thanhtoan__WEBPACK_IMPORTED_MODULE_0__["danhSachXa"],
+    tinhPhi: _thanhtoan__WEBPACK_IMPORTED_MODULE_0__["tinhPhi"],
+}
+/* harmony default export */ __webpack_exports__["default"] = (apis);
+
 
 /***/ }),
 
@@ -24,9 +112,45 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /*!****************************************!*\
   !*** ./resources/js/apis/thanhtoan.js ***!
   \****************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/*! exports provided: danhSachHuyen, danhSachXa, tinhPhi */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"danhSachHuyen\": () => (/* binding */ danhSachHuyen),\n/* harmony export */   \"danhSachXa\": () => (/* binding */ danhSachXa),\n/* harmony export */   \"tinhPhi\": () => (/* binding */ tinhPhi)\n/* harmony export */ });\n\nconst danhSachHuyen = function (maTinh) {\n    return $.ajax({\n        'type': 'GET',\n        'url': \"/api/dia-chi/danh-sach-huyen\",\n        'data': {\n            'ma_tinh': maTinh\n        }\n    })\n}\nconst danhSachXa = function(maHuyen) {\n    return $.ajax({\n        'type': 'GET',\n        'url': '/api/dia-chi/danh-sach-xa',\n        'data': {\n            'ma_huyen': maHuyen\n        }\n    })\n}\nconst tinhPhi = function (maXa, maHuyen) {\n    return $.ajax({\n        type: \"POST\",\n        url: \"/api/giao-hang/tinh-phi\",\n        data: {\n            'ma_huyen': maHuyen,\n            'ma_xa': maXa\n        }\n    })\n}\n\n\n\n//# sourceURL=webpack://lara-ecommerce/./resources/js/apis/thanhtoan.js?");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "danhSachHuyen", function() { return danhSachHuyen; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "danhSachXa", function() { return danhSachXa; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "tinhPhi", function() { return tinhPhi; });
+
+const danhSachHuyen = function (maTinh) {
+    return $.ajax({
+        'type': 'GET',
+        'url': "/api/dia-chi/danh-sach-huyen",
+        'data': {
+            'ma_tinh': maTinh
+        }
+    })
+}
+const danhSachXa = function(maHuyen) {
+    return $.ajax({
+        'type': 'GET',
+        'url': '/api/dia-chi/danh-sach-xa',
+        'data': {
+            'ma_huyen': maHuyen
+        }
+    })
+}
+const tinhPhi = function (maXa, maHuyen) {
+    return $.ajax({
+        type: "POST",
+        url: "/api/giao-hang/tinh-phi",
+        data: {
+            'ma_huyen': maHuyen,
+            'ma_xa': maXa
+        }
+    })
+}
+
+
 
 /***/ }),
 
@@ -34,9 +158,15 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /*!**************************************!*\
   !*** ./resources/js/config/index.js ***!
   \**************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nconst config = {}\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (config);\n\n\n//# sourceURL=webpack://lara-ecommerce/./resources/js/config/index.js?");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+const config = {}
+
+/* harmony default export */ __webpack_exports__["default"] = (config);
+
 
 /***/ }),
 
@@ -44,9 +174,16 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /*!**************************************!*\
   !*** ./resources/js/global/index.js ***!
   \**************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nconst global = {\n    DIA_CHI: 'DIA_CHI'\n}\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (global);\n\n\n//# sourceURL=webpack://lara-ecommerce/./resources/js/global/index.js?");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+const global = {
+    DIA_CHI: 'DIA_CHI'
+}
+/* harmony default export */ __webpack_exports__["default"] = (global);
+
 
 /***/ }),
 
@@ -54,9 +191,32 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /*!*******************************!*\
   !*** ./resources/js/index.js ***!
   \*******************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _utils_MyLocalStorage__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./utils/MyLocalStorage */ \"./resources/js/utils/MyLocalStorage.js\");\n/* harmony import */ var _apis__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./apis */ \"./resources/js/apis/index.js\");\n/* harmony import */ var _global__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./global */ \"./resources/js/global/index.js\");\n/* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./config */ \"./resources/js/config/index.js\");\n/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./utils */ \"./resources/js/utils/index.js\");\n\n\n\n\n\n\nconst HDTShop =  {\n    global: _global__WEBPACK_IMPORTED_MODULE_2__[\"default\"],\n    apis: _apis__WEBPACK_IMPORTED_MODULE_1__[\"default\"],\n    config: _config__WEBPACK_IMPORTED_MODULE_3__[\"default\"],\n    utils: _utils__WEBPACK_IMPORTED_MODULE_4__[\"default\"],\n    MyLocalStorage: _utils_MyLocalStorage__WEBPACK_IMPORTED_MODULE_0__[\"default\"]\n};\n\nwindow.HDTShop = HDTShop;\n\n\n//# sourceURL=webpack://lara-ecommerce/./resources/js/index.js?");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _utils_MyLocalStorage__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./utils/MyLocalStorage */ "./resources/js/utils/MyLocalStorage.js");
+/* harmony import */ var _apis__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./apis */ "./resources/js/apis/index.js");
+/* harmony import */ var _global__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./global */ "./resources/js/global/index.js");
+/* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./config */ "./resources/js/config/index.js");
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./utils */ "./resources/js/utils/index.js");
+
+
+
+
+
+
+const HDTShop =  {
+    global: _global__WEBPACK_IMPORTED_MODULE_2__["default"],
+    apis: _apis__WEBPACK_IMPORTED_MODULE_1__["default"],
+    config: _config__WEBPACK_IMPORTED_MODULE_3__["default"],
+    utils: _utils__WEBPACK_IMPORTED_MODULE_4__["default"],
+    MyLocalStorage: _utils_MyLocalStorage__WEBPACK_IMPORTED_MODULE_0__["default"]
+};
+
+window.HDTShop = HDTShop;
+
 
 /***/ }),
 
@@ -64,9 +224,33 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _uti
 /*!**********************************************!*\
   !*** ./resources/js/utils/MyLocalStorage.js ***!
   \**********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ MyLocalStorage)\n/* harmony export */ });\nclass MyLocalStorage {\n    static get(key) {\n        return JSON.parse(window.localStorage.getItem(key));\n    }\n    static add(key, value) {\n        window.localStorage.setItem(key, JSON.stringify(value));\n    }\n    static remove(key) {\n        window.localStorage.removeItem(key);\n    }\n    static clear() {\n        window.localStorage.clear();\n    }\n    static key(index) {\n        return window.localStorage.key(index);\n    }\n    static get length() {\n        return window.localStorage.length;\n    }\n}\n\n\n//# sourceURL=webpack://lara-ecommerce/./resources/js/utils/MyLocalStorage.js?");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return MyLocalStorage; });
+class MyLocalStorage {
+    static get(key) {
+        return JSON.parse(window.localStorage.getItem(key));
+    }
+    static add(key, value) {
+        window.localStorage.setItem(key, JSON.stringify(value));
+    }
+    static remove(key) {
+        window.localStorage.removeItem(key);
+    }
+    static clear() {
+        window.localStorage.clear();
+    }
+    static key(index) {
+        return window.localStorage.key(index);
+    }
+    static get length() {
+        return window.localStorage.length;
+    }
+}
+
 
 /***/ }),
 
@@ -74,9 +258,19 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /*!*****************************************!*\
   !*** ./resources/js/utils/VNDFormat.js ***!
   \*****************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/*! exports provided: VNDFormat */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"VNDFormat\": () => (/* binding */ VNDFormat)\n/* harmony export */ });\nfunction VNDFormat(money) {\n    return new Intl.NumberFormat('vi-VN', {\n        style: 'currency',\n        currency: 'VND'\n    }).format(money);\n}\n\n\n//# sourceURL=webpack://lara-ecommerce/./resources/js/utils/VNDFormat.js?");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "VNDFormat", function() { return VNDFormat; });
+function VNDFormat(money) {
+    return new Intl.NumberFormat('vi-VN', {
+        style: 'currency',
+        currency: 'VND'
+    }).format(money);
+}
+
 
 /***/ }),
 
@@ -84,73 +278,21 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /*!*************************************!*\
   !*** ./resources/js/utils/index.js ***!
   \*************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _VNDFormat__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./VNDFormat */ \"./resources/js/utils/VNDFormat.js\");\n\n\nconst utils = {\n    VNDFormat: _VNDFormat__WEBPACK_IMPORTED_MODULE_0__.VNDFormat,\n}\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (utils);\n\n\n//# sourceURL=webpack://lara-ecommerce/./resources/js/utils/index.js?");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _VNDFormat__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./VNDFormat */ "./resources/js/utils/VNDFormat.js");
+
+
+const utils = {
+    VNDFormat: _VNDFormat__WEBPACK_IMPORTED_MODULE_0__["VNDFormat"],
+}
+/* harmony default export */ __webpack_exports__["default"] = (utils);
+
 
 /***/ })
 
-/******/ 	});
-/************************************************************************/
-/******/ 	// The module cache
-/******/ 	var __webpack_module_cache__ = {};
-/******/ 	
-/******/ 	// The require function
-/******/ 	function __webpack_require__(moduleId) {
-/******/ 		// Check if module is in cache
-/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
-/******/ 		if (cachedModule !== undefined) {
-/******/ 			return cachedModule.exports;
-/******/ 		}
-/******/ 		// Create a new module (and put it into the cache)
-/******/ 		var module = __webpack_module_cache__[moduleId] = {
-/******/ 			// no module.id needed
-/******/ 			// no module.loaded needed
-/******/ 			exports: {}
-/******/ 		};
-/******/ 	
-/******/ 		// Execute the module function
-/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
-/******/ 	
-/******/ 		// Return the exports of the module
-/******/ 		return module.exports;
-/******/ 	}
-/******/ 	
-/************************************************************************/
-/******/ 	/* webpack/runtime/define property getters */
-/******/ 	(() => {
-/******/ 		// define getter functions for harmony exports
-/******/ 		__webpack_require__.d = (exports, definition) => {
-/******/ 			for(var key in definition) {
-/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
-/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
-/******/ 				}
-/******/ 			}
-/******/ 		};
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
-/******/ 	(() => {
-/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/make namespace object */
-/******/ 	(() => {
-/******/ 		// define __esModule on exports
-/******/ 		__webpack_require__.r = (exports) => {
-/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
-/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
-/******/ 			}
-/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
-/******/ 		};
-/******/ 	})();
-/******/ 	
-/************************************************************************/
-/******/ 	
-/******/ 	// startup
-/******/ 	// Load entry module and return exports
-/******/ 	// This entry module can't be inlined because the eval devtool is used.
-/******/ 	var __webpack_exports__ = __webpack_require__("./resources/js/index.js");
-/******/ 	
-/******/ })()
-;
+/******/ });
+//# sourceMappingURL=app.js.map

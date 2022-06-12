@@ -1,6 +1,7 @@
 <?php
 
 
+use Luccui\Classes\VietNamCharsetConversion;
 use Luccui\Core\Application;
 use Luccui\Core\Router;
 use Luccui\Core\View;
@@ -15,6 +16,11 @@ if(!function_exists('partial')) {
     function partial($path, $layout = 'admin') : void {
         $fullPath = RESOURCE_PATH . $layout . DIRECTORY_SEPARATOR . $path;
         include $fullPath;
+    }
+}
+if(!function_exists('includes')) {
+    function includes($viewPath, $layout = 'admin') {
+        include RESOURCE_PATH . $layout . DIRECTORY_SEPARATOR . $viewPath;
     }
 }
 if(!function_exists('view')) {
@@ -44,9 +50,9 @@ if(!function_exists('route')) {
     }
 }
 if(!function_exists('vnmoney')) {
-    function vnmoney($priceFloat, $decimals = 0, $thousands_separator = ',') {
+    function vnmoney($priceFloat, $d = true, $decimals = 0, $thousands_separator = ',') {
         $price = number_format($priceFloat, 0, $decimals, $thousands_separator);
-        return $price .'đ';
+        return $d ?  $price . 'đ' : $price;
     }
 }
 if(!function_exists('dd')) {
@@ -85,5 +91,10 @@ if (!function_exists('redirect')) {
     function redirect(string $url)
     {
         header('Location: ' . $url);
+    }
+}
+if(!function_exists('vietnamConversasion')) {
+    function vietnam($text) {
+        return new VietNamCharsetConversion($text);
     }
 }
