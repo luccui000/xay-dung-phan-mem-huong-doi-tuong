@@ -90,14 +90,21 @@
                                     <h4 class="text-right mb-5">Tổng tiền : <?php echo vnmoney($donhang->tong_tien); ?></h4>
                                     <hr>
                                 </div>
-                                <div class="container-fluid w-100">
-                                    <a href="#" class="btn btn-primary float-right mt-4 ml-2"><i class="fa fa-share mr-1"></i>Gửi hóa đơn</a>
-                                    <form action="{! route('/admin/don-hang/in-hoa-don') !}" method="POST">
-                                        <label>
-                                            <input name="donhang_id" value="<?php echo $donhang->id; ?>" type="text" hidden>
-                                        </label>
-                                        <button type="submit" class="btn btn-success float-right mt-4"><i class="fa fa-print mr-1"></i>In hóa đơn</button>
-                                    </form>
+                                <div class="row">
+                                    <div class="col-12 d-flex justify-content-end">
+                                        <form class="mr-2" action="{! route('/admin/don-hang/gui-hoa-don') !}" method="POST">
+                                            <label>
+                                                <input name="donhang_id" value="<?php echo $donhang->id; ?>" type="text" hidden>
+                                            </label>
+                                            <button type="submit" class="btn btn-primary float-right mt-4"><i class="fa fa-share mr-1"></i>Gửi hóa đơn</button>
+                                        </form>
+                                        <form action="{! route('/admin/don-hang/in-hoa-don') !}" method="POST">
+                                            <label>
+                                                <input name="donhang_id" value="<?php echo $donhang->id; ?>" type="text" hidden>
+                                            </label>
+                                            <button type="submit" class="btn btn-success float-right mt-4"><i class="fa fa-print mr-1"></i>In hóa đơn</button>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>

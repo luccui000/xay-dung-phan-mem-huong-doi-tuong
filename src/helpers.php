@@ -4,6 +4,7 @@
 use Luccui\Classes\VietNamCharsetConversion;
 use Luccui\Core\Application;
 use Luccui\Core\Router;
+use Luccui\Core\Session;
 use Luccui\Core\View;
 use Luccui\Exceptions\RouteNotFoundException;
 
@@ -96,5 +97,10 @@ if (!function_exists('redirect')) {
 if(!function_exists('vietnamConversasion')) {
     function vietnam($text) {
         return new VietNamCharsetConversion($text);
+    }
+}
+if(function_exists('session')) {
+    function session() {
+        return new Session();
     }
 }

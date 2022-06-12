@@ -2,6 +2,7 @@
 
 namespace Luccui\Core;
 
+use Luccui\Exceptions\MethodNotFoundException;
 use Luccui\Exceptions\SessionNotFoundException;
 
 class Session
@@ -47,5 +48,19 @@ class Session
             static::set($key, $value);
         }
         return self::class;
+    }
+
+    /**
+     * @throws MethodNotFoundException
+     */
+    public static function __callStatic(string $method, array $arguments)
+    {
+        $model = static::class;
+        if(!method_exists($model, $method)) {
+            $className = get_class($model);
+            throw new MethodNotFoundException("Class ${$className} has not method ${method}");
+        }
+        call_user_func_array([$model, $method], $arguments);
+        return $model;
     }
 }

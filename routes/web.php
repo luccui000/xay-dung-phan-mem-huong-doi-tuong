@@ -58,6 +58,7 @@ Router::post('/admin/san-pham/store', [SanphamController::class, 'store'], '/adm
 Router::get('/admin/don-hang', [DonHangController::class, 'index'], '/admin/don-hang');
 Router::get('/admin/don-hang/chi-tiet', [DonHangController::class, 'show'], '/admin/don-hang/chi-tiet');
 Router::post('/admin/don-hang/in-hoa-don', [PDFController::class, 'inHoaDon'], '/admin/don-hang/in-hoa-don');
+Router::post('/admin/don-hang/gui-hoa-don', [PDFController::class, 'guiHoaDon'], '/admin/don-hang/gui-hoa-don');
 
 Router::get('/admin/nha-cung-cap', [NhaCungCapController::class, 'index'], '/admin/nhacungcap/index');
 Router::get('/admin/hinh-anh', [HinhAnhController::class, 'index'], '/admin/hinhanh/index');

@@ -7,6 +7,7 @@ use Illuminate\Database\Capsule\Manager;
 use Luccui\Classes\Cart;
 use Luccui\Classes\Container;
 use Luccui\Classes\Hash;
+use Luccui\Classes\Mailer;
 use Luccui\Classes\Wishlist;
 use Luccui\Exceptions\RouteNotFoundException;
 use Luccui\Helpers\Config;
@@ -59,6 +60,12 @@ class Application
         static::$container->set(GiaoHang::class, function ($container) {
             return new GiaoHang(
                 new GiaoHangNhanh($container->get(Config::class))
+            );
+        });
+        static::$container->set(Mailer::class, function ($container) {
+            return new Mailer(
+                $container->get(Config::class)->mailer,
+                true
             );
         });
         static::$container->set(DiaChi::class, fn() => new DiaChi(app(Config::class)));

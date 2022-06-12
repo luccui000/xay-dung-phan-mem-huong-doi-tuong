@@ -47,14 +47,14 @@
                         <div class="row">
                             <div class="col-lg-9">
                                 <?php
+                                    $taikhoan = null;
                                     if(\Luccui\Core\Session::has(\Luccui\Classes\XacThuc::SESSION_DA_DANG_NHAP)) {
                                         $taikhoan_id = \Luccui\Core\Session::get(\Luccui\Classes\XacThuc::SESSION_ID_TAI_KHOAN);
                                         $taikhoan = \Luccui\Models\TaiKhoan::where('id', '=', $taikhoan_id)->first();
-//                                        var_dump($taikhoan);
-                                        function fillIfExist($taikhoan, $field) {
-                                            if($taikhoan) {
-                                               echo $taikhoan->$field;
-                                            }
+                                    }
+                                    function fillIfExist($taikhoan, $value) {
+                                        if($taikhoan) {
+                                            echo $taikhoan->$value;
                                         }
                                     }
                                 ?>
@@ -128,15 +128,6 @@
                                     </div>
                                 </div>
 
-<!--                                <div class="custom-control custom-checkbox">-->
-<!--                                    <input type="checkbox" class="custom-control-input" id="checkout-create-acc">-->
-<!--                                    <label class="custom-control-label" for="checkout-create-acc">Đăng ký tài khoản?</label>-->
-<!--                                </div>-->
-<!---->
-<!--                                <div class="custom-control custom-checkbox">-->
-<!--                                    <input type="checkbox" class="custom-control-input" id="checkout-diff-address">-->
-<!--                                    <label class="custom-control-label" for="checkout-diff-address">Thêm địa chỉ mới?</label>-->
-<!--                                </div>-->
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="form-group">
@@ -245,6 +236,7 @@
     document.addEventListener("DOMContentLoaded", function() {
         const { danhSachHuyen, danhSachXa, tinhPhi } = HDTShop.apis;
         const { VNDFormat } = HDTShop.utils;
+
         $("#ma_tinh").on("change", function () {
             const maTinh = $("#ma_tinh option:selected").val();
             danhSachHuyen(maTinh).then(response => {
@@ -254,6 +246,8 @@
                 })
                 $("#ma_xa").empty();
                 $("#ma_huyen").empty().append(optionHuyen);
+                $("#ma_huyen option:nth-child(1)").attr("selected", true);
+                $("#ma_huyen").trigger("change");
             })
         })
         $("#ma_huyen").on("change", function() {
@@ -265,6 +259,7 @@
                     return `<option value="${xa.id}">${xa.name}</option>`;
                 })
                 $("#ma_xa").empty().append(optionXa);
+                $("#ma_xa option:nth-child(1)").attr("selected", true);
             })
         });
         $("#ma_xa").on("change", function() {
