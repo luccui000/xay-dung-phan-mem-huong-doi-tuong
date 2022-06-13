@@ -33,19 +33,16 @@ class XacThuc
         $static = new static();
         $matKhauMaHoa = $static->maHoaMatKhau($matKhau);
         $taikhoan = $static->timTaiKhoanAdmin($tenDangNhap, $matKhauMaHoa);
-        if(is_null($taikhoan)) {
-            return false;
+
+        if($taikhoan->id) {
+            $static->dangNhapAdminThanhCong($taikhoan->id, $taikhoan->ten_dang_nhap);
+            return true;
         }
-        if(!isset($taikhoan->id)) {
-            return false;
-        }
-        $static->dangNhapAdminThanhCong($taikhoan->id, $taikhoan->ten_dang_nhap);
-        return true;
+        return false;
     }
     private function maHoaMatKhau($matKhau)
     {
-        $hasher = new Hash();
-        return $hasher->make($matKhau);
+        return Hash::generate($matKhau);
     }
     private function dangnhapThanhCong($idTaiKhoan, $tenDangNhap)
     {
@@ -70,6 +67,12 @@ class XacThuc
         Session::set(self::SESSION_ADMIN_DA_DANG_NHAP, true);
         Session::set(self::SESSION_ADMIN_ID_TAI_KHOAN, $idTaiKhoan);
         Session::set(self::SESSION_ADMIN_TEN_TAI_KHOAN, $tenDangNhap);
+    }
+    public function dangXuatAdmin()
+    {
+        Session::remove(self::SESSION_ADMIN_DA_DANG_NHAP);
+        Session::remove(self::SESSION_ADMIN_ID_TAI_KHOAN);
+        Session::remove(self::SESSION_ADMIN_TEN_TAI_KHOAN);
     }
     public function timTaiKhoanAdmin($tenDangNhap, $matKhau)
     {

@@ -8,6 +8,7 @@ class DonHangValueObject implements ValueObject
 {
     public function __construct(
         private int|null $id,
+        private string|null $ma_don_hang,
         private int $nguoi_dat,
         private string $ho_nguoi_dat,
         private string $ten_nguoi_dat,
@@ -28,6 +29,7 @@ class DonHangValueObject implements ValueObject
     {
         return [
             'id' => $this->id,
+            'ma_don_hang' => $this->ma_don_hang,
             'nguoi_dat' => $this->nguoi_dat,
             'ho_nguoi_dat' => $this->ho_nguoi_dat,
             'ten_nguoi_dat' => $this->ten_nguoi_dat,

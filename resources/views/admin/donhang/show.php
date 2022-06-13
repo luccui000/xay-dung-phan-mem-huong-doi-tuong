@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Sản phẩm</title>
+    <title>Chi tiết đơn hàng <?php echo isset($_GET['id']) ? '#' . $_GET['id'] : ''; ?></title>
     <?php partial('includes/stylesheet.php', 'admin'); ?>
 </head>
 <body>
@@ -114,6 +114,17 @@
         </div>
     </div>
     <?php partial('includes/script.php', 'admin'); ?>
+    <script>
+        $(document).ready(function () {
+             const { toastSuccess, toastError } = HDTShop.toast;
+             <?php
+                if(has_session('sent_email')) {
+                    echo "toastSuccess('Thành công', '" . get_session('sent_email'). "')";
+                    remove_session('sent_email');
+                }
+            ?>
+        });
+    </script>
 </div>
 </body>
 </html>

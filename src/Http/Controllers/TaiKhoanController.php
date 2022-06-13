@@ -3,6 +3,7 @@
 namespace Luccui\Http\Controllers;
 
 use Illuminate\Database\QueryException;
+use Luccui\Classes\Hash;
 use Luccui\Classes\XacThuc;
 use Luccui\Core\Session;
 use Luccui\Factories\TaiKhoanFactory;

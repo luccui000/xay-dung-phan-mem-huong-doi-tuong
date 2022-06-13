@@ -1,9 +1,13 @@
 <?php
 
-use Luccui\Http\Controllers\{Admin\DonHangController,
+use Luccui\Http\Controllers\{
+    Admin\BaiVietController as AdminBaiVietController,
+    Admin\DangNhapController,
+    Admin\DonHangController,
     Admin\PDFController,
     Admin\TrangChuController,
     Admin\SanphamController,
+    BaiVietController,
     ChiTietSanPhamController,
     DanhMucController,
     DanhMucSanPhamController,
@@ -38,6 +42,10 @@ Router::get('/san-pham/thanh-toan', [ThanhToanController::class, 'checkout'], '/
 Router::post('/san-pham/thanh-toan', [ThanhToanController::class, 'confirm'], '/san-pham/thanh-toan/store');
 Router::get('/san-pham/thanh-toan/callback', [ThanhToanController::class, 'callback'], '/san-pham/thanh-toan/callback');
 
+
+Router::get('/bai-viet', [BaiVietController::class, 'index'], '/bai-viet');
+Router::get('/bai-viet/chi-tiet', [BaiVietController::class, 'detail'], '/bai-viet/chi-tiet');
+
 Router::get('/thanh-toan', [HomeController::class, 'checkout'], 'thanh-toan');
 Router::get('/lien-he', [LienHeController::class, 'index'], 'lien-he');
 
@@ -47,8 +55,10 @@ Router::get('/dang-nhap', [TaiKhoanController::class, 'formDangNhap'], 'dang-nha
 Router::post('/dang-nhap', [TaiKhoanController::class, 'DangNhap'], 'luu-dang-nhap');
 
 Router::get('/admin', fn () => redirect('/admin/dang-nhap'));
-Router::get('/admin/dang-nhap', [AdminController::class, 'formDangNhap'], '/admin/dang-nhap');
-Router::post('/admin/dang-nhap', [TrangChuController::class, 'dangnhap'], '/post/admin/dang-nhap');
+Router::get('/admin/dang-nhap', function () {
+    return view("/admin/auth/dang-nhap.php");
+}, '/admin/dang-nhap');
+Router::post('/admin/dang-nhap', [DangNhapController::class, 'dangnhap'], '/post/admin/dang-nhap');
 Router::get('/admin/trang-chu', [TrangChuController::class, 'index'], '/admin/trang-chu');
 Router::get('/admin/danh-muc', [DanhMucController::class, 'index'], '/admin/danhmuc/index');
 Router::get('/admin/san-pham', [SanphamController::class, 'index'], '/admin/sanpham');
@@ -60,6 +70,11 @@ Router::get('/admin/don-hang/chi-tiet', [DonHangController::class, 'show'], '/ad
 Router::post('/admin/don-hang/in-hoa-don', [PDFController::class, 'inHoaDon'], '/admin/don-hang/in-hoa-don');
 Router::post('/admin/don-hang/gui-hoa-don', [PDFController::class, 'guiHoaDon'], '/admin/don-hang/gui-hoa-don');
 
+Router::get('/admin/bai-viet', [AdminBaiVietController::class, 'index'], '/admin/bai-viet');
+Router::get('/admin/bai-viet/them-moi', [AdminBaiVietController::class, 'create'], '/admin/bai-viet/them-moi');
+Router::post('/admin/bai-viet', [AdminBaiVietController::class, 'store'], '/admin/bai-viet/luu-tru');
+Router::get('/admin/bai-viet/sua', [AdminBaiVietController::class, 'edit'], '/admin/bai-viet/sua');
+Router::post('/admin/bai-viet/cap-nhat', [AdminBaiVietController::class, 'update'], '/admin/bai-viet/cap-nhat');
 Router::get('/admin/nha-cung-cap', [NhaCungCapController::class, 'index'], '/admin/nhacungcap/index');
 Router::get('/admin/hinh-anh', [HinhAnhController::class, 'index'], '/admin/hinhanh/index');
 

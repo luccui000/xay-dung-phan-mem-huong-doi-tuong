@@ -15,4 +15,8 @@ class Hash implements Hasher
     {
         return md5($value, $binary);
     }
+    public static function generate($value, $binary = false): string
+    {
+        return md5($value, $binary);
+    }
 }

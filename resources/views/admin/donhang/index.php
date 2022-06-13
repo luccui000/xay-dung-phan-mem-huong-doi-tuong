@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Sản phẩm</title>
+    <title>Danh sách đơn hàng</title>
     <?php partial('includes/stylesheet.php', 'admin'); ?>
 </head>
 <body>
@@ -40,6 +40,9 @@
                                     <a href="#pills-daxacnhan" class="nav-link" data-toggle="pill" role="tab">Đã xác nhận</a>
                                 </li>
                                 <li class="nav-item">
+                                    <a href="#pills-dahoanthanh" class="nav-link" data-toggle="pill" role="tab">Đã hoàn thành</a>
+                                </li>
+                                <li class="nav-item">
                                     <a href="#pills-dahuy" class="nav-link" data-toggle="pill" role="tab">Đã hủy</a>
                                 </li>
                             </ul>
@@ -52,29 +55,49 @@
                                                 <th>Ngày đặt</th>
                                                 <th>Tên khách hàng</th>
                                                 <th>Phương thức thanh toán</th>
-                                                <th>Trạng thái</th>
+                                                <th class="text-center">Trạng thái</th>
                                                 <th>Tổng tiền</th>
                                                 <th>In hóa đơn</th>
+                                                <th>ID</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php foreach ($donhangs as $donhang) {?>
                                                 <tr>
                                                     <td>
-                                                        <a href="/admin/don-hang/chi-tiet?id=<?php echo $donhang->id; ?>"><?php echo $donhang->id; ?></a>
+                                                        <a href="/admin/don-hang/chi-tiet?id=<?php echo $donhang->ma_don_hang; ?>">
+                                                            <?php echo $donhang->ma_don_hang; ?>
+                                                        </a>
                                                     </td>
                                                     <td><?php echo $donhang->ngay_dat; ?></td>
                                                     <td><?php echo $donhang->ho_nguoi_dat . ' ' . $donhang->ten_nguoi_dat; ?></td>
                                                     <td><?php echo $donhang->phuong_thuc_thanh_toan; ?></td>
-                                                    <td>
+                                                    <td class="text-center">
                                                         <?php
                                                             if($donhang->trang_thai == \Luccui\Models\DonHang::DANG_CHO_XAC_NHAN) {
-                                                                echo "<span class='text-danger'>$donhang->trang_thai</span>";
+                                                                echo "<span class='badge badge-danger'>$donhang->trang_thai</span>";
+                                                            }
+                                                            if($donhang->trang_thai == \Luccui\Models\DonHang::DA_XAC_NHAN) {
+                                                                echo "<span class='badge badge-primary'>$donhang->trang_thai</span>";
+                                                            }
+                                                            if($donhang->trang_thai == \Luccui\Models\DonHang::DA_HOAN_THANH) {
+                                                                echo "<span class='badge badge-success'>$donhang->trang_thai</span>";
+                                                            }
+                                                            if($donhang->trang_thai == \Luccui\Models\DonHang::DA_HUY) {
+                                                                echo "<span class='badge badge-warning'>$donhang->trang_thai</span>";
                                                             }
                                                         ?>
                                                     </td>
                                                     <td><?php echo vnmoney($donhang->tong_tien); ?></td>
-                                                    <td></td>
+                                                    <td>
+                                                        <form action="/admin/don-hang/in-hoa-don" method="POST">
+                                                            <label>
+                                                                <input name="donhang_id" value="<?php echo $donhang->id; ?>" type="text" hidden>
+                                                            </label>
+                                                            <button type="submit" class="btn"><i class="fa fa-print mr-1"></i></button>
+                                                        </form>
+                                                    </td>
+                                                    <td><?php echo $donhang->id; ?></td>
                                                 </tr>
                                             <?php } ?>
                                         </tbody>
@@ -91,25 +114,36 @@
                                                 <th>Trạng thái</th>
                                                 <th>Tổng tiền</th>
                                                 <th>In hóa đơn</th>
+                                                <th>ID</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php foreach ($donhangs as $donhang) {?>
                                                 <?php if($donhang->trang_thai == \Luccui\Models\DonHang::DANG_CHO_XAC_NHAN) {?>
                                                     <tr>
-                                                        <td><?php echo $donhang->id; ?></td>
+                                                        <td>
+                                                            <a href="/admin/don-hang/chi-tiet?id=<?php echo $donhang->ma_don_hang; ?>">
+                                                                <?php echo $donhang->ma_don_hang; ?>
+                                                            </a>
+                                                        </td>
                                                         <td><?php echo $donhang->ngay_dat; ?></td>
                                                         <td><?php echo $donhang->ho_nguoi_dat . ' ' . $donhang->ten_nguoi_dat; ?></td>
                                                         <td><?php echo $donhang->phuong_thuc_thanh_toan; ?></td>
-                                                        <td>
-                                                            <?php
-                                                            if($donhang->trang_thai == \Luccui\Models\DonHang::DANG_CHO_XAC_NHAN) {
-                                                                echo "<span class='text-danger'>$donhang->trang_thai</span>";
-                                                            }
-                                                            ?>
+                                                        <td class="text-center">
+                                                            <span class='badge badge-danger'><?php echo $donhang->trang_thai; ?></span>
                                                         </td>
                                                         <td><?php echo vnmoney($donhang->tong_tien); ?></td>
-                                                        <td></td>
+                                                        <td>
+                                                            <form action="/admin/don-hang/in-hoa-don" method="POST">
+                                                                <label>
+                                                                    <input name="donhang_id" value="<?php echo $donhang->id; ?>" type="text" hidden>
+                                                                </label>
+                                                                <button type="submit" class="btn"><i class="fa fa-print mr-1"></i></button>
+                                                            </form>
+                                                        </td>
+                                                        <td>
+                                                            <?php echo $donhang->id ?>
+                                                        </td>
                                                     </tr>
                                                 <?php } ?>
                                             <?php } ?>
@@ -127,25 +161,78 @@
                                                 <th>Trạng thái</th>
                                                 <th>Tổng tiền</th>
                                                 <th>In hóa đơn</th>
+                                                <th>ID</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php foreach ($donhangs as $donhang) {?>
                                                 <?php if($donhang->trang_thai == \Luccui\Models\DonHang::DA_XAC_NHAN) {?>
                                                     <tr>
+                                                        <td>
+                                                            <a href="/admin/don-hang/chi-tiet?id=<?php echo $donhang->ma_don_hang; ?>">
+                                                                <?php echo $donhang->ma_don_hang; ?>
+                                                            </a>
+                                                        </td>
+                                                        <td><?php echo $donhang->ngay_dat; ?></td>
+                                                        <td><?php echo $donhang->ho_nguoi_dat . ' ' . $donhang->ten_nguoi_dat; ?></td>
+                                                        <td><?php echo $donhang->phuong_thuc_thanh_toan; ?></td>
+                                                        <td class="text-center">
+                                                            <span class='badge badge-primary'><?php echo $donhang->trang_thai; ?></span>
+                                                        </td>
+                                                        <td><?php echo vnmoney($donhang->tong_tien); ?></td>
+                                                        <td>
+                                                            <form action="/admin/don-hang/in-hoa-don" method="POST">
+                                                                <label>
+                                                                    <input name="donhang_id" value="<?php echo $donhang->id; ?>" type="text" hidden>
+                                                                </label>
+                                                                <button type="submit" class="btn"><i class="fa fa-print mr-1"></i></button>
+                                                            </form>
+                                                        </td>
                                                         <td><?php echo $donhang->id; ?></td>
+                                                    </tr>
+                                                <?php } ?>
+                                            <?php } ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="tab-pane fade" id="pills-dahoanthanh" role="tabpanel">
+                                    <table id="table-dahoanthanh" class="table table-hover">
+                                        <thead>
+                                        <tr>
+                                            <th>Mã đơn hàng</th>
+                                            <th>Ngày đặt</th>
+                                            <th>Tên khách hàng</th>
+                                            <th>Phương thức thanh toán</th>
+                                            <th>Trạng thái</th>
+                                            <th>Tổng tiền</th>
+                                            <th>In hóa đơn</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php foreach ($donhangs as $donhang) {?>
+                                                <?php if($donhang->trang_thai == \Luccui\Models\DonHang::DA_HOAN_THANH) {?>
+                                                    <tr>
+                                                        <td>
+                                                            <a href="/admin/don-hang/chi-tiet?id=<?php echo $donhang->ma_don_hang; ?>">
+                                                                <?php echo $donhang->ma_don_hang; ?>
+                                                            </a>
+                                                        </td>
                                                         <td><?php echo $donhang->ngay_dat; ?></td>
                                                         <td><?php echo $donhang->ho_nguoi_dat . ' ' . $donhang->ten_nguoi_dat; ?></td>
                                                         <td><?php echo $donhang->phuong_thuc_thanh_toan; ?></td>
                                                         <td>
-                                                            <?php
-                                                            if($donhang->trang_thai == \Luccui\Models\DonHang::DANG_CHO_XAC_NHAN) {
-                                                                echo "<span class='text-danger'>$donhang->trang_thai</span>";
-                                                            }
-                                                            ?>
+                                                            <span class='badge badge-warning'><?php echo $donhang->trang_thai; ?></span>
                                                         </td>
                                                         <td><?php echo vnmoney($donhang->tong_tien); ?></td>
-                                                        <td></td>
+                                                        <td>
+                                                            <form action="/admin/don-hang/in-hoa-don" method="POST">
+                                                                <label>
+                                                                    <input name="donhang_id" value="<?php echo $donhang->id; ?>" type="text" hidden>
+                                                                </label>
+                                                                <button type="submit" class="btn"><i class="fa fa-print mr-1"></i></button>
+                                                            </form>
+                                                        </td>
+                                                        <td><?php echo $donhang->id; ?></td>
                                                     </tr>
                                                 <?php } ?>
                                             <?php } ?>
@@ -169,19 +256,27 @@
                                         <?php foreach ($donhangs as $donhang) {?>
                                             <?php if($donhang->trang_thai == \Luccui\Models\DonHang::DA_HUY) {?>
                                                 <tr>
-                                                    <td><?php echo $donhang->id; ?></td>
+                                                    <td>
+                                                        <a href="/admin/don-hang/chi-tiet?id=<?php echo $donhang->ma_don_hang; ?>">
+                                                            <?php echo $donhang->ma_don_hang; ?>
+                                                        </a>
+                                                    </td>
                                                     <td><?php echo $donhang->ngay_dat; ?></td>
                                                     <td><?php echo $donhang->ho_nguoi_dat . ' ' . $donhang->ten_nguoi_dat; ?></td>
                                                     <td><?php echo $donhang->phuong_thuc_thanh_toan; ?></td>
                                                     <td>
-                                                        <?php
-                                                        if($donhang->trang_thai == \Luccui\Models\DonHang::DANG_CHO_XAC_NHAN) {
-                                                            echo "<span class='text-danger'>$donhang->trang_thai</span>";
-                                                        }
-                                                        ?>
+                                                        <span class='badge badge-warning'><?php echo $donhang->trang_thai; ?></span>
                                                     </td>
                                                     <td><?php echo vnmoney($donhang->tong_tien); ?></td>
-                                                    <td></td>
+                                                    <td>
+                                                        <form action="/admin/don-hang/in-hoa-don" method="POST">
+                                                            <label>
+                                                                <input name="donhang_id" value="<?php echo $donhang->id; ?>" type="text" hidden>
+                                                            </label>
+                                                            <button type="submit" class="btn"><i class="fa fa-print mr-1"></i></button>
+                                                        </form>
+                                                    </td>
+                                                    <td><?php echo $donhang->id; ?></td>
                                                 </tr>
                                             <?php } ?>
                                         <?php } ?>
@@ -201,6 +296,7 @@
             $("#example").DataTable();
             $("#table-dangchoxacnhan").DataTable();
             $("#table-daxacnhan").DataTable();
+            $("#table-dahoanthanh").DataTable();
             $("#table-dahuy").DataTable();
         })
     </script>

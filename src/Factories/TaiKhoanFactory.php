@@ -2,6 +2,7 @@
 
 namespace Luccui\Factories;
 
+use Luccui\Classes\Hash;
 use Luccui\ValueObjects\TaiKhoanValueObject;
 
 class TaiKhoanFactory
@@ -20,7 +21,7 @@ class TaiKhoanFactory
             email: array_key_exists('email', $attributes) ?
                     data_get($attributes, 'email') : '',
             mat_khau: array_key_exists('mat_khau', $attributes) ?
-                        data_get($attributes, 'mat_khau') : '',
+                        Hash::generate(data_get($attributes, 'mat_khau')) : '',
             ngay_tao: array_key_exists('ngay_tao', $attributes) ?
                     date('Y/m/d H:i:s', strtotime(data_get($attributes, 'ngay_tao'))) :
                     date("Y/m/d H:i:s"),

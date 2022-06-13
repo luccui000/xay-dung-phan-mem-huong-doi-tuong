@@ -20,7 +20,7 @@
                 <div class="col-lg-6 d-flex align-items-center justify-content-center">
                     <div class="auth-form-transparent text-left p-3">
                         <h4>Chào mừng bạn đã quay lại!</h4>
-                        <form action="{! route('/post/admin/dang-nhap') !}" method="POST" class="pt-3">
+                        <form action="/admin/dang-nhap" method="POST" class="pt-3">
                             <div class="form-group">
                                 <label for="ten_dang_nhap">Tên đăng nhập</label>
                                 <div class="input-group">
@@ -42,6 +42,7 @@
                                     </div>
                                     <input name="mat_khau" type="password" class="form-control border-left-0" id="mat_khau" placeholder="Mật khẩu">
                                 </div>
+                                <span class="text-danger"></span>
                             </div>
                             <div class="my-2 d-flex justify-content-between align-items-center">
                                 <div class="form-check">
@@ -72,10 +73,18 @@
                 </div>
             </div>
         </div>
-        <!-- content-wrapper ends -->
     </div>
-    <!-- page-body-wrapper ends -->
 </div>
 <?php partial('includes/script.php', 'admin'); ?>
+<script>
+    $(document).ready(function () {
+        const { toastError } = HDTShop.toast;
+        <?php
+            if(has_session('error')) {
+                echo "toastError('Đăng nhập thất bại', '" . get_session('error') . "')";
+            }
+        ?>
+    })
+</script>
 </body>
 </html>

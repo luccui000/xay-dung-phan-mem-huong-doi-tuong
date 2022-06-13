@@ -23,6 +23,7 @@ class Mailer extends PHPMailer
         $this->Password     = $this->config['password'];
         $this->Port         = $this->config['port'];
         $this->SMTPSecure   = $this->config['encryption'];
+        $this->setLanguage('vi');
         $this->setFrom(
             $this->config['from_address'],
             $this->config['from_name'],

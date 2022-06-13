@@ -1,6 +1,5 @@
 <script src="{! assets('public/admin/vendors/js/vendor.bundle.base.js') !}"></script>
 <script src="{! assets('public/admin/vendors/js/vendor.bundle.addons.js') !}"></script>
-<script src="https://cdn.ckeditor.com/ckeditor5/34.1.0/classic/ckeditor.js"></script>
 <script src="{! assets('public/admin/js/off-canvas.js') !}"></script>
 <script src="{! assets('public/admin/js/hoverable-collapse.js') !}"></script>
 <script src="{! assets('public/admin/js/misc.js') !}"></script>

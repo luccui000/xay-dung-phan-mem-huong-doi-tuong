@@ -47,6 +47,7 @@ class PDFController extends BaseController
                         $mailer->addAltBody("This is the body in plain text for non-HTML mail clients");
 
                         $mailer->send();
+                        Session::set('sent_email', 'Gửi email thành công');
                         Session::back();
                     } catch (\Exception $exception) {
                         var_dump($exception);

@@ -17,6 +17,7 @@ use Luccui\Models\TaiKhoan;
 use Luccui\Services\DiaChi\DiaChi;
 use Luccui\Services\ThanhToan\ThanhToanGateway;
 use Luccui\ValueObjects\VNPayValueObject;
+use function PHPUnit\Framework\matches;
 
 class ThanhToanController
 {
@@ -31,7 +32,12 @@ class ThanhToanController
     public function confirm()
     {
         $request = app(Request::class);
-        $donhang_id = $this->saveDonHang($request->all());
+        $formData = $request->all();
+        $formData['phuong_thuc_thanh_toan'] = match ($formData['phuong_thuc_thanh_toan']) {
+            'online' => DonHang::THANH_TOAN_QUA_THE,
+            default => DonHang::THANH_TOAN_KHI_NHAN_HANG,
+        };
+        $donhang_id = $this->saveDonHang($formData);
 
         $cart = app(Cart::class)->getItems();
         foreach ($cart as $items) {

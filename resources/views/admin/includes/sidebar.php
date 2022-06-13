@@ -55,7 +55,9 @@
             </a>
             <div class="collapse" id="editors">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"><a class="nav-link" href="pages/forms/text_editor.html">Text editors</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/bai-viet">Bài viết</a>
+                    </li>
                     <li class="nav-item"><a class="nav-link" href="pages/forms/code_editor.html">Code editors</a></li>
                 </ul>
             </div>

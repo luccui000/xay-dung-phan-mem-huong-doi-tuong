@@ -600,7 +600,7 @@ $.extend(true, $.fn.dataTable.defaults, {
 /*!*************************************!*\
   !*** ./resources/js/admin/index.js ***!
   \*************************************/
-/*! exports provided: default */
+/*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -610,17 +610,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _datatables_config__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./datatables/config */ "./resources/js/admin/datatables/config.js");
 /* harmony import */ var _datatables_config__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_datatables_config__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var datatables_net_bs4_css_dataTables_bootstrap4_min_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! datatables.net-bs4/css/dataTables.bootstrap4.min.css */ "./node_modules/datatables.net-bs4/css/dataTables.bootstrap4.min.css");
-/* harmony import */ var _sanpham__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./sanpham */ "./resources/js/admin/sanpham/index.js");
+/* harmony import */ var _sanpham_create__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./sanpham/create */ "./resources/js/admin/sanpham/create.js");
+/* harmony import */ var _toast__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./toast */ "./resources/js/admin/toast/index.js");
 
 
 
 
 
-const admin = {
-    sanpham: _sanpham__WEBPACK_IMPORTED_MODULE_3__["default"]
-};
 
-/* harmony default export */ __webpack_exports__["default"] = (admin);
+const HDTShop = {
+    sanpham: {
+        handleHinhanhUpload: _sanpham_create__WEBPACK_IMPORTED_MODULE_3__["handleHinhanhUpload"]
+    },
+    toast: {
+        toastError: _toast__WEBPACK_IMPORTED_MODULE_4__["toastError"],
+        toastSuccess: _toast__WEBPACK_IMPORTED_MODULE_4__["toastSuccess"]
+    },
+    editor: {
+        // makeEditor
+    }
+}
+window.HDTShop = HDTShop;
 
 
 /***/ }),
@@ -629,55 +639,72 @@ const admin = {
 /*!**********************************************!*\
   !*** ./resources/js/admin/sanpham/create.js ***!
   \**********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-const hinhanhUploader = document.querySelectorAll(".hinhanh-uploader");
-const editor = document.querySelector('#mo_ta');
-
-hinhanhUploader.forEach(uploader => {
-    uploader.addEventListener("change", function (e) {
-        const fileReader = new FileReader();
-        const label = $(uploader).parent();
-        const fileSource = e.target.files[0];
-        fileReader.onload = function () {
-            label.css({
-                "background-image": `url(${fileReader.result})`
-            })
-        }
-        fileReader.readAsDataURL(fileSource)
-    })
-})
-
-ClassicEditor
-    .create(editor)
-    .then( editor => {
-        console.log('Editor was initialized', editor);
-    })
-    .catch(error => {
-        console.error( error.stack );
-    });
-
-
-/***/ }),
-
-/***/ "./resources/js/admin/sanpham/index.js":
-/*!*********************************************!*\
-  !*** ./resources/js/admin/sanpham/index.js ***!
-  \*********************************************/
-/*! exports provided: default */
+/*! exports provided: handleHinhanhUpload */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _create__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./create */ "./resources/js/admin/sanpham/create.js");
-/* harmony import */ var _create__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_create__WEBPACK_IMPORTED_MODULE_0__);
-
-
-const sanpham = {
-    demo: 1212
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "handleHinhanhUpload", function() { return handleHinhanhUpload; });
+function handleHinhanhUpload(hinhanhUploader) {
+    hinhanhUploader.forEach(uploader => {
+        uploader.addEventListener("change", function (e) {
+            const fileReader = new FileReader();
+            const label = $(uploader).parent();
+            const fileSource = e.target.files[0];
+            fileReader.onload = function () {
+                label.css({
+                    "background-image": `url(${fileReader.result})`
+                })
+            }
+            fileReader.readAsDataURL(fileSource)
+        })
+    })
 }
-/* harmony default export */ __webpack_exports__["default"] = (sanpham);
+// export function makeEditor(editor, options, callback)
+// {
+//     ClassicEditor
+//         .create(editor, options)
+//         .then( editor => {
+//             callback(editor);
+//         })
+//         .catch(error => {
+//             console.error( error.stack );
+//         });
+// }
+
+
+/***/ }),
+
+/***/ "./resources/js/admin/toast/index.js":
+/*!*******************************************!*\
+  !*** ./resources/js/admin/toast/index.js ***!
+  \*******************************************/
+/*! exports provided: toastSuccess, toastError */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "toastSuccess", function() { return toastSuccess; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "toastError", function() { return toastError; });
+function toastSuccess(heading, text) {
+    $.toast({
+        heading: heading,
+        text: text,
+        position: 'top-right',
+        stack: false,
+        icon: 'success'
+    })
+}
+
+function toastError(heading, text) {
+    $.toast({
+        heading: heading,
+        text: text,
+        position: 'top-right',
+        stack: false,
+        icon: 'error'
+    })
+}
 
 
 /***/ }),

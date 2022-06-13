@@ -293,7 +293,19 @@
         </div>
     </div>
     <?php partial('includes/script.php', 'admin'); ?>
+    <script src="https://cdn.ckeditor.com/ckeditor5/34.1.0/classic/ckeditor.js"></script>
     <script>
+        $(document).ready(function() {
+            const editor = document.querySelector('#mo_ta');
+            const hinhanhUploader = document.querySelectorAll(".hinhanh-uploader");
+            const { handleHinhanhUpload } = HDTShop.sanpham;
+
+            handleHinhanhUpload(hinhanhUploader);
+            ClassicEditor
+                .create(editor)
+                .then(editor => console.log("editor:::", editor))
+                .catch(error => console.log(error))
+        })
         // let suggestInput = [];
         //
         // function xoa_thuoc_tinh(event, index) {

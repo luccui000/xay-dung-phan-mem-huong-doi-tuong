@@ -13,7 +13,6 @@
     <meta name="msapplication-TileColor" content="#cc9966">
     <meta name="msapplication-config" content="{! assets('public/client/images/icons/browserconfig.xml'); !}">
     <meta name="theme-color" content="#ffffff">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
     <?php partial('includes/stylesheet.php', 'client'); ?>
 </head>
 <body>
@@ -122,30 +121,38 @@
                                             <td>
                                                 <div class="custom-control custom-radio">
                                                     <input type="radio" id="free-shipping" name="shipping" class="custom-control-input">
-                                                    <label class="custom-control-label" for="free-shipping">Miễn phí</label>
+                                                    <label class="custom-control-label" for="free-shipping">
+                                                        Tiêu chuẩn
+                                                    </label>
                                                 </div>
                                             </td>
-                                            <td><?php echo vnmoney(0); ?></td>
+                                            <td>
+                                                <?php echo vnmoney(0) . ' - ' .  vnmoney(50000); ?>
+                                            </td>
                                         </tr>
 
                                         <tr class="summary-shipping-row">
                                             <td>
                                                 <div class="custom-control custom-radio">
                                                     <input type="radio" id="standart-shipping" name="shipping" class="custom-control-input">
-                                                    <label class="custom-control-label" for="standart-shipping">Tiêu chuẩn:</label>
+                                                    <label class="custom-control-label" for="standart-shipping">Nhanh</label>
                                                 </div>
                                             </td>
-                                            <td><?php echo vnmoney(23000); ?></td>
+                                            <td style="width: 150px">
+                                                <?php echo vnmoney(50000) . ' - ' .  vnmoney(100000); ?>
+                                            </td>
                                         </tr>
 
                                         <tr class="summary-shipping-row">
                                             <td>
                                                 <div class="custom-control custom-radio">
                                                     <input type="radio" id="express-shipping" name="shipping" class="custom-control-input">
-                                                    <label class="custom-control-label" for="express-shipping">Giao hàng nhanh:</label>
+                                                    <label class="custom-control-label" for="express-shipping">Cấp tốc</label>
                                                 </div>
                                             </td>
-                                            <td><?php echo vnmoney(44000); ?></td>
+                                            <td>
+                                                <?php echo vnmoney(100000) . ' - ' .  vnmoney(300000); ?>
+                                            </td>
                                         </tr>
 
                                         <tr class="summary-total">

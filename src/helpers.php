@@ -99,8 +99,35 @@ if(!function_exists('vietnamConversasion')) {
         return new VietNamCharsetConversion($text);
     }
 }
-if(function_exists('session')) {
-    function session() {
-        return new Session();
+if(!function_exists('get_session')) {
+    function get_session($key) {
+        return Session::get($key);
+    }
+}
+if(!function_exists('has_session')) {
+    function has_session($key) {
+        return Session::has($key);
+    }
+}
+if(!function_exists('set_session')) {
+    function set_session($key, $value) {
+        return Session::set($key, $value);
+    }
+}
+if(!function_exists('remove_session')) {
+    function remove_session($key) {
+        Session::remove($key);
+    }
+}
+if(!function_exists('convertToObject')) {
+    function convertToObject(array $input): object {
+        $object = new stdClass();
+        foreach ($input as $key => $value) {
+            if(is_array($value)) {
+                $value = convertToObject($value);
+            }
+            $object->$key = $value;
+        }
+        return $object;
     }
 }

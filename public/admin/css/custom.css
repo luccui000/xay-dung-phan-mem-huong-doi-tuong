@@ -84,3 +84,8 @@
 table thead tr th::after {
     right: 1.2em !important;
 }
+.badge {
+    border-radius: 20px;
+    font-size: 12px;
+    padding: 5px 10px;
+}
