@@ -39,10 +39,10 @@
                         <a class="nav-link" href="/admin/san-pham">Danh sách</a>
                     </li>
                     <li class="nav-item d-none d-lg-block">
-                        <a class="nav-link" href="">Thêm mới</a>
+                        <a class="nav-link" href="/admin/san-pham/create">Thêm mới</a>
                     </li>
                     <li class="nav-item d-none d-lg-block">
-                        <a class="nav-link" href="">Danh mục</a>
+                        <a class="nav-link" href="/admin/danh-muc">Danh mục</a>
                     </li>
                 </ul>
             </div>

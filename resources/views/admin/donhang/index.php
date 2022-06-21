@@ -59,6 +59,7 @@
                                                 <th>Tổng tiền</th>
                                                 <th>In hóa đơn</th>
                                                 <th>ID</th>
+                                                <th></th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -89,7 +90,7 @@
                                                         ?>
                                                     </td>
                                                     <td><?php echo vnmoney($donhang->tong_tien); ?></td>
-                                                    <td>
+                                                    <td class="d-flex">
                                                         <form action="/admin/don-hang/in-hoa-don" method="POST">
                                                             <label>
                                                                 <input name="donhang_id" value="<?php echo $donhang->id; ?>" type="text" hidden>
@@ -98,6 +99,14 @@
                                                         </form>
                                                     </td>
                                                     <td><?php echo $donhang->id; ?></td>
+                                                    <td>
+                                                        <form action="/admin/don-hang/duyet" method="POST">
+                                                            <label>
+                                                                <input name="donhang_id" value="<?php echo $donhang->id; ?>" type="text" hidden>
+                                                            </label>
+                                                            <button type="submit" class="btn btn-primary">Duyệt</button>
+                                                        </form>
+                                                    </td>
                                                 </tr>
                                             <?php } ?>
                                         </tbody>
@@ -111,10 +120,10 @@
                                                 <th>Ngày đặt</th>
                                                 <th>Tên khách hàng</th>
                                                 <th>Phương thức thanh toán</th>
-                                                <th>Trạng thái</th>
                                                 <th>Tổng tiền</th>
                                                 <th>In hóa đơn</th>
                                                 <th>ID</th>
+                                                <td></td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -129,9 +138,6 @@
                                                         <td><?php echo $donhang->ngay_dat; ?></td>
                                                         <td><?php echo $donhang->ho_nguoi_dat . ' ' . $donhang->ten_nguoi_dat; ?></td>
                                                         <td><?php echo $donhang->phuong_thuc_thanh_toan; ?></td>
-                                                        <td class="text-center">
-                                                            <span class='badge badge-danger'><?php echo $donhang->trang_thai; ?></span>
-                                                        </td>
                                                         <td><?php echo vnmoney($donhang->tong_tien); ?></td>
                                                         <td>
                                                             <form action="/admin/don-hang/in-hoa-don" method="POST">
@@ -143,6 +149,20 @@
                                                         </td>
                                                         <td>
                                                             <?php echo $donhang->id ?>
+                                                        </td>
+                                                        <td class="d-flex justify-content-center">
+                                                            <form action="/admin/don-hang/duyet" method="POST">
+                                                                <label>
+                                                                    <input name="donhang_id" value="<?php echo $donhang->id; ?>" type="text" hidden>
+                                                                </label>
+                                                                <button type="submit" class="btn btn-primary py-1">Duyệt</button>
+                                                            </form>
+                                                            <form action="/admin/don-hang/huy" method="POST">
+                                                                <label>
+                                                                    <input name="donhang_id" value="<?php echo $donhang->id; ?>" type="text" hidden>
+                                                                </label>
+                                                                <button type="submit" class="btn btn-danger py-1">Hủy</button>
+                                                            </form>
                                                         </td>
                                                     </tr>
                                                 <?php } ?>
@@ -158,10 +178,10 @@
                                                 <th>Ngày đặt</th>
                                                 <th>Tên khách hàng</th>
                                                 <th>Phương thức thanh toán</th>
-                                                <th>Trạng thái</th>
                                                 <th>Tổng tiền</th>
                                                 <th>In hóa đơn</th>
                                                 <th>ID</th>
+                                                <th></th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -176,9 +196,6 @@
                                                         <td><?php echo $donhang->ngay_dat; ?></td>
                                                         <td><?php echo $donhang->ho_nguoi_dat . ' ' . $donhang->ten_nguoi_dat; ?></td>
                                                         <td><?php echo $donhang->phuong_thuc_thanh_toan; ?></td>
-                                                        <td class="text-center">
-                                                            <span class='badge badge-primary'><?php echo $donhang->trang_thai; ?></span>
-                                                        </td>
                                                         <td><?php echo vnmoney($donhang->tong_tien); ?></td>
                                                         <td>
                                                             <form action="/admin/don-hang/in-hoa-don" method="POST">
@@ -189,6 +206,14 @@
                                                             </form>
                                                         </td>
                                                         <td><?php echo $donhang->id; ?></td>
+                                                        <td>
+                                                            <form action="/admin/don-hang/duyet" method="POST">
+                                                                <label>
+                                                                    <input name="donhang_id" value="<?php echo $donhang->id; ?>" type="text" hidden>
+                                                                </label>
+                                                                <button type="submit" class="btn btn-success py-1">Hoàn thành</button>
+                                                            </form>
+                                                        </td>
                                                     </tr>
                                                 <?php } ?>
                                             <?php } ?>
@@ -242,15 +267,15 @@
                                 <div class="tab-pane fade" id="pills-dahuy" role="tabpanel">
                                     <table id="table-dahuy" class="table table-hover">
                                         <thead>
-                                        <tr>
-                                            <th>Mã đơn hàng</th>
-                                            <th>Ngày đặt</th>
-                                            <th>Tên khách hàng</th>
-                                            <th>Phương thức thanh toán</th>
-                                            <th>Trạng thái</th>
-                                            <th>Tổng tiền</th>
-                                            <th>In hóa đơn</th>
-                                        </tr>
+                                            <tr>
+                                                <th>Mã đơn hàng</th>
+                                                <th>Ngày đặt</th>
+                                                <th>Tên khách hàng</th>
+                                                <th>Phương thức thanh toán</th>
+                                                <th>Trạng thái</th>
+                                                <th>Tổng tiền</th>
+                                                <th>In hóa đơn</th>
+                                            </tr>
                                         </thead>
                                         <tbody>
                                         <?php foreach ($donhangs as $donhang) {?>
@@ -293,11 +318,21 @@
     <?php partial('includes/script.php', 'admin'); ?>
     <script>
         $(document).ready(function () {
-            $("#example").DataTable();
+            $("#example").DataTable([
+                order: [[5, 'desc']]
+            ]);
             $("#table-dangchoxacnhan").DataTable();
             $("#table-daxacnhan").DataTable();
             $("#table-dahoanthanh").DataTable();
             $("#table-dahuy").DataTable();
+
+            const { toastSuccess, toastError } = HDTShop.toast;
+            <?php
+            if(has_session('success')) {
+                echo "toastSuccess('Thành công', '" . get_session('success'). "')";
+                remove_session('success');
+            }
+            ?>
         })
     </script>
 </div>

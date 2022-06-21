@@ -2,6 +2,7 @@
 
 use Luccui\Http\Controllers\{
     Admin\BaiVietController as AdminBaiVietController,
+    Admin\DanhMucController as AdminDanhMucController,
     Admin\DangNhapController,
     Admin\DonHangController,
     Admin\PDFController,
@@ -69,6 +70,8 @@ Router::get('/admin/don-hang', [DonHangController::class, 'index'], '/admin/don-
 Router::get('/admin/don-hang/chi-tiet', [DonHangController::class, 'show'], '/admin/don-hang/chi-tiet');
 Router::post('/admin/don-hang/in-hoa-don', [PDFController::class, 'inHoaDon'], '/admin/don-hang/in-hoa-don');
 Router::post('/admin/don-hang/gui-hoa-don', [PDFController::class, 'guiHoaDon'], '/admin/don-hang/gui-hoa-don');
+Router::post('/admin/don-hang/duyet', [DonHangController::class, 'duyet'], '/admin/don-hang/duyet');
+Router::post('/admin/don-hang/huy', [DonHangController::class, 'huy'], '/admin/don-hang/huy');
 
 Router::get('/admin/bai-viet', [AdminBaiVietController::class, 'index'], '/admin/bai-viet');
 Router::get('/admin/bai-viet/them-moi', [AdminBaiVietController::class, 'create'], '/admin/bai-viet/them-moi');
@@ -78,6 +81,11 @@ Router::post('/admin/bai-viet/cap-nhat', [AdminBaiVietController::class, 'update
 Router::get('/admin/nha-cung-cap', [NhaCungCapController::class, 'index'], '/admin/nhacungcap/index');
 Router::get('/admin/hinh-anh', [HinhAnhController::class, 'index'], '/admin/hinhanh/index');
 
+
+Router::get('/admin/danh-muc', [AdminDanhMucController::class, 'index'], '/admin/danh-muc');
+Router::post('/admin/danh-muc', [AdminDanhMucController::class, 'store'], '/admin/danh-muc/store');
+
+Router::get('/admin/hinh-anh', [HinhAnhController::class, 'index'], '/admin/hinh-anh');
 Router::post('/admin/hinh-anh/store', [HinhAnhController::class, 'store'], '/admin/hinhanh/store');
 Router::get('/admin/login', [AdminController::class, 'login'], '/admin/login');
 Router::get('/admin/create', [AdminController::class, 'create'], '/admin/create');

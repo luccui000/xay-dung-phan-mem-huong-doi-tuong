@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Melody Admin</title>
+    <title>Trang chủ cửa hàng</title>
     <?php partial('includes/stylesheet.php', 'admin'); ?>
 </head>
 <body>
@@ -13,21 +13,17 @@
     </button>
     <div class="container-fluid page-body-wrapper">
         <div class="theme-setting-wrapper">
-            <div id="settings-trigger"><i class="fas fa-fill-drip"></i></div>
+            <div id="settings-trigger" class="cursor-pointer"><i class="fas fa-fill-drip"></i></div>
             <div id="theme-settings" class="settings-panel">
                 <i class="settings-close fa fa-times"></i>
-                <p class="settings-heading">SIDEBAR SKINS</p>
-                <div class="sidebar-bg-options selected" id="sidebar-light-theme"><div class="img-ss rounded-circle bg-light border mr-3"></div>Light</div>
-                <div class="sidebar-bg-options" id="sidebar-dark-theme"><div class="img-ss rounded-circle bg-dark border mr-3"></div>Dark</div>
-                <p class="settings-heading mt-2">HEADER SKINS</p>
-                <div class="color-tiles mx-0 px-4">
-                    <div class="tiles primary"></div>
-                    <div class="tiles success"></div>
-                    <div class="tiles warning"></div>
-                    <div class="tiles danger"></div>
-                    <div class="tiles info"></div>
-                    <div class="tiles dark"></div>
-                    <div class="tiles default"></div>
+                <p class="settings-heading">Thiết lập giao diện</p>
+                <div class="sidebar-bg-options cursor-pointer selected" id="sidebar-light-theme">
+                    <div class="img-ss rounded-circle bg-light border mr-3 "></div>
+                    Sáng
+                </div>
+                <div class="sidebar-bg-options cursor-pointer" id="sidebar-dark-theme">
+                    <div class="img-ss rounded-circle bg-dark border mr-3"></div>
+                    Tối
                 </div>
             </div>
         </div>
@@ -41,151 +37,13 @@
                     <a class="nav-link" id="chats-tab" data-toggle="tab" href="#chats-section" role="tab" aria-controls="chats-section">CHATS</a>
                 </li>
             </ul>
-            <div class="tab-content" id="setting-content">
-                <div class="tab-pane fade show active scroll-wrapper" id="todo-section" role="tabpanel" aria-labelledby="todo-section">
-                    <div class="add-items d-flex px-3 mb-0">
-                        <form class="form w-100">
-                            <div class="form-group d-flex">
-                                <input type="text" class="form-control todo-list-input" placeholder="Add To-do">
-                                <button type="submit" class="add btn btn-primary todo-list-add-btn" id="add-task-todo">Add</button>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="list-wrapper px-3">
-                        <ul class="d-flex flex-column-reverse todo-list">
-                            <li>
-                                <div class="form-check">
-                                    <label class="form-check-label">
-                                        <input class="checkbox" type="checkbox">
-                                        Team review meeting at 3.00 PM
-                                    </label>
-                                </div>
-                                <i class="remove fa fa-times-circle"></i>
-                            </li>
-                            <li>
-                                <div class="form-check">
-                                    <label class="form-check-label">
-                                        <input class="checkbox" type="checkbox">
-                                        Prepare for presentation
-                                    </label>
-                                </div>
-                                <i class="remove fa fa-times-circle"></i>
-                            </li>
-                            <li>
-                                <div class="form-check">
-                                    <label class="form-check-label">
-                                        <input class="checkbox" type="checkbox">
-                                        Resolve all the low priority tickets due today
-                                    </label>
-                                </div>
-                                <i class="remove fa fa-times-circle"></i>
-                            </li>
-                            <li class="completed">
-                                <div class="form-check">
-                                    <label class="form-check-label">
-                                        <input class="checkbox" type="checkbox" checked>
-                                        Schedule meeting for next week
-                                    </label>
-                                </div>
-                                <i class="remove fa fa-times-circle"></i>
-                            </li>
-                            <li class="completed">
-                                <div class="form-check">
-                                    <label class="form-check-label">
-                                        <input class="checkbox" type="checkbox" checked>
-                                        Project review
-                                    </label>
-                                </div>
-                                <i class="remove fa fa-times-circle"></i>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="events py-4 border-bottom px-3">
-                        <div class="wrapper d-flex mb-2">
-                            <i class="fa fa-times-circle text-primary mr-2"></i>
-                            <span>Feb 11 2018</span>
-                        </div>
-                        <p class="mb-0 font-weight-thin text-gray">Creating component page</p>
-                        <p class="text-gray mb-0">build a js based app</p>
-                    </div>
-                    <div class="events pt-4 px-3">
-                        <div class="wrapper d-flex mb-2">
-                            <i class="fa fa-times-circle text-primary mr-2"></i>
-                            <span>Feb 7 2018</span>
-                        </div>
-                        <p class="mb-0 font-weight-thin text-gray">Meeting with Alisa</p>
-                        <p class="text-gray mb-0 ">Call Sarah Graves</p>
-                    </div>
-                </div>
-                <!-- To do section tab ends -->
-                <div class="tab-pane fade" id="chats-section" role="tabpanel" aria-labelledby="chats-section">
-                    <div class="d-flex align-items-center justify-content-between border-bottom">
-                        <p class="settings-heading border-top-0 mb-3 pl-3 pt-0 border-bottom-0 pb-0">Friends</p>
-                        <small class="settings-heading border-top-0 mb-3 pt-0 border-bottom-0 pb-0 pr-3 font-weight-normal">See All</small>
-                    </div>
-                    <ul class="chat-list">
-                        <li class="list active">
-                            <div class="profile"><img src="images/faces/face1.jpg" alt="image"><span class="online"></span></div>
-                            <div class="info">
-                                <p>Thomas Douglas</p>
-                                <p>Available</p>
-                            </div>
-                            <small class="text-muted my-auto">19 min</small>
-                        </li>
-                        <li class="list">
-                            <div class="profile"><img src="images/faces/face2.jpg" alt="image"><span class="offline"></span></div>
-                            <div class="info">
-                                <div class="wrapper d-flex">
-                                    <p>Catherine</p>
-                                </div>
-                                <p>Away</p>
-                            </div>
-                            <div class="badge badge-success badge-pill my-auto mx-2">4</div>
-                            <small class="text-muted my-auto">23 min</small>
-                        </li>
-                        <li class="list">
-                            <div class="profile"><img src="images/faces/face3.jpg" alt="image"><span class="online"></span></div>
-                            <div class="info">
-                                <p>Daniel Russell</p>
-                                <p>Available</p>
-                            </div>
-                            <small class="text-muted my-auto">14 min</small>
-                        </li>
-                        <li class="list">
-                            <div class="profile"><img src="images/faces/face4.jpg" alt="image"><span class="offline"></span></div>
-                            <div class="info">
-                                <p>James Richardson</p>
-                                <p>Away</p>
-                            </div>
-                            <small class="text-muted my-auto">2 min</small>
-                        </li>
-                        <li class="list">
-                            <div class="profile"><img src="images/faces/face5.jpg" alt="image"><span class="online"></span></div>
-                            <div class="info">
-                                <p>Madeline Kennedy</p>
-                                <p>Available</p>
-                            </div>
-                            <small class="text-muted my-auto">5 min</small>
-                        </li>
-                        <li class="list">
-                            <div class="profile"><img src="images/faces/face6.jpg" alt="image"><span class="online"></span></div>
-                            <div class="info">
-                                <p>Sarah Graves</p>
-                                <p>Available</p>
-                            </div>
-                            <small class="text-muted my-auto">47 min</small>
-                        </li>
-                    </ul>
-                </div>
-                <!-- chat tab ends -->
-            </div>
         </div>
         <?php includes('includes/sidebar.php') ?>
         <div class="main-panel">
             <div class="content-wrapper">
                 <div class="page-header">
                     <h3 class="page-title">
-                        Dashboard
+                        Trang chủ
                     </h3>
                 </div>
                 <div class="row grid-margin">
@@ -196,50 +54,61 @@
                                     <div class="statistics-item">
                                         <p>
                                             <i class="icon-sm fa fa-user mr-2"></i>
-                                            New users
+                                            Số người dùng mới
                                         </p>
-                                        <h2>54000</h2>
-                                        <label class="badge badge-outline-success badge-pill">2.7% increase</label>
-                                    </div>
-                                    <div class="statistics-item">
-                                        <p>
-                                            <i class="icon-sm fas fa-hourglass-half mr-2"></i>
-                                            Avg Time
-                                        </p>
-                                        <h2>123.50</h2>
-                                        <label class="badge badge-outline-danger badge-pill">30% decrease</label>
+                                        <h2><?php echo $current_user_counter; ?></h2>
+                                        <label class="badge badge-outline-success badge-pill">
+                                            <?php
+                                                if($current_user_counter > $previous_user_counter)  {
+                                                    echo 'tăng ';
+                                                } else {
+                                                    echo 'giảm ';
+                                                }
+                                                echo $precent_user . '% ';
+                                            ?>
+                                        </label>
                                     </div>
                                     <div class="statistics-item">
                                         <p>
                                             <i class="icon-sm fas fa-cloud-download-alt mr-2"></i>
-                                            Downloads
+                                            Tổng số sản phẩm
                                         </p>
-                                        <h2>3500</h2>
-                                        <label class="badge badge-outline-success badge-pill">12% increase</label>
-                                    </div>
-                                    <div class="statistics-item">
-                                        <p>
-                                            <i class="icon-sm fas fa-check-circle mr-2"></i>
-                                            Update
-                                        </p>
-                                        <h2>7500</h2>
-                                        <label class="badge badge-outline-success badge-pill">57% increase</label>
+                                        <h2><?php echo $product_counter; ?></h2>
+                                        <label class="badge badge-outline-success badge-pill">Hiện còn bán</label>
                                     </div>
                                     <div class="statistics-item">
                                         <p>
                                             <i class="icon-sm fas fa-chart-line mr-2"></i>
-                                            Sales
+                                            Tổng danh thu
                                         </p>
-                                        <h2>9000</h2>
-                                        <label class="badge badge-outline-success badge-pill">10% increase</label>
+                                        <h2><?php echo vnmoney($tong_doanh_thu); ?></h2>
+<!--                                        <label class="badge badge-outline-success badge-pill">10% increase</label>-->
+                                    </div>
+                                    <div class="statistics-item">
+                                        <p>
+                                            <i class="icon-sm fas fa-check-circle mr-2"></i>
+                                            Số đơn hàng hoàn thành
+                                        </p>
+                                        <h2><?php echo $current_order_complete_counter; ?></h2>
+                                        <label class="badge badge-outline-success badge-pill">
+                                            <?php
+                                                 if($current_order_complete_counter > $previous_order_complete_counter)
+                                                     echo 'tăng ';
+                                                 else
+                                                     echo 'giảm ';
+                                                 echo $percent_order . ' %';
+                                            ?>
+                                        </label>
                                     </div>
                                     <div class="statistics-item">
                                         <p>
                                             <i class="icon-sm fas fa-circle-notch mr-2"></i>
-                                            Pending
+                                            Số đơn hàng đang chờ
                                         </p>
-                                        <h2>7500</h2>
-                                        <label class="badge badge-outline-danger badge-pill">16% decrease</label>
+                                        <h2><?php echo $order_pending; ?></h2>
+                                        <a href="/admin/don-hang">
+                                            <label class="badge badge-outline-danger badge-pill">Đi đến duyệt</label>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
