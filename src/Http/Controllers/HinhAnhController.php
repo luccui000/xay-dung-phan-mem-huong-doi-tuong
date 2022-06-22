@@ -11,7 +11,7 @@ class HinhAnhController extends Controller
     public function index()
     {
         $hinhanhs = HinhAnh::all()->chunk(6);
-        return view('admin/hinhanh/create.php', [
+        return view('admin/hinhanh/index.php', [
             'hinhanhs' => $hinhanhs
         ]);
     }

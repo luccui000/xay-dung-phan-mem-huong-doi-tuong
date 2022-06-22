@@ -82,6 +82,37 @@ class SanphamController extends BaseController
          }
          redirect('/admin/san-pham');
     }
+    public function edit()
+    {
+        $id = $this->request->query['id'] ?? null;
+        $danhmucs = DanhMuc::all();
+        $nhacungcaps = NhaCungCap::all();
+        if(!is_null($id)) {
+            $sanpham = SanPham::findFirst($id);
+            $hinhanhs = HinhAnhSanPham::where('sanpham_id', '=', $id)
+                ->get();
+            $hinhanhs = $hinhanhs->map(function ($item) use ($hinhanhs) {
+                $hinhanh = HinhAnh::findFirst($item->hinhanh_id);
+                return [
+                    'id' => $item->id,
+                    'duong_dan' => $hinhanh->duong_dan,
+                    'ngay_tao' => $hinhanh->ngay_tao
+                ];
+            });
+            return view('admin/sanpham/edit.php', [
+                'sanpham' => $sanpham,
+                'danhmucs' => $danhmucs,
+                'nhacungcaps' => $nhacungcaps,
+                'hinhanhs' => $hinhanhs->toArray()
+            ]);
+        } else {
+            return "Khong tim thay";
+        }
+    }
+    public function update()
+    {
+        var_dump($this->request->all());
+    }
     public function saveImage($image)
     {
         if(!FileUpload::isImage($image))

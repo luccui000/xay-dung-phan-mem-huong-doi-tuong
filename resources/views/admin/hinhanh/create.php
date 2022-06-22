@@ -32,56 +32,7 @@
             <?php partial('partials/sidebar.php' ); ?>
         </div>
         <div class="col-10 content pt-3 pl-0">
-            <div class="card p-2">
-                <form action="/admin/hinh-anh/store" method="POST" enctype="multipart/form-data">
-                    <div class="row">
-                        <div class="col-8 d-flex justify-content-end">
-                            <input name="hinh_anh[]" multiple hidden id="hinh_anh" type="file">
-                            <label for="hinh_anh">
-                                <a class="btn btn-primary text-white">Tải hình ảnh</a>
-                            </label>
-                        </div>
-                        <div class="col-4"></div>
-                        <div class="modal fade" id="upload">
-                            <div class="modal-dialog modal-lg">
-                                <div class="modal-content p-2">
-                                    <div class="modal-header">
-                                        <h5 class="model-title">Header</h5>
-                                    </div>
-                                    <div class="model-body">
-                                        <ul class="list-group" id="files_uploading">
 
-                                        </ul>
-                                        <button class="btn btn-success btn-block mt-2">Upload</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-                <div class="row mt-2">
-                    <div class="col-8">
-                        <?php foreach ($hinhanhs as $hinhanh) { ?>
-                            <div class="row">
-                                <?php foreach ($hinhanh as $cot) { ?>
-                                    <div class="col-2">
-                                        <div class="card" data-hinhanh data-id="<?php echo $cot->id; ?>" data-duongdan="<?php echo assets($cot->duong_dan); ?>">
-                                            <img class="card-img-top hinh-anh" src="<?php echo assets($cot->duong_dan); ?>" alt="Card image cap">
-                                            <p class="card-text py-1 text-center"><?php echo $cot->id; ?></p>
-                                        </div>
-                                    </div>
-                                <?php } ?>
-                            </div>
-                        <?php } ?>
-                    </div>
-                    <div class="col-4">
-                        <div class="card p-2">
-                            <h6>Thông tin hình ảnh</h6>
-                            <div class="line"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 </div>

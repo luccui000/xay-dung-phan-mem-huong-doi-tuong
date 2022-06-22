@@ -65,6 +65,8 @@ Router::get('/admin/danh-muc', [DanhMucController::class, 'index'], '/admin/danh
 Router::get('/admin/san-pham', [SanphamController::class, 'index'], '/admin/sanpham');
 Router::get('/admin/san-pham/create', [SanphamController::class, 'create'], '/admin/sanpham/create');
 Router::post('/admin/san-pham/store', [SanphamController::class, 'store'], '/admin/sanpham/store');
+Router::get('/admin/san-pham/edit', [SanphamController::class, 'edit'], '/admin/sanpham/edit');
+Router::post('/admin/san-pham/update', [SanphamController::class, 'update'], '/admin/sanpham/update');
 
 Router::get('/admin/don-hang', [DonHangController::class, 'index'], '/admin/don-hang');
 Router::get('/admin/don-hang/chi-tiet', [DonHangController::class, 'show'], '/admin/don-hang/chi-tiet');

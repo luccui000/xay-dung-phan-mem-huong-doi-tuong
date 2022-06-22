@@ -63,7 +63,7 @@
                                                         alt="<?php echo $sanpham->ten_san_pham; ?>">
                                                 </td>
                                                 <td>
-                                                    <a class="text-primary" href="#">
+                                                    <a class="text-primary" href="/admin/san-pham/edit?id=<?php echo $sanpham->id; ?>">
                                                         <?php echo $sanpham->ten_san_pham; ?>
                                                     </a>
                                                 </td>
