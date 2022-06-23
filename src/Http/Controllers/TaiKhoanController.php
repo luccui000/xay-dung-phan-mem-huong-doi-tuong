@@ -7,6 +7,7 @@ use Luccui\Classes\Hash;
 use Luccui\Classes\XacThuc;
 use Luccui\Core\Session;
 use Luccui\Factories\TaiKhoanFactory;
+use Luccui\Models\DonHang;
 use Luccui\Models\TaiKhoan;
 
 class TaiKhoanController extends Controller
@@ -49,5 +50,21 @@ class TaiKhoanController extends Controller
             Session::set('thatbai', 'Tài khoản hoặc mật khẩu không đúng');
             Session::back();
         }
+    }
+    public function taikhoan()
+    {
+        if(!has_session(XacThuc::SESSION_DA_DANG_NHAP)) {
+            redirect('/dang-nhap');
+        }
+        $taikhoan_id = get_session(XacThuc::SESSION_ID_TAI_KHOAN);
+        $taikhoan = TaiKhoan::where('id', '=', $taikhoan_id)->first();
+
+        $donhangs = DonHang::where('nguoi_dat','=', $taikhoan_id)->get();
+
+//        var_dump($taikhoan);
+        return view('client/taikhoan/thongtin.php', [
+            'taikhoan' => $taikhoan,
+            'donhangs' => $donhangs
+        ]);
     }
 }

@@ -54,6 +54,7 @@ Router::get('/dang-ky', [TaiKhoanController::class, 'formDangKy'], 'dang-ky');
 Router::post('/dang-ky', [TaiKhoanController::class, 'DangKy'], 'luu-dang-ky');
 Router::get('/dang-nhap', [TaiKhoanController::class, 'formDangNhap'], 'dang-nhap');
 Router::post('/dang-nhap', [TaiKhoanController::class, 'DangNhap'], 'luu-dang-nhap');
+Router::get('/tai-khoan', [TaiKhoanController::class, 'taikhoan'], '/tai-khoan');
 
 Router::get('/admin', fn () => redirect('/admin/dang-nhap'));
 Router::get('/admin/dang-nhap', function () {
