@@ -13,6 +13,11 @@ if(!function_exists('assets')) {
         return BASE_URL . ltrim($resource, "/");
     }
 }
+if(!function_exists('base_app')) {
+    function base_app($path) {
+        return BASE_APP . ltrim($path, "/");
+    }
+}
 if(!function_exists('partial')) {
     function partial($path, $layout = 'admin') : void {
         $fullPath = RESOURCE_PATH . $layout . DIRECTORY_SEPARATOR . $path;

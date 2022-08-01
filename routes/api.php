@@ -6,6 +6,7 @@ use Luccui\Http\Controllers\Api\DiaChiController;
 use Luccui\Http\Controllers\Api\GiaoHangController;
 use Luccui\Http\Controllers\Api\GiaTriController;
 use Luccui\Http\Controllers\Api\GioHangController;
+use Luccui\Http\Controllers\Api\TrangChuController;
 use Luccui\Http\Controllers\Api\UploadImageController;
 
 Router::get('/api/gia-tri', [GiaTriController::class, 'index'], '/api/gia-tri');
@@ -14,3 +15,5 @@ Router::get('/api/dia-chi/danh-sach-huyen', [DiaChiController::class, 'danhSachH
 Router::get('/api/dia-chi/danh-sach-xa', [DiaChiController::class, 'danhSachXa'], '/api/dia-chi/danh-sach-xa');
 Router::post('/api/giao-hang/tinh-phi', [GiaoHangController::class, 'phiGiaoHang'], '/api/giao-hang/tinh-phi');
 Router::post('/api/upload', [UploadImageController::class, 'upload'], '/api/upload');
+Router::get('/api/chart/don-hang', [TrangChuController::class, 'chartDonHang'], '/api/chart/don-hang');
+Router::post('/api/viec-lam', [TrangChuController::class, 'themmoi'], '/api/viec-lam');

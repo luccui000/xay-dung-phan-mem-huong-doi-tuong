@@ -38,7 +38,7 @@
         <nav aria-label="breadcrumb" class="breadcrumb-nav mb-3">
             <div class="container">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="/">Home</a></li>
+                    <li class="breadcrumb-item"><a href="/">Trang chủ</a></li>
                     <li class="breadcrumb-item"><a href="#">Bài viết</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Danh sách</li>
                 </ol>

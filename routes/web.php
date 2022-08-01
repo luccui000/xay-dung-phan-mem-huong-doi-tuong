@@ -1,7 +1,6 @@
 <?php
 
-use Luccui\Http\Controllers\{
-    Admin\BaiVietController as AdminBaiVietController,
+use Luccui\Http\Controllers\{Admin\BaiVietController as AdminBaiVietController,
     Admin\DanhMucController as AdminDanhMucController,
     Admin\DangNhapController,
     Admin\DonHangController,
@@ -15,9 +14,11 @@ use Luccui\Http\Controllers\{
     DanhSachSanPhamController,
     AdminController,
     GioHangController,
+    GoogleDriveController,
     HinhAnhController,
     HomeController,
     LienHeController,
+    MailerController,
     NhaCungCapController,
     TaiKhoanController,
     ThanhToanController,
@@ -28,6 +29,7 @@ use Luccui\Core\Router;
 Router::get('/', [HomeController::class, 'index'], '/home');
 Router::get('/san-pham/chi-tiet', [ChiTietSanPhamController::class, 'detail'], 'chi-tiet');
 Router::get('/san-pham/tat-ca', [DanhSachSanPhamController::class, 'index'], '/san-pham/tat-ca');
+Router::get('/san-pham/tat-ca/v2', [DanhSachSanPhamController::class, 'show'], '/san-pham/show-tat-ca');
 Router::post('/san-pham/them-vao-gio-hang', [GioHangController::class, 'add'], '/san-pham/them-vao-gio-hang');
 Router::post('/san-pham/cap-nhat-gio-hang', [GioHangController::class, 'update'], '/san-pham/cap-nhat-gio-hang');
 Router::get('/san-pham/xoa-khoi-gio-hang', [GioHangController::class, 'delete'], '/san-pham/xoa-khoi-gio-hang');
@@ -93,4 +95,5 @@ Router::post('/admin/hinh-anh/store', [HinhAnhController::class, 'store'], '/adm
 Router::get('/admin/login', [AdminController::class, 'login'], '/admin/login');
 Router::get('/admin/create', [AdminController::class, 'create'], '/admin/create');
 Router::post('/admin/store', [AdminController::class, 'store'], '/admin/store');
-
+Router::get('/google-drive', [GoogleDriveController::class, 'index'], '/google-drive/index');
+Router::get('/send-mail', [MailerController::class, 'index'], 'send-mail');

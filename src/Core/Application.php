@@ -62,12 +62,6 @@ class Application
                 new GiaoHangNhanh($container->get(Config::class))
             );
         });
-        static::$container->set(Mailer::class, function ($container) {
-            return new Mailer(
-                $container->get(Config::class)->mailer,
-                true
-            );
-        });
         static::$container->set(DiaChi::class, fn() => new DiaChi(app(Config::class)));
         static::$container->set(GiaoHangNhanh::class, fn() => new GiaoHangNhanh(app(Config::class)));
         static::$container->set(Cart::class, function () {

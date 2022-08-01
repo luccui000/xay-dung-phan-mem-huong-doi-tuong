@@ -11,12 +11,6 @@
                         <ul>
                             <li>
                                 <div class="header-dropdown">
-                                    <a href="#">Việt Nam</a>
-                                    <div class="header-menu">
-                                        <ul>
-                                            <li><a href="#">Việt Nam</a></li>
-                                        </ul>
-                                    </div>
                                 </div>
                             </li>
                             <?php if(\Luccui\Core\Session::has(\Luccui\Classes\XacThuc::SESSION_DA_DANG_NHAP)) { ?>
@@ -199,7 +193,7 @@
                             <a href="/bai-viet" class="sf-with-ul">Bài viết</a>
                         </li>
                         <li class="megamenu-container">
-                            <a href="#" class="sf-with-ul">Liên hệ</a>
+                            <a href="/lien-he" class="sf-with-ul">Liên hệ</a>
                         </li>
                     </ul>
                 </nav>

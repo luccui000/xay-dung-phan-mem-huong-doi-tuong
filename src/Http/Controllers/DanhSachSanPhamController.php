@@ -3,6 +3,7 @@
 namespace Luccui\Http\Controllers;
 
 use Illuminate\Database\Eloquent\Collection;
+use Luccui\Core\View;
 use Luccui\Models\DanhMuc;
 use Luccui\Models\HinhAnhSanPham;
 use Luccui\Models\NhaCungCap;
@@ -10,6 +11,9 @@ use Luccui\Models\SanPham;
 
 class DanhSachSanPhamController extends Controller
 {
+    public function show() {
+        return include(BASE_APP . "/resources/views/" . trim("client/sanpham/tat-ca-v2.php", "/"));
+    }
     public function index()
     {
         $trang = $this->request->query['trang'] ?? 1;

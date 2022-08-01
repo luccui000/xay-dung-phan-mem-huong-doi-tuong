@@ -5,10 +5,12 @@ namespace Luccui\Http\Controllers\Admin;
 use Luccui\Classes\LuccuiPrinter;
 use Luccui\Classes\Mailer;
 use Luccui\Core\Session;
+use Luccui\Core\View;
 use Luccui\Helpers\Config;
 use Luccui\Models\ChiTietDonHang;
 use Luccui\Models\DonHang;
 use Luccui\Models\TaiKhoan;
+use function Symfony\Component\String\s;
 
 class PDFController extends BaseController
 {
@@ -20,8 +22,11 @@ class PDFController extends BaseController
             $donhang = DonHang::findFirst($donhang_id);
             $ctdh = ChiTietDonHang::where('donhang_id', '=', $donhang_id)->get();
             $pdfHoaDon =$this->taoPDFHoaDon($donhang, $ctdh);
-
-            $pdfHoaDon->render($donhang_id . date('dmyhis') . '.pdf', 'I');
+            header('Content-Type: application/x-download');
+            header('Content-Disposition: attachment; filename="'. $donhang_id . date('dmyhis') . '.pdf');
+            header('Cache-Control: private, max-age=0, must-revalidate');
+            header('Pragma: public');
+            echo $pdfHoaDon->render($donhang_id . date('dmyhis') . '.pdf', 'S');
         }
     }
     public function guiHoaDon()
@@ -34,19 +39,21 @@ class PDFController extends BaseController
                 $taikhoan = TaiKhoan::findFirst($donhang->nguoi_dat);
                 if($taikhoan->email) {
                     try {
-                        $pdfHoaDon =$this->taoPDFHoaDon($donhang, $ctdh);
-                        $attachment = rtrim(BASE_APP, '/') .'/public/uploads/hoadons/' . $donhang_id . date('dmyhis') . '.pdf';
-                        $pdfHoaDon->render($attachment, 'F');
+                        $logo = assets('public/client/images/logo.png');
+                        $seller = new \stdClass();
+                        $seller->name = 'Minh Lực';
+                        $seller->address = '126 Nguyễn Thiện Thành';
+                        $seller->phone = '03999xxxx';
 
-                        $mailer = new Mailer(app(Config::class)->mailer, true);
+                        $html = View::make('mail/template.php', [
+                            'logo' => $logo,
+                            'seller' => $seller,
+                            'invoice' => $donhang,
+                            'detail' => $ctdh
+                        ])->render(true);
 
-                        $mailer->addAddress($taikhoan->email, $taikhoan->ho . ' '. $taikhoan->ten);
-                        $mailer->addAttachment($attachment);
-                        $mailer->addSubject("Hóa đơn thanh toán đơn hàng");
-                        $mailer->addBody("Hóa đơn thanh toán đơn hàng ngày ". $donhang->ngay_dat);
-                        $mailer->addAltBody("This is the body in plain text for non-HTML mail clients");
-
-                        $mailer->send();
+                        Mailer::sendTo('luccui@gmail.com', 'test', $html, true);
+//                        Mailer::sendTo('luccui2k@gmail.com', 'Demo', $html, true);
                         Session::set('sent_email', 'Gửi email thành công');
                         Session::back();
                     } catch (\Exception $exception) {
@@ -58,31 +65,39 @@ class PDFController extends BaseController
     }
     public function taoPDFHoaDon($donhang, $ctdh)
     {
-
         $invoice = new LuccuiPrinter();
         $invoice->setLogo("public/images/logo.png");
         $invoice->setColor("#007fff");
-        $invoice->setType("Hoa don ban hang");
+        $invoice->setType("Hóa đơn bán hàng");
         $invoice->setReference("INV-55033645");
-        $invoice->setDate(date('M dS ,Y',time()));
+        $invoice->setDate(date('M dS ,Y', strtotime($donhang->ngay_dat)));
         $invoice->setTime(date('h:i:s A',time()));
         $invoice->setDue(date('M dS ,Y',strtotime('+3 months')));    // Due Date
-        $invoice->setFrom(array("Seller Name","Sample Company Name","128 AA Juanita Ave","Glendora , CA 91740"));
-        $invoice->setTo(array("Purchaser Name","Sample Company Name","128 AA Juanita Ave","Glendora , CA 91740"));
+        $invoice->setFrom(array("XDPMHDT","XDPMHDT","126 Nguyễn Thiện Thành"));
+        $invoice->setTo(array(
+            $donhang->ho_nguoi_dat . " " . $donhang->ten_nguoi_dat,
+            $donhang->dia_chi,
+            $donhang->so_dien_thoai
+        ));
 
         foreach ($ctdh as $item) {
-            $invoice->addItem(vietnam($item->ten_san_pham)->convert(),"",$item->so_luong,0,$item->gia,0,$item->thanh_tien);
+            $invoice->addItem($item->ten_san_pham,
+                "",
+                $item->so_luong,
+                0,
+                $item->gia,
+                0,
+                $item->thanh_tien);
         }
         $invoice->addTotal("Tam tin", vnmoney($donhang->thanh_tien, false));
         $invoice->addTotal("Phi VC", vnmoney($donhang->phi_giao_hang, false));
         $invoice->addTotal("Tong tien", vnmoney($donhang->tong_tien, false),true);
 
         if($donhang->trang_thai == DonHang::DA_HOAN_THANH)
-            $invoice->addBadge("Da thanh toan");
+            $invoice->addBadge("Đã thanh toán");
         else
             $invoice->addBadge("Chua thanh toan", "#dc3545");
 
-        $invoice->setFooternote("My Company Name Here");
         return $invoice;
     }
 }

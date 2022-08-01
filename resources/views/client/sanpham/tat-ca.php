@@ -44,7 +44,7 @@
                         <div class="toolbox">
                             <div class="toolbox-left">
                                 <div class="toolbox-info">
-                                    Hiển thị <span>9 of 56</span> Products
+                                    Hiển thị <span>9 trong 56</span> sản phẩm
                                 </div>
                             </div>
 
@@ -110,7 +110,7 @@
                                 <?php foreach ($sanphams['data'] as $sanpham) { ?>
                                     <div class="col-6 col-md-4 col-lg-4 col-xl-3">
                                         <div class="product product-7 text-center">
-                                            <figure class="product-media">
+                                            <figure class="product-media" style="border-radius: 5px;">
                                                 <?php if($sanpham[0]['la_san_pham_moi']) {?>
                                                     <span class="product-label label-new">New</span>
                                                 <?php } ?>
@@ -124,9 +124,6 @@
                                                     <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
                                                 </div>
 
-                                                <div class="product-action">
-                                                    <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
-                                                </div>
                                             </figure>
 
                                             <div class="product-body">
@@ -134,29 +131,14 @@
                                                     <a href="#"><?php echo isset($sanpham['danhmucs'][0]) ? $sanpham['danhmucs'][0]['ten_danh_muc'] : ''; ?></a>
                                                 </div>
                                                 <h3 class="product-title">
-                                                    <a href="/san-pham/chi-tiet?id=<?php echo $sanpham[0]['id'] ?>">
+                                                    <a class="text-truncate" href="/san-pham/chi-tiet?id=<?php echo $sanpham[0]['id'] ?>">
                                                         <?php echo $sanpham[0]['ten_san_pham'] ?>
                                                     </a>
                                                 </h3>
                                                 <div class="product-price">
                                                     <?php echo vnmoney($sanpham[0]['gia_cuoi_cung']); ?>
                                                 </div>
-                                                <div class="ratings-container">
-                                                    <div class="ratings">
-                                                        <div class="ratings-val" style="width: 20%;"></div>
-                                                    </div>
-                                                    <span class="ratings-text">( 2 Reviews )</span>
-                                                </div>
 
-                                                <div class="product-nav product-nav-thumbs">
-                                                    <?php if(count($sanpham['hinhanhs']) > 0) {?>
-                                                        <?php foreach ($sanpham['hinhanhs'] as $hinhanh) {?>
-                                                            <a href="#" class="active">
-                                                                <img src="<?php echo assets($hinhanh['duong_dan']); ?>" alt="product desc">
-                                                            </a>
-                                                        <?php } ?>
-                                                    <?php } ?>
-                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -186,7 +168,6 @@
                                         </li>
                                     <?php } ?>
                                 <?php } ?>
-<!--                                <li class="page-item-total">of </li> -->
                             </ul>
                         </nav>
                     </div>
@@ -310,5 +291,6 @@
     <?php partial('includes/footer.php', 'client'); ?>
 </div>
 <?php partial('includes/script.php', 'client'); ?>
+
 </body>
 </html>

@@ -1,81 +1,98 @@
 (function($) {
   'use strict';
   $(function() {
+      async function fetchDonHang() {
+          const response = await fetch("/api/chart/don-hang");
+          const { data } = await response.json();
+          return data;
+      }
     if ($("#orders-chart").length) {
-      var currentChartCanvas = $("#orders-chart").get(0).getContext("2d");
-      var currentChart = new Chart(currentChartCanvas, {
-        type: 'bar',
-        data: {
-          labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-          datasets: [{
-              label: 'Delivered',
-              data: [260, 380, 230, 400, 780, 530, 340, 200, 400, 650, 780, 500],
-              backgroundColor: '#392c70'
-            },
-            {
-              label: 'Estimated',
-              data: [480, 600, 510, 600, 1000, 570, 500, 350, 450, 710, 820, 650],
-              backgroundColor: '#d1cede'
-            }
-          ]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: true,
-          layout: {
-            padding: {
-              left: 0,
-              right: 0,
-              top: 20,
-              bottom: 0
-            }
-          },
-          scales: {
-            yAxes: [{
-              gridLines: {
-                drawBorder: false,
-              },
-              ticks: {
-                stepSize: 250,
-                fontColor: "#686868"
-              }
-            }],
-            xAxes: [{
-              stacked: true,
-              ticks: {
-                beginAtZero: true,
-                fontColor: "#686868"
-              },
-              gridLines: {
-                display: false,
-              },
-              barPercentage: 0.4
-            }]
-          },
-          legend: {
-            display: false
-          },
-          elements: {
-            point: {
-              radius: 0
-            }
-          },
-          legendCallback: function(chart) { 
-            var text = [];
-            text.push('<ul class="legend'+ chart.id +'">');
-            for (var i = 0; i < chart.data.datasets.length; i++) {
-              text.push('<li><span class="legend-label" style="background-color:' + chart.data.datasets[i].backgroundColor + '"></span>');
-              if (chart.data.datasets[i].label) {
-                text.push(chart.data.datasets[i].label);
-              }
-              text.push('</li>');
-            }
-            text.push('</ul>');
-            return text.join("");
-          },
-        }
-      });
-      document.getElementById('orders-chart-legend').innerHTML = currentChart.generateLegend();
+    fetchDonHang()
+        .then(response => {
+            let currentChartCanvas = $("#orders-chart").get(0).getContext("2d");
+            const hoanThanh = Object.values(response.hoan_thanh);
+            const tatCa = Object.values(response.tat_ca);
+            const labels = Object.keys(response.tat_ca);
+            console.log(labels)
+            console.log(hoanThanh)
+            console.log(tatCa)
+
+
+            // const labels = Object.keys(response);
+            let currentChart = new Chart(currentChartCanvas, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Tất cả',
+                        data: tatCa,
+                        backgroundColor: '#392c70'
+                    },
+                        {
+                            label: 'Đã hoàn thành',
+                            data: hoanThanh,
+                            backgroundColor: '#d1cede'
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    layout: {
+                        padding: {
+                            left: 0,
+                            right: 0,
+                            top: 20,
+                            bottom: 0
+                        }
+                    },
+                    scales: {
+                        yAxes: [{
+                            gridLines: {
+                                drawBorder: false,
+                            },
+                            ticks: {
+                                stepSize: 50000000,
+                                fontColor: "#686868"
+                            }
+                        }],
+                        xAxes: [{
+                            stacked: true,
+                            ticks: {
+                                beginAtZero: true,
+                                fontColor: "#686868"
+                            },
+                            gridLines: {
+                                display: false,
+                            },
+                            barPercentage: 0.4
+                        }]
+                    },
+                    legend: {
+                        display: false
+                    },
+                    elements: {
+                        point: {
+                            radius: 0
+                        }
+                    },
+                    legendCallback: function(chart) {
+                        var text = [];
+                        text.push('<ul class="legend'+ chart.id +'">');
+                        for (var i = 0; i < chart.data.datasets.length; i++) {
+                            text.push('<li><span class="legend-label" style="background-color:' + chart.data.datasets[i].backgroundColor + '"></span>');
+                            if (chart.data.datasets[i].label) {
+                                text.push(chart.data.datasets[i].label);
+                            }
+                            text.push('</li>');
+                        }
+                        text.push('</ul>');
+                        return text.join("");
+                    },
+                }
+            });
+            document.getElementById('orders-chart-legend').innerHTML = currentChart.generateLegend();
+        })
     }
     if ($('#sales-chart').length) {
       var lineChartCanvas = $("#sales-chart").get(0).getContext("2d");
@@ -156,13 +173,13 @@
               '#eeeeee'
             ],
           }],
-      
+
           // These labels appear in the legend and in the tooltips when hovering different arcs
           labels: [
-            'Active users',
-            'Subscribers',
-            'New visitors',
-            'Others'
+            'Người dùng hoạt động',
+            'Người đăng ký',
+            'Khách ghé thăm mới',
+            'Khác'
           ]
         },
         options: {
@@ -174,7 +191,7 @@
           legend: {
             display: false
           },
-          legendCallback: function(chart) { 
+          legendCallback: function(chart) {
             var text = [];
             text.push('<ul class="legend'+ chart.id +'">');
             for (var i = 0; i < chart.data.datasets[0].data.length; i++) {
@@ -204,13 +221,13 @@
           ],
           borderWidth: 0
         }],
-    
+
         // These labels appear in the legend and in the tooltips when hovering different arcs
         labels: [
-          'Mail order sales',
-          'Instore sales',
-          'Download sales',
-          'Sales return'
+          'Mail gửi cho khách hàng',
+          'Bán tại cửa hàng',
+          'Bán hàng thành công',
+          'Sản phẩm hồi về'
         ]
       };
       var dailySalesChartOptions = {
@@ -223,7 +240,7 @@
         legend: {
           display: false
         },
-        legendCallback: function(chart) { 
+        legendCallback: function(chart) {
           var text = [];
           text.push('<ul class="legend'+ chart.id +'">');
           for (var i = 0; i < chart.data.datasets[0].data.length; i++) {
@@ -236,7 +253,7 @@
           text.push('</ul>');
           return text.join("");
         },
-        cutoutPercentage: 70     
+        cutoutPercentage: 70
       };
       var dailySalesChartCanvas = $("#daily-sales-chart").get(0).getContext("2d");
       var dailySalesChart = new Chart(dailySalesChartCanvas, {

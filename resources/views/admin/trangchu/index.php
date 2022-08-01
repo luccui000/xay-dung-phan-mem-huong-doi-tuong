@@ -79,7 +79,7 @@
                                     <div class="statistics-item">
                                         <p>
                                             <i class="icon-sm fas fa-chart-line mr-2"></i>
-                                            Tổng danh thu
+                                            Doanh thu tháng này
                                         </p>
                                         <h2><?php echo vnmoney($tong_doanh_thu); ?></h2>
 <!--                                        <label class="badge badge-outline-success badge-pill">10% increase</label>-->
@@ -121,7 +121,7 @@
                             <div class="card-body">
                                 <h4 class="card-title">
                                     <i class="fas fa-gift"></i>
-                                    Orders
+                                    Đặt hàng
                                 </h4>
                                 <canvas id="orders-chart"></canvas>
                                 <div id="orders-chart-legend" class="orders-chart-legend"></div>
@@ -133,9 +133,8 @@
                             <div class="card-body">
                                 <h4 class="card-title">
                                     <i class="fas fa-chart-line"></i>
-                                    Sales
+                                    Bán hàng
                                 </h4>
-                                <h2 class="mb-5">56000 <span class="text-muted h4 font-weight-normal">Sales</span></h2>
                                 <canvas id="sales-chart"></canvas>
                             </div>
                         </div>
@@ -147,7 +146,7 @@
                             <div class="card-body d-flex flex-column">
                                 <h4 class="card-title">
                                     <i class="fas fa-chart-pie"></i>
-                                    Sales status
+                                    Trạng thái website
                                 </h4>
                                 <div class="flex-grow-1 d-flex flex-column justify-content-between">
                                     <canvas id="sales-status-chart" class="mt-3"></canvas>
@@ -163,39 +162,32 @@
                             <div class="card-body">
                                 <h4 class="card-title">
                                     <i class="far fa-futbol"></i>
-                                    Activity
+                                    Hoạt động cửa hàng
                                 </h4>
                                 <ul class="solid-bullet-list">
                                     <li>
-                                        <h5>4 people shared a post
+                                        <h5>4 người đã chia sẻ bài viết
                                             <span class="float-right text-muted font-weight-normal small">8:30 AM</span>
                                         </h5>
-                                        <p class="text-muted">It was an awesome work!</p>
-                                        <div class="image-layers">
-                                            <div class="img-sm profile-image-text bg-warning rounded-circle image-layer-item">M</div>
-                                            <img class="img-sm rounded-circle image-layer-item" src="images/faces/face3.jpg" alt="profile"/>
-                                            <img class="img-sm rounded-circle image-layer-item" src="images/faces/face5.jpg" alt="profile"/>
-                                            <img class="img-sm rounded-circle image-layer-item" src="images/faces/face8.jpg" alt="profile"/>
-                                        </div>
                                     </li>
                                     <li>
-                                        <h5>Stella posted in a group
+                                        <h5>Lam đã đăng nội dung lên nhóm
                                             <span class="float-right text-muted font-weight-normal small">11:40 AM</span>
                                         </h5>
-                                        <p class="text-muted">The team has done a great job</p>
+                                        <p class="text-muted">Chia sẻ để mọi người tham khảo</p>
                                     </li>
                                     <li>
-                                        <h5>Dobrick posted in material
+                                        <h5>Hoàn thành công việc
                                             <span class="float-right text-muted font-weight-normal small">4:30 PM</span>
                                         </h5>
-                                        <p class="text-muted">Great work. Keep it up!</p>
+                                        <p class="text-muted">Lên kế hoạch tháng tới</p>
                                     </li>
                                 </ul>
                                 <div class="border-top pt-3">
                                     <div class="d-flex justify-content-between">
-                                        <button class="btn btn-outline-dark">More</button>
+                                        <button class="btn btn-outline-dark">Xem thêm</button>
                                         <button class="btn btn-primary btn-icon-text">
-                                            Add new task
+                                            Thêm mới
                                             <i class="btn-icon-append fas fa-plus"></i>
                                         </button>
                                     </div>
@@ -208,150 +200,12 @@
                             <div class="card-body d-flex flex-column">
                                 <h4 class="card-title">
                                     <i class="fas fa-tachometer-alt"></i>
-                                    Daily Sales
+                                    Doanh số hàng ngày
                                 </h4>
-                                <p class="card-description">Daily sales for the past one month</p>
+                                <p class="card-description">Doanh số hằng ngày trong 1 tháng qua</p>
                                 <div class="flex-grow-1 d-flex flex-column justify-content-between">
                                     <canvas id="daily-sales-chart" class="mt-3 mb-3 mb-md-0"></canvas>
                                     <div id="daily-sales-chart-legend" class="daily-sales-chart-legend pt-4 border-top"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-12 grid-margin">
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="card-title">
-                                    <i class="fas fa-envelope"></i>
-                                    Inbox(31)
-                                </h4>
-                                <div class="table-responsive">
-                                    <table class="table">
-                                        <tbody>
-                                        <tr>
-                                            <td>
-                                                <div class="form-check">
-                                                    <label class="form-check-label">
-                                                        <input type="checkbox" class="form-check-input">
-                                                    </label>
-                                                </div>
-                                            </td>
-                                            <td class="py-1">
-                                                <img src="images/faces/face13.jpg" alt="profile" class="img-sm rounded-circle"/>
-                                            </td>
-                                            <td class="font-weight-bold">
-                                                Andrew Bowen
-                                            </td>
-                                            <td>
-                                                <label class="badge badge-light badge-pill">Development</label>
-                                            </td>
-                                            <td>
-                                                The required fields are added in the database
-                                            </td>
-                                            <td>
-                                                <i class="fas fa-ellipsis-v"></i>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="form-check">
-                                                    <label class="form-check-label">
-                                                        <input type="checkbox" class="form-check-input">
-                                                    </label>
-                                                </div>
-                                            </td>
-                                            <td class="py-1">
-                                                <img src="images/faces/face2.jpg" alt="profile" class="img-sm rounded-circle"/>
-                                            </td>
-                                            <td class="font-weight-bold">
-                                                Mae Saunders
-                                            </td>
-                                            <td>
-                                                <label class="badge badge-light badge-pill">Development</label>
-                                            </td>
-                                            <td>
-                                                The application will be completed by tomorrow
-                                            </td>
-                                            <td>
-                                                <i class="fas fa-ellipsis-v"></i>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="form-check">
-                                                    <label class="form-check-label">
-                                                        <input type="checkbox" class="form-check-input">
-                                                    </label>
-                                                </div>
-                                            </td>
-                                            <td class="py-1">
-                                                <div class="img-sm rounded-circle bg-warning profile-image-text">M</div>
-                                            </td>
-                                            <td class="font-weight-bold">
-                                                Manuel Yates
-                                            </td>
-                                            <td>
-                                                <label class="badge badge-light badge-pill">Design</label>
-                                            </td>
-                                            <td>
-                                                The new design is uploaded in zeplin
-                                            </td>
-                                            <td>
-                                                <i class="fas fa-ellipsis-v"></i>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="form-check">
-                                                    <label class="form-check-label">
-                                                        <input type="checkbox" class="form-check-input">
-                                                    </label>
-                                                </div>
-                                            </td>
-                                            <td class="py-1">
-                                                <img src="images/faces/face11.html" alt="profile" class="img-sm rounded-circle"/>
-                                            </td>
-                                            <td class="font-weight-bold">
-                                                Marguerite Phillips
-                                            </td>
-                                            <td>
-                                                <label class="badge badge-light badge-pill">Development</label>
-                                            </td>
-                                            <td>
-                                                Please send me the latest requirements
-                                            </td>
-                                            <td>
-                                                <i class="fas fa-ellipsis-v"></i>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="form-check">
-                                                    <label class="form-check-label">
-                                                        <input type="checkbox" class="form-check-input">
-                                                    </label>
-                                                </div>
-                                            </td>
-                                            <td class="py-1">
-                                                <div class="img-sm rounded-circle bg-info profile-image-text">C</div>
-                                            </td>
-                                            <td class="font-weight-bold">
-                                                Clifford Wilson
-                                            </td>
-                                            <td>
-                                                <label class="badge badge-light badge-pill">Testing</label>
-                                            </td>
-                                            <td>
-                                                The issues are documented in the shared sheet
-                                            </td>
-                                            <td>
-                                                <i class="fas fa-ellipsis-v"></i>
-                                            </td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
                                 </div>
                             </div>
                         </div>
@@ -363,89 +217,41 @@
                             <div class="card-body">
                                 <h4 class="card-title">
                                     <i class="fas fa-table"></i>
-                                    Sales Data
+                                    Dữ liệu bán hàng
                                 </h4>
                                 <div class="table-responsive">
                                     <table class="table">
                                         <thead>
                                         <tr>
-                                            <th>Customer</th>
-                                            <th>Item code</th>
-                                            <th>Orders</th>
-                                            <th>Status</th>
+                                            <th>Tên khách hàng</th>
+                                            <th>Mã đơn hàng</th>
+                                            <th>Giá trị đơn hàng</th>
+                                            <th class="text-center">Trạng thái</th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <tr>
-                                            <td class="font-weight-bold">
-                                                Clifford Wilson
-                                            </td>
-                                            <td class="text-muted">
-                                                PT613
-                                            </td>
-                                            <td>
-                                                350
-                                            </td>
-                                            <td>
-                                                <label class="badge badge-success badge-pill">Dispatched</label>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="font-weight-bold">
-                                                Mary Payne
-                                            </td>
-                                            <td class="text-muted">
-                                                ST456
-                                            </td>
-                                            <td>
-                                                520
-                                            </td>
-                                            <td>
-                                                <label class="badge badge-warning badge-pill">Processing</label>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="font-weight-bold">
-                                                Adelaide Blake
-                                            </td>
-                                            <td class="text-muted">
-                                                CS789
-                                            </td>
-                                            <td>
-                                                830
-                                            </td>
-                                            <td>
-                                                <label class="badge badge-danger badge-pill">Failed</label>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="font-weight-bold">
-                                                Adeline King
-                                            </td>
-                                            <td class="text-muted">
-                                                LP908
-                                            </td>
-                                            <td>
-                                                579
-                                            </td>
-                                            <td>
-                                                <label class="badge badge-primary badge-pill">Delivered</label>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="font-weight-bold">
-                                                Bertie Robbins
-                                            </td>
-                                            <td class="text-muted">
-                                                HF675
-                                            </td>
-                                            <td>
-                                                790
-                                            </td>
-                                            <td>
-                                                <label class="badge badge-info badge-pill">On Hold</label>
-                                            </td>
-                                        </tr>
+                                            <?php foreach ($donhangs as $donhang) { ?>
+                                                <tr>
+                                                    <td><?php echo $donhang->ho_nguoi_dat . ' ' . $donhang->ten_nguoi_dat; ?></td>
+                                                    <td>
+                                                        <a href="/admin/don-hang/chi-tiet?id=<?php echo $donhang->ma_don_hang; ?>">
+                                                            <?php echo $donhang->ma_don_hang; ?>
+                                                        </a>
+                                                    <td><?php echo vnmoney($donhang->tong_tien); ?></td>
+                                                    <td class="text-center">
+                                                        <?php
+                                                            if($donhang->trang_thai == \Luccui\Models\DonHang::DANG_CHO_XAC_NHAN)
+                                                                echo "<span class='badge badge-warning'>{$donhang->trang_thai}</span>";
+                                                            else if($donhang->trang_thai == \Luccui\Models\DonHang::DA_XAC_NHAN)
+                                                                echo "<span class='badge badge-primary'>{$donhang->trang_thai}</span>";
+                                                            else if($donhang->trang_thai == \Luccui\Models\DonHang::DA_HOAN_THANH)
+                                                                echo "<span class='badge badge-success'>{$donhang->trang_thai}</span>";
+                                                            else
+                                                                echo "<span class='badge badge-danger'>{$donhang->trang_thai}</span>";
+                                                        ?>
+                                                    </td>
+                                                </tr>
+                                            <?php } ?>
                                         </tbody>
                                     </table>
                                 </div>
@@ -457,7 +263,7 @@
                             <div class="card-body">
                                 <h4 class="card-title">
                                     <i class="fas fa-calendar-alt"></i>
-                                    Calendar
+                                    Lịch
                                 </h4>
                                 <div id="inline-datepicker-example" class="datepicker"></div>
                             </div>
@@ -470,11 +276,11 @@
                             <div class="card-body">
                                 <h4 class="card-title">
                                     <i class="fas fa-thumbtack"></i>
-                                    Todo
+                                    Việc cần làm
                                 </h4>
                                 <div class="add-items d-flex">
-                                    <input type="text" class="form-control todo-list-input"  placeholder="What do you need to do today?">
-                                    <button class="add btn btn-primary font-weight-bold todo-list-add-btn" id="add-task">Add</button>
+                                    <input type="text" class="form-control todo-list-input"  placeholder="Kế hoạch làm việc cho hôm nay">
+                                    <button class="add btn btn-primary font-weight-bold todo-list-add-btn" id="add-task">Thêm mới</button>
                                 </div>
                                 <div class="list-wrapper">
                                     <ul class="d-flex flex-column-reverse todo-list">
@@ -671,6 +477,11 @@
         <!-- main-panel ends -->
     </div>
     <?php partial('includes/script.php', 'admin'); ?>
+    <script>
+        $(document).ready(function() {
+
+        })
+    </script>
 </div>
 </body>
 </html>

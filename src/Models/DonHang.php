@@ -21,6 +21,7 @@ class DonHang extends Model
         'ten_nguoi_dat',
         'phi_giao_hang',
         'dia_chi',
+        'so_dien_thoai',
         'thanh_tien',
         'tong_tien',
         'ma_giam_gia',
@@ -29,4 +30,5 @@ class DonHang extends Model
         'trang_thai',
         'ngay_dat',
     ];
+
 }

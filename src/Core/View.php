@@ -19,7 +19,7 @@ class View
     /**
      * @throws ViewNotFoundException
      */
-    public function render()
+    public function render($isHtml = false)
     {
         $fullPath = BASE_APP . "/resources/views/" . trim($this->viewPath, "/");
         if (!file_exists($fullPath))
@@ -29,6 +29,8 @@ class View
         include $fullPath;
         $content = ob_get_contents();
         ob_get_clean();
+        if($isHtml)
+            return $content;
         return TemplateEngine::run($content);
     }
 }

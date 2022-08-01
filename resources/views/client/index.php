@@ -37,18 +37,6 @@
                 <div class="mb-4"></div>
                 <div class="container">
                     <div class="row justify-content-center">
-                        <div class="col-md-6 col-lg-4">
-                            <div class="banner banner-overlay banner-overlay-light">
-                                <a href="#">
-                                    <img src="{! assets('public/client/images/banners/banner-1.png'); !}" alt="Banner">
-                                </a>
-                                <div class="banner-content">
-                                    <h4 class="banner-subtitle"><a href="#">Smart Offer</a></h4><!-- End .banner-subtitle -->
-                                    <h3 class="banner-title"><a href="#">Save $150 <strong>on Samsung <br>Galaxy Note9</strong></a></h3><!-- End .banner-title -->
-                                    <a href="#" class="banner-link">Shop Now<i class="icon-long-arrow-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
                         <?php partial('sanpham/partials/banner.php', 'client'); ?>
                     </div>
                 </div>
@@ -58,28 +46,28 @@
                 <div class="container new-arrivals">
                     <div class="heading heading-flex mb-3">
                         <div class="heading-left">
-                            <h2 class="title">New Arrivals</h2>
+                            <h2 class="title">Sản phẩm mới</h2>
                         </div>
 
                         <div class="heading-right">
                             <ul class="nav nav-pills nav-border-anim justify-content-center" role="tablist">
                                 <li class="nav-item">
-                                    <a class="nav-link active" id="new-all-link" data-toggle="tab" href="#new-all-tab" role="tab" aria-controls="new-all-tab" aria-selected="true">All</a>
+                                    <a class="nav-link active" id="new-all-link" data-toggle="tab" href="#new-all-tab" role="tab" aria-controls="new-all-tab" aria-selected="true">Tất cả</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" id="new-tv-link" data-toggle="tab" href="#new-tv-tab" role="tab" aria-controls="new-tv-tab" aria-selected="false">TV</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" id="new-computers-link" data-toggle="tab" href="#new-computers-tab" role="tab" aria-controls="new-computers-tab" aria-selected="false">Computers</a>
+                                    <a class="nav-link" id="new-computers-link" data-toggle="tab" href="#new-computers-tab" role="tab" aria-controls="new-computers-tab" aria-selected="false">Máy tính</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" id="new-phones-link" data-toggle="tab" href="#new-phones-tab" role="tab" aria-controls="new-phones-tab" aria-selected="false">Tablets & Cell Phones</a>
+                                    <a class="nav-link" id="new-phones-link" data-toggle="tab" href="#new-phones-tab" role="tab" aria-controls="new-phones-tab" aria-selected="false">Ảnh kỹ thuật số</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" id="new-watches-link" data-toggle="tab" href="#new-watches-tab" role="tab" aria-controls="new-watches-tab" aria-selected="false">Smartwatches</a>
+                                    <a class="nav-link" id="new-watches-link" data-toggle="tab" href="#new-watches-tab" role="tab" aria-controls="new-watches-tab" aria-selected="false">Điện thoại di động</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" id="new-acc-link" data-toggle="tab" href="#new-acc-tab" role="tab" aria-controls="new-acc-tab" aria-selected="false">Accessories</a>
+                                    <a class="nav-link" id="new-acc-link" data-toggle="tab" href="#new-acc-tab" role="tab" aria-controls="new-acc-tab" aria-selected="false">Âm thanh</a>
                                 </li>
                             </ul>
                         </div>
@@ -94,23 +82,12 @@
                             <div class="col-md-12">
                                 <div class="cta-content">
                                     <div class="cta-text text-right text-white">
-                                        <p>Shop Today’s Deals <br><strong>Awesome Made Easy. HERO7 Black</strong></p>
+                                        <p>Ưu đãi ngày hôm nay <br><strong>Lưu giữ khoảnh khắc tuyệt vời cùng HERO7 Black</strong></p>
                                     </div>
-                                    <a href="#" class="btn btn-primary btn-round"><span>Shop Now - $429.99</span><i class="icon-long-arrow-right"></i></a>
+                                    <a href="#" class="btn btn-primary btn-round"><span>Mua ngay - 8.999.000đ</span><i class="icon-long-arrow-right"></i></a>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-
-                <div class="container">
-                    <div class="heading text-center mb-3">
-                        <h2 class="title">Deals & Outlet</h2>
-                        <p class="title-desc">Today’s deal and more</p>
-                    </div>
-                    <?php partial('sanpham/partials/deal.php', 'client'); ?>
-                    <div class="more-container text-center mt-1 mb-5">
-                        <a href="#" class="btn btn-outline-dark-2 btn-round btn-more"><span>Shop more Outlet deals</span><i class="icon-long-arrow-right"></i></a>
                     </div>
                 </div>
 
@@ -120,19 +97,19 @@
                     <div class="container trending-products">
                         <div class="heading heading-flex mb-3">
                             <div class="heading-left">
-                                <h2 class="title">Trending Products</h2>
+                                <h2 class="title">Sản phẩm thịnh hành</h2>
                             </div>
 
                             <div class="heading-right">
                                 <ul class="nav nav-pills nav-border-anim justify-content-center" role="tablist">
                                     <li class="nav-item">
-                                        <a class="nav-link active" id="trending-top-link" data-toggle="tab" href="#trending-top-tab" role="tab" aria-controls="trending-top-tab" aria-selected="true">Top Rated</a>
+                                        <a class="nav-link active" id="trending-top-link" data-toggle="tab" href="#trending-top-tab" role="tab" aria-controls="trending-top-tab" aria-selected="true">Đánh giá tốt nhất</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" id="trending-best-link" data-toggle="tab" href="#trending-best-tab" role="tab" aria-controls="trending-best-tab" aria-selected="false">Best Selling</a>
+                                        <a class="nav-link" id="trending-best-link" data-toggle="tab" href="#trending-best-tab" role="tab" aria-controls="trending-best-tab" aria-selected="false">Đáng mua nhất</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" id="trending-sale-link" data-toggle="tab" href="#trending-sale-tab" role="tab" aria-controls="trending-sale-tab" aria-selected="false">On Sale</a>
+                                        <a class="nav-link" id="trending-sale-link" data-toggle="tab" href="#trending-sale-tab" role="tab" aria-controls="trending-sale-tab" aria-selected="false">Đang khuyến mãi</a>
                                     </li>
                                 </ul>
                             </div>

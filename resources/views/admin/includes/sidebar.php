@@ -77,15 +77,15 @@
             </div>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="pages/ui-features/popups.html">
-                <i class="fas fa-minus-square menu-icon"></i>
-                <span class="menu-title">Popups</span>
+            <a class="nav-link" href="#">
+                <i class="fas fa-cog menu-icon"></i>
+                <span class="menu-title">Cài đặt</span>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="pages/documentation.html">
-                <i class="far fa-file-alt menu-icon"></i>
-                <span class="menu-title">Documentation</span>
+            <a class="nav-link" href="#">
+                <i class="fas fa-sign-out-alt menu-icon"></i>
+                <span class="menu-title">Đăng xuất</span>
             </a>
         </li>
     </ul>

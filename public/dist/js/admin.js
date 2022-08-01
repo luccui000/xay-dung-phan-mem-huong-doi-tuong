@@ -618,7 +618,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const HDTShop = {
+
+window.HDTShop = {
     sanpham: {
         handleHinhanhUpload: _sanpham_create__WEBPACK_IMPORTED_MODULE_3__["handleHinhanhUpload"]
     },
@@ -629,8 +630,7 @@ const HDTShop = {
     editor: {
         // makeEditor
     }
-}
-window.HDTShop = HDTShop;
+};
 
 
 /***/ }),
@@ -733,6 +733,76 @@ $("#toggle-menu").click(function() {
         })
     }
 })
+if ($("#donhang-chart").length) {
+    async function fetchDonHang() {
+        const response = await fetch('/api/chart/don-hang');
+        const { data } = await response.json();
+        let orderLabels = Object.keys(data);
+        let orderDataSets = Object.values(data);
+
+        let datasets = [
+            {
+                label: 'Delivered',
+                data: orderDataSets,
+                backgroundColor: '#392c70'
+            }
+        ];
+        let donhangChart = $("#donhang-chart").get(0).getContext("2d");
+        var currentChart = new Chart(donhangChart, {
+            type: 'bar',
+            data: {
+                labels: orderLabels,
+                datasets:  datasets
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                layout: {
+                    padding: {
+                        left: 0,
+                        right: 0,
+                        top: 20,
+                        bottom: 0
+                    }
+                },
+                scales: {
+                    yAxes: [{
+                        gridLines: {
+                            drawBorder: false,
+                        },
+                        ticks: {
+                            stepSize: 250,
+                            fontColor: "#686868"
+                        }
+                    }],
+                    xAxes: [{
+                        stacked: true,
+                        ticks: {
+                            beginAtZero: true,
+                            fontColor: "#686868"
+                        },
+                        gridLines: {
+                            display: false,
+                        },
+                        barPercentage: 0.4
+                    }]
+                },
+                legend: {
+                    display: false
+                },
+                elements: {
+                    point: {
+                        radius: 0
+                    }
+                },
+                legendCallback: function(chart) {
+                },
+            }
+        });
+    }
+
+    fetchDonHang();
+}
 
 
 /***/ })

@@ -49,7 +49,7 @@ class ThanhToanController
         $donhang = DonHang::where('id', '=', $donhang_id)->first();
 
         if($request->phuong_thuc_thanh_toan == "online") {
-            $data = $request->all();
+            $data = $request->all(); 
             $data['donhang_id'] = $donhang_id;
             $this->makePurchase($data);
         }

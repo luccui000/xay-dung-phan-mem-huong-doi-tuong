@@ -4,7 +4,8 @@ import "datatables.net-bs4/css/dataTables.bootstrap4.min.css";
 import { handleHinhanhUpload } from "./sanpham/create";
 import { toastError, toastSuccess } from "./toast";
 
-const HDTShop = {
+
+window.HDTShop = {
     sanpham: {
         handleHinhanhUpload
     },
@@ -15,5 +16,4 @@ const HDTShop = {
     editor: {
         // makeEditor
     }
-}
-window.HDTShop = HDTShop;
+};

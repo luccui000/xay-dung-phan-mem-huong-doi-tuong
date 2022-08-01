@@ -55,15 +55,7 @@
                             </div>
                             <div class="my-3">
                                 <button type="submit" class="btn btn-block btn-primary">Đăng nhập</button>
-                            </div>
-                            <div class="mb-2 d-flex">
-                                <button type="button" class="btn btn-facebook flex-grow mr-1">
-                                    <i class="fab fa-facebook-f mr-2"></i>Facebook
-                                </button>
-                                <button type="button" class="btn btn-google flex-grow ml-1">
-                                    <i class="fab fa-google mr-2"></i>Google
-                                </button>
-                            </div>
+                            </div> 
                         </form>
                     </div>
                 </div>
