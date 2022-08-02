@@ -187,7 +187,7 @@
                             <a href="/" class="sf-with-ul">Trang chủ</a>
                         </li>
                         <li class="megamenu-container">
-                            <a href="/san-pham/tat-ca" class="sf-with-ul">Cửa hàng</a>
+                            <a href="/san-pham/tat-ca/v2" class="sf-with-ul">Cửa hàng</a>
                         </li>
                         <li class="megamenu-container">
                             <a href="/bai-viet" class="sf-with-ul">Bài viết</a>

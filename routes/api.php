@@ -6,6 +6,7 @@ use Luccui\Http\Controllers\Api\DiaChiController;
 use Luccui\Http\Controllers\Api\GiaoHangController;
 use Luccui\Http\Controllers\Api\GiaTriController;
 use Luccui\Http\Controllers\Api\GioHangController;
+use Luccui\Http\Controllers\Api\SanPhamController;
 use Luccui\Http\Controllers\Api\TrangChuController;
 use Luccui\Http\Controllers\Api\UploadImageController;
 
@@ -17,3 +18,6 @@ Router::post('/api/giao-hang/tinh-phi', [GiaoHangController::class, 'phiGiaoHang
 Router::post('/api/upload', [UploadImageController::class, 'upload'], '/api/upload');
 Router::get('/api/chart/don-hang', [TrangChuController::class, 'chartDonHang'], '/api/chart/don-hang');
 Router::post('/api/viec-lam', [TrangChuController::class, 'themmoi'], '/api/viec-lam');
+Router::get('/api/nha-cung-cap', [SanPhamController::class, 'nhacungcap'], '/api/nha-cung-cap');
+Router::get('/api/danh-muc', [SanPhamController::class, 'danhmuc'], '/api/danh-muc');
+Router::get('/api/san-pham', [SanPhamController::class, 'sanpham'], '/api/san-pham');

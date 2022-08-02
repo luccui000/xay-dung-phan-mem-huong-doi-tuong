@@ -1,6 +1,6 @@
 <footer class="footer">
     <?php if(!str_contains($_SERVER['REQUEST_URI'], 'dang-ky')) { ?>
-    <div class="cta bg-image bg-dark pt-4 pb-5 mb-0" style="background-image: url(<?php echo assets('public/client/images/bg-5.jpg') ?>);">
+    <div class="cta bg-image bg-dark pt-4 pb-5 mb-0" style="background-image: url(<?php echo BASE_URL . 'public/client/images/bg-5.jpg' ?>);">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-sm-10 col-md-8 col-lg-6">
