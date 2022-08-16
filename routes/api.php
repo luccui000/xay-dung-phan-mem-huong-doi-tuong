@@ -1,8 +1,9 @@
 <?php
 
-
+use Illuminate\Support\Facades\Route;
 use Luccui\Core\Router;
 use Luccui\Http\Controllers\Api\DiaChiController;
+use Luccui\Http\Controllers\Api\FilterController;
 use Luccui\Http\Controllers\Api\GiaoHangController;
 use Luccui\Http\Controllers\Api\GiaTriController;
 use Luccui\Http\Controllers\Api\GioHangController;
@@ -21,3 +22,4 @@ Router::post('/api/viec-lam', [TrangChuController::class, 'themmoi'], '/api/viec
 Router::get('/api/nha-cung-cap', [SanPhamController::class, 'nhacungcap'], '/api/nha-cung-cap');
 Router::get('/api/danh-muc', [SanPhamController::class, 'danhmuc'], '/api/danh-muc');
 Router::get('/api/san-pham', [SanPhamController::class, 'sanpham'], '/api/san-pham');
+Router::get('/api/chart/filter', [FilterController::class, 'index'], '/api/chart/filter');

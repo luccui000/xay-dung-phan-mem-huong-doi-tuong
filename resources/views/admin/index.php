@@ -15,13 +15,13 @@
                 <div class="card">
                     <div class="card-body">
                         <form method="POST" action="/admin/store">
-                            <h5 class="text-uppercase text-center my-2">Login</h5>
+                            <h5 class="text-uppercase text-center my-2">Đăng nhập</h5>
                             <div class="form-group">
                                 <label for="email">Email</label>
                                 <input name="email" id="email" class="form-control form-control-sm" type="text">
                             </div>
                             <div class="form-group">
-                                <label for="password">Password</label>
+                                <label for="password">Mật khẩu</label>
                                 <input name="password" id="password" class="form-control form-control-sm" type="password">
                             </div>
                             <button class="btn btn-primary btn-block">Đăng nhập</button>

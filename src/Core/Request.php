@@ -27,7 +27,11 @@ class Request
             }
         }
     }
-
+    public function get($key)
+    {
+        $data = static::all();
+        return $data[$key];
+    }
     public function hasFile()
     {
         return count($_FILES) > 0;

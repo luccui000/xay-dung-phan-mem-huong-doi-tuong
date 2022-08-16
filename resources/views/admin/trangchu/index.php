@@ -121,7 +121,7 @@
                             <div class="card-body">
                                 <h4 class="card-title">
                                     <i class="fas fa-gift"></i>
-                                    Đặt hàng
+                                    DOANH THU NĂM 2022
                                 </h4>
                                 <canvas id="orders-chart"></canvas>
                                 <div id="orders-chart-legend" class="orders-chart-legend"></div>
@@ -131,11 +131,23 @@
                     <div class="col-md-6 grid-margin stretch-card">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">
-                                    <i class="fas fa-chart-line"></i>
-                                    Bán hàng
-                                </h4>
-                                <canvas id="sales-chart"></canvas>
+                                <div class="d-flex justify-content-between">
+                                    <h4 class="card-title">
+                                        <i class="fas fa-chart-line"></i>
+                                        BÁN HÀNG
+                                    </h4>
+                                    <div class="d-flex">
+                                        <div class="form-group">
+                                            <label for="">Ngày bắt đầu</label>
+                                            <input name="from" type="date" class="form-control" />
+                                        </div>
+                                        <div class="form-group ml-2">
+                                            <label for="">Ngày kết thúc</label>
+                                            <input name="to" type="date" class="form-control" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <canvas id="myChart" style="width:100%;max-width:700px"></canvas>
                             </div>
                         </div>
                     </div>
@@ -270,216 +282,82 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-7 grid-margin stretch-card">
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="card-title">
-                                    <i class="fas fa-thumbtack"></i>
-                                    Việc cần làm
-                                </h4>
-                                <div class="add-items d-flex">
-                                    <input type="text" class="form-control todo-list-input"  placeholder="Kế hoạch làm việc cho hôm nay">
-                                    <button class="add btn btn-primary font-weight-bold todo-list-add-btn" id="add-task">Thêm mới</button>
-                                </div>
-                                <div class="list-wrapper">
-                                    <ul class="d-flex flex-column-reverse todo-list">
-                                        <li>
-                                            <div class="form-check">
-                                                <label class="form-check-label">
-                                                    <input class="checkbox" type="checkbox">
-                                                    Meeting with Alisa
-                                                </label>
-                                            </div>
-                                            <i class="remove fa fa-times-circle"></i>
-                                        </li>
-                                        <li class="completed">
-                                            <div class="form-check">
-                                                <label class="form-check-label">
-                                                    <input class="checkbox" type="checkbox" checked>
-                                                    Call John
-                                                </label>
-                                            </div>
-                                            <i class="remove fa fa-times-circle"></i>
-                                        </li>
-                                        <li>
-                                            <div class="form-check">
-                                                <label class="form-check-label">
-                                                    <input class="checkbox" type="checkbox">
-                                                    Create invoice
-                                                </label>
-                                            </div>
-                                            <i class="remove fa fa-times-circle"></i>
-                                        </li>
-                                        <li>
-                                            <div class="form-check">
-                                                <label class="form-check-label">
-                                                    <input class="checkbox" type="checkbox">
-                                                    Print Statements
-                                                </label>
-                                            </div>
-                                            <i class="remove fa fa-times-circle"></i>
-                                        </li>
-                                        <li class="completed">
-                                            <div class="form-check">
-                                                <label class="form-check-label">
-                                                    <input class="checkbox" type="checkbox" checked>
-                                                    Prepare for presentation
-                                                </label>
-                                            </div>
-                                            <i class="remove fa fa-times-circle"></i>
-                                        </li>
-                                        <li>
-                                            <div class="form-check">
-                                                <label class="form-check-label">
-                                                    <input class="checkbox" type="checkbox">
-                                                    Pick up kids from school
-                                                </label>
-                                            </div>
-                                            <i class="remove fa fa-times-circle"></i>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-5 grid-margin stretch-card">
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="card-title">
-                                    <i class="fas fa-rocket"></i>
-                                    Projects
-                                </h4>
-                                <div class="table-responsive">
-                                    <table class="table">
-                                        <thead>
-                                        <tr>
-                                            <th>
-                                                Assigned to
-                                            </th>
-                                            <th>
-                                                Project name
-                                            </th>
-                                            <th>
-                                                Priority
-                                            </th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <tr>
-                                            <td class="py-1">
-                                                <img src="images/faces/face1.jpg" alt="profile" class="img-sm rounded-circle"/>
-                                            </td>
-                                            <td>
-                                                South Shyanne
-                                            </td>
-                                            <td>
-                                                <label class="badge badge-warning badge-pill">Medium</label>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="py-1">
-                                                <img src="images/faces/face2.jpg" alt="profile" class="img-sm rounded-circle"/>
-                                            </td>
-                                            <td>
-                                                New Trystan
-                                            </td>
-                                            <td>
-                                                <label class="badge badge-danger badge-pill">High</label>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="py-1">
-                                                <img src="images/faces/face3.jpg" alt="profile" class="img-sm rounded-circle"/>
-                                            </td>
-                                            <td>
-                                                East Helga
-                                            </td>
-                                            <td>
-                                                <label class="badge badge-success badge-pill">Low</label>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="py-1">
-                                                <img src="images/faces/face4.jpg" alt="profile" class="img-sm rounded-circle"/>
-                                            </td>
-                                            <td>
-                                                Omerbury
-                                            </td>
-                                            <td>
-                                                <label class="badge badge-warning badge-pill">Medium</label>
-                                            </td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="d-md-flex justify-content-between align-items-center">
-                                    <div class="d-flex align-items-center mb-3 mb-md-0">
-                                        <button class="btn btn-social-icon btn-facebook btn-rounded">
-                                            <i class="fab fa-facebook-f"></i>
-                                        </button>
-                                        <div class="ml-4">
-                                            <h5 class="mb-0">Facebook</h5>
-                                            <p class="mb-0">813 friends</p>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex align-items-center mb-3 mb-md-0">
-                                        <button class="btn btn-social-icon btn-twitter btn-rounded">
-                                            <i class="fab fa-twitter"></i>
-                                        </button>
-                                        <div class="ml-4">
-                                            <h5 class="mb-0">Twitter</h5>
-                                            <p class="mb-0">9000 followers</p>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex align-items-center mb-3 mb-md-0">
-                                        <button class="btn btn-social-icon btn-google btn-rounded">
-                                            <i class="fab fa-google-plus-g"></i>
-                                        </button>
-                                        <div class="ml-4">
-                                            <h5 class="mb-0">Google plus</h5>
-                                            <p class="mb-0">780 friends</p>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex align-items-center">
-                                        <button class="btn btn-social-icon btn-linkedin btn-rounded">
-                                            <i class="fab fa-linkedin-in"></i>
-                                        </button>
-                                        <div class="ml-4">
-                                            <h5 class="mb-0">Linkedin</h5>
-                                            <p class="mb-0">1090 connections</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
-            <!-- content-wrapper ends -->
-            <!-- partial:partials/_footer.html -->
-            <footer class="footer">
-                <div class="d-sm-flex justify-content-center justify-content-sm-between">
-                    <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2018. All rights reserved.</span>
-                    <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="far fa-heart text-danger"></i></span>
-                </div>
-            </footer>
-            <!-- partial -->
         </div>
         <!-- main-panel ends -->
     </div>
     <?php partial('includes/script.php', 'admin'); ?>
-    <script>
-        $(document).ready(function() {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js" integrity="sha512-odNmoc1XJy5x1TMVMdC7EMs3IVdItLPlCeL5vSUPN2llYKMJ2eByTTAIiiuqLg+GdNr9hF6z81p27DArRFKT7A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+
+            let labels = [
+                "01/03/2022",
+                "02/03/2022",
+                "03/03/2022",
+                "04/03/2022",
+                "05/03/2022",
+                "06/03/2022",
+                "07/03/2022",
+                "08/03/2022",
+                "09/03/2022",
+                "10/03/2022",
+                "11/03/2022",
+                "12/03/2022",
+                "13/03/2022",
+                "14/03/2022"
+            ];
+            let datasets = [
+                0,
+                0,
+                0,
+                0,
+                0,
+                80550000,
+                109540000,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+            ];
+
+            const chartFilter = new Chart("myChart", {
+                type: "bar",
+                data: {
+                    labels,
+                    datasets: [{
+                        label: 'Dữ liệu bán hàng',
+                        pointBackgroundColor: "rgba(0,0,255,1)",
+                        data: datasets
+                    }]
+                },
+                options: {}
+            });
+            const from = document.querySelector("input[name=from]")
+            const to = document.querySelector("input[name=to]")
+
+            to.addEventListener('change', applyFilter)
+
+            function applyFilter() {
+                const fromDay = from.value;
+                const toDay = to.value;
+                if((fromDay != null || fromDay != '') && (toDay != null || toDay != '')) {
+                    axios.get(`/api/chart/filter?from=${fromDay}&to=${toDay}`)
+                        .then(response => {
+                            const { data: datasets, label: labels } = response.data;
+                            console.log(datasets)
+                            console.log(labels)
+                            chartFilter.data.labels = labels;
+                            chartFilter.data.datasets[0].data = datasets;
+                            chartFilter.update();
+                        })
+                }
+            }
         })
     </script>
 </div>
